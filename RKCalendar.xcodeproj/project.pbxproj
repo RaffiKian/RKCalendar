@@ -20,6 +20,10 @@
 		0112FD7422DB926A00BB8F94 /* RKMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD7322DB926A00BB8F94 /* RKMonth.swift */; };
 		0112FD7622DB954900BB8F94 /* RKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD7522DB954900BB8F94 /* RKViewController.swift */; };
 		0179442B22DBB2AE0059FCF6 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0179442A22DBB2AE0059FCF6 /* LICENSE.txt */; };
+		019D282322DBCCC00001C990 /* demo-app-dark-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D281F22DBCCC00001C990 /* demo-app-dark-mode-2.png */; };
+		019D282422DBCCC00001C990 /* demo-app-dark-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */; };
+		019D282922DBCD2E0001C990 /* demo-app-light-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */; };
+		019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		0112FD7322DB926A00BB8F94 /* RKMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMonth.swift; sourceTree = "<group>"; };
 		0112FD7522DB954900BB8F94 /* RKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKViewController.swift; sourceTree = "<group>"; };
 		0179442A22DBB2AE0059FCF6 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		019D281F22DBCCC00001C990 /* demo-app-dark-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-2.png"; sourceTree = "<group>"; };
+		019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-1.png"; sourceTree = "<group>"; };
+		019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-1.png"; sourceTree = "<group>"; };
+		019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-2.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,7 @@
 		0112FD5322DB8D6800BB8F94 /* RKCalendar */ = {
 			isa = PBXGroup;
 			children = (
+				019D281E22DBCCAE0001C990 /* Images */,
 				0112FD5422DB8D6800BB8F94 /* AppDelegate.swift */,
 				0112FD5622DB8D6800BB8F94 /* SceneDelegate.swift */,
 				0112FD5822DB8D6800BB8F94 /* ContentView.swift */,
@@ -102,6 +111,17 @@
 				0112FD6F22DB91DB00BB8F94 /* RKManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		019D281E22DBCCAE0001C990 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */,
+				019D281F22DBCCC00001C990 /* demo-app-dark-mode-2.png */,
+				019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */,
+				019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +185,11 @@
 				0179442B22DBB2AE0059FCF6 /* LICENSE.txt in Resources */,
 				0112FD6122DB8D6A00BB8F94 /* LaunchScreen.storyboard in Resources */,
 				0112FD5E22DB8D6A00BB8F94 /* Preview Assets.xcassets in Resources */,
+				019D282422DBCCC00001C990 /* demo-app-dark-mode-1.png in Resources */,
+				019D282322DBCCC00001C990 /* demo-app-dark-mode-2.png in Resources */,
+				019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */,
 				0112FD5B22DB8D6A00BB8F94 /* Assets.xcassets in Resources */,
+				019D282922DBCD2E0001C990 /* demo-app-light-mode-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
