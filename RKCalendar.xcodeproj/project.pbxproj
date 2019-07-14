@@ -19,6 +19,7 @@
 		0112FD7022DB91DB00BB8F94 /* RKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD6F22DB91DB00BB8F94 /* RKManager.swift */; };
 		0112FD7422DB926A00BB8F94 /* RKMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD7322DB926A00BB8F94 /* RKMonth.swift */; };
 		0112FD7622DB954900BB8F94 /* RKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD7522DB954900BB8F94 /* RKViewController.swift */; };
+		0179442B22DBB2AE0059FCF6 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0179442A22DBB2AE0059FCF6 /* LICENSE.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		0112FD6F22DB91DB00BB8F94 /* RKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKManager.swift; sourceTree = "<group>"; };
 		0112FD7322DB926A00BB8F94 /* RKMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMonth.swift; sourceTree = "<group>"; };
 		0112FD7522DB954900BB8F94 /* RKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKViewController.swift; sourceTree = "<group>"; };
+		0179442A22DBB2AE0059FCF6 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +54,7 @@
 		0112FD4822DB8D6800BB8F94 = {
 			isa = PBXGroup;
 			children = (
+				0179442A22DBB2AE0059FCF6 /* LICENSE.txt */,
 				0112FD5322DB8D6800BB8F94 /* RKCalendar */,
 				0112FD5222DB8D6800BB8F94 /* Products */,
 			);
@@ -159,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0179442B22DBB2AE0059FCF6 /* LICENSE.txt in Resources */,
 				0112FD6122DB8D6A00BB8F94 /* LaunchScreen.storyboard in Resources */,
 				0112FD5E22DB8D6A00BB8F94 /* Preview Assets.xcassets in Resources */,
 				0112FD5B22DB8D6A00BB8F94 /* Assets.xcassets in Resources */,
