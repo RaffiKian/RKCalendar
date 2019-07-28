@@ -15,7 +15,7 @@ struct RKCell : View {
     var body: some View {
         Text(rkDate.getText())
             .fontWeight(rkDate.getFontWight())
-            .color(rkDate.getTextColor())
+            .foregroundColor(rkDate.getTextColor())
             .frame(width: 32, height: 32)
             .font(.system(size: 20))
             .background(rkDate.getBackgroundColor())

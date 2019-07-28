@@ -13,26 +13,37 @@ struct ContentView : View {
     @ObjectBinding var exampleOne : RKManager
     @ObjectBinding var exampleTwo : RKManager
     
+    @State var singleDateSelectionIsPresented = false
+    @State var startDateSelectionIsPresented = false
+    @State var endDateSelectionIsPresented = false
+    
     var body: some View {
         
         VStack (spacing: 15){
             Text("Example 1 - Single Date Selection")
-            PresentationLink(destination: RKViewController(rkManager : self.exampleOne, mode: 0), label:{
+            Button(action: { self.singleDateSelectionIsPresented.toggle() }) {
                 Text(getTextFromDate(date: self.exampleOne.selectedDate, mode: 0))
             }
-            )
+            .sheet(isPresented: $singleDateSelectionIsPresented, content: {
+                RKViewController(viewIsPresented: self.$singleDateSelectionIsPresented, rkManager : self.exampleOne, mode: 0)
+            })
             
             Divider()
 
             Text("Example 2 - Start and End Date Selection")
-            PresentationLink(destination: RKViewController(rkManager : self.exampleTwo, mode: 1), label:{
+            Button(action: { self.startDateSelectionIsPresented.toggle() }) {
                 Text(getTextFromDate(date: self.exampleTwo.startDate, mode: 1))
             }
-            )
-            PresentationLink(destination: RKViewController(rkManager : self.exampleTwo, mode: 2), label:{
+            .sheet(isPresented: $startDateSelectionIsPresented, content: {
+                RKViewController(viewIsPresented: self.$startDateSelectionIsPresented, rkManager : self.exampleTwo, mode: 1)
+            })
+            
+            Button(action: { self.endDateSelectionIsPresented.toggle() }) {
                 Text(getTextFromDate(date: self.exampleTwo.endDate, mode: 2))
             }
-            )
+            .sheet(isPresented: $endDateSelectionIsPresented, content: {
+                RKViewController(viewIsPresented: self.$endDateSelectionIsPresented, rkManager : self.exampleTwo, mode: 2)
+            })
         }
     }
     

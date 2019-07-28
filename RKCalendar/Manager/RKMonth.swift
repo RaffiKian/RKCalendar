@@ -10,7 +10,7 @@ import SwiftUI
 
 struct RKMonth : View {
     
-    @Environment (\.isPresented) var isPresented
+    @Binding var viewIsPresented: Bool
     
     @ObjectBinding var rkManager : RKManager
     var mode : Int
@@ -29,9 +29,9 @@ struct RKMonth : View {
             Text(getMonthHeader())
             
             VStack(alignment: .leading, spacing: 5) {
-                ForEach(monthsArray.identified(by: \.self)) { row in
+                ForEach(monthsArray, id:  \.self) { row in
                     HStack() {
-                        ForEach(row.identified(by: \.self)) { column in
+                        ForEach(row, id:  \.self) { column in
                             Spacer()
                             if self.isThisMonth(date: column){
                                 
@@ -73,7 +73,7 @@ struct RKMonth : View {
                     self.rkManager.startDate = date
                 }
             }
-            self.isPresented?.value = false
+            self.viewIsPresented = false
         }
     }
     
@@ -227,7 +227,7 @@ struct RKMonth : View {
 #if DEBUG
 struct RKMonth_Previews : PreviewProvider {
     static var previews: some View {
-        RKMonth(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)), mode: 0, monthOffset: 0)
+        RKMonth(viewIsPresented: .constant(false),rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)), mode: 0, monthOffset: 0)
     }
 }
 #endif

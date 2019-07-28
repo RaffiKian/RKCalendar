@@ -15,7 +15,7 @@ struct RKWeekdayHeader : View {
     var body: some View {
         
         HStack(alignment: .center){
-            ForEach(self.getWeekdayHeaders(calendar: self.calendar).identified(by: \.self)) { weekday in
+            ForEach(self.getWeekdayHeaders(calendar: self.calendar), id: \.self) { weekday in
                 Text(weekday)
                     .font(.system(size: 20))
                     .frame(minWidth: 0, maxWidth: .infinity)

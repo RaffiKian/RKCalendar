@@ -10,6 +10,7 @@ import SwiftUI
 
 struct RKViewController : View {
     
+    @Binding var viewIsPresented: Bool
     @ObjectBinding var rkManager : RKManager
     var mode : Int
     
@@ -18,7 +19,7 @@ struct RKViewController : View {
             RKWeekdayHeader(calendar: self.rkManager.calendar)
             
             ForEach(0..<numberOfMonths()) { index in
-                RKMonth(rkManager : self.rkManager, mode: self.mode, monthOffset: index)
+                RKMonth(viewIsPresented: self.$viewIsPresented, rkManager : self.rkManager, mode: self.mode, monthOffset: index)
             }
         }
     }
@@ -41,8 +42,8 @@ struct RKViewController : View {
 struct RKViewController_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RKViewController(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)), mode: 0)
-            RKViewController(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32)), mode: 0)
+            RKViewController(viewIsPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)), mode: 0)
+            RKViewController(viewIsPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32)), mode: 0)
                 .environment(\.colorScheme, .dark)
                 .environment(\.layoutDirection, .rightToLeft)
         }

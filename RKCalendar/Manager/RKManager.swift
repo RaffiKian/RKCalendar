@@ -10,7 +10,7 @@ import Combine
 import SwiftUI
 
 class RKManager : BindableObject {
-    let didChange = PassthroughSubject<Void, Never>()
+    let willChange = PassthroughSubject<Void, Never>()
     
     init(calendar: Calendar, minimumDate: Date, maximumDate: Date){
         self.calendar = calendar
@@ -20,37 +20,37 @@ class RKManager : BindableObject {
     
     var calendar : Calendar {
         didSet {
-            didChange.send()
+            willChange.send()
         }
     }
     
     var minimumDate : Date {
         didSet {
-            didChange.send()
+            willChange.send()
         }
     }
     
     var maximumDate : Date {
         didSet {
-            didChange.send()
+            willChange.send()
         }
     }
     
     var selectedDate : Date! {
         didSet {
-            didChange.send()
+            willChange.send()
         }
     }
     
     var startDate : Date! {
         didSet {
-            didChange.send()
+            willChange.send()
         }
     }
     
     var endDate : Date! {
         didSet {
-            didChange.send()
+            willChange.send()
         }
     }
 }
