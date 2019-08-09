@@ -8,13 +8,13 @@
 
 import SwiftUI
 
-struct RKCell : View {
+struct RKCell: View {
     
-    var rkDate : RKDate
+    var rkDate: RKDate
     
     var body: some View {
         Text(rkDate.getText())
-            .fontWeight(rkDate.getFontWight())
+            .fontWeight(rkDate.getFontWeight())
             .foregroundColor(rkDate.getTextColor())
             .frame(width: 32, height: 32)
             .font(.system(size: 20))
@@ -43,3 +43,4 @@ struct RKCell_Previews : PreviewProvider {
     }
 }
 #endif
+

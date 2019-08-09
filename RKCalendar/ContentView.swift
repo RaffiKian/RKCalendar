@@ -9,67 +9,58 @@
 import SwiftUI
 
 struct ContentView : View {
+
+    @State var singleIsPresented = false
+    @State var startIsPresented = false
+    @State var endIsPresented = false
+    @State var multipleIsPresented = false
     
-    @ObjectBinding var exampleOne : RKManager
-    @ObjectBinding var exampleTwo : RKManager
+    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
     
-    @State var singleDateSelectionIsPresented = false
-    @State var startDateSelectionIsPresented = false
-    @State var endDateSelectionIsPresented = false
+    var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
+    
+    var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
+
     
     var body: some View {
-        
-        VStack (spacing: 15){
-            Text("Example 1 - Single Date Selection")
-            Button(action: { self.singleDateSelectionIsPresented.toggle() }) {
-                Text(getTextFromDate(date: self.exampleOne.selectedDate, mode: 0))
+        NavigationView {
+            VStack (spacing: 15) {
+                NavigationLink(destination: RKViewController(isPresented: self.$singleIsPresented, rkManager: rkManager1, mode: 0)) {
+                    Text("Example 1 - Single Date Selection").foregroundColor(.blue)
+                }
+                Divider()
+                NavigationLink(destination: RKViewController(isPresented: self.$startIsPresented, rkManager: rkManager2, mode: 1)) {
+                    Text("Example 2 - Start Date Selection").foregroundColor(.blue)
+                }
+                NavigationLink(destination: RKViewController(isPresented: self.$endIsPresented, rkManager: rkManager2, mode: 2)) {
+                    Text("Example 2 - End Date Selection").foregroundColor(.blue)
+                }
+                Divider()
+                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3, mode: 3)) {
+                    Text("Example 3 - Multiple Dates Selection").foregroundColor(.blue)
+                }     
             }
-            .sheet(isPresented: $singleDateSelectionIsPresented, content: {
-                RKViewController(viewIsPresented: self.$singleDateSelectionIsPresented, rkManager : self.exampleOne, mode: 0)
-            })
-            
-            Divider()
-
-            Text("Example 2 - Start and End Date Selection")
-            Button(action: { self.startDateSelectionIsPresented.toggle() }) {
-                Text(getTextFromDate(date: self.exampleTwo.startDate, mode: 1))
-            }
-            .sheet(isPresented: $startDateSelectionIsPresented, content: {
-                RKViewController(viewIsPresented: self.$startDateSelectionIsPresented, rkManager : self.exampleTwo, mode: 1)
-            })
-            
-            Button(action: { self.endDateSelectionIsPresented.toggle() }) {
-                Text(getTextFromDate(date: self.exampleTwo.endDate, mode: 2))
-            }
-            .sheet(isPresented: $endDateSelectionIsPresented, content: {
-                RKViewController(viewIsPresented: self.$endDateSelectionIsPresented, rkManager : self.exampleTwo, mode: 2)
-            })
-        }
+        }.onAppear(perform: startUp)
     }
     
-    func getTextFromDate(date: Date!, mode: Int) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = .current
-        formatter.dateFormat = "EEEE, MMMM d, yyyy"
+    func startUp() {
+        self.rkManager1.selectedDate = nil
+        self.rkManager2.selectedDate = nil
+        self.rkManager3.selectedDate = nil
         
-        var text = "Select Date"
-        if mode == 1 {
-            text = "Select Start Date"
-        }else if mode == 2{
-            text = "Select End Date"
-        }
+        self.rkManager2.startDate = nil
+        self.rkManager2.endDate = nil
         
-        if date != nil {
-            text = formatter.string(from: date)
-        }
-        return text
+        let testDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
+        self.rkManager3.selectedDates.append(contentsOf: testDates)
     }
+    
 }
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView(exampleOne: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)), exampleTwo:RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)))
+        ContentView()
     }
 }
 #endif

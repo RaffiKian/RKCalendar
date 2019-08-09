@@ -9,48 +9,33 @@
 import Combine
 import SwiftUI
 
-class RKManager : BindableObject {
-    let willChange = PassthroughSubject<Void, Never>()
+class RKManager : ObservableObject {
+
+    @Published var calendar = Calendar.current
+    @Published var minimumDate: Date = Date()
+    @Published var maximumDate: Date = Date()
+    @Published var selectedDates: [Date] = [Date]()
+    @Published var selectedDate: Date! = nil
+    @Published var startDate: Date! = nil
+    @Published var endDate: Date! = nil
     
-    init(calendar: Calendar, minimumDate: Date, maximumDate: Date){
+    
+    init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date]()) {
         self.calendar = calendar
         self.minimumDate = minimumDate
         self.maximumDate = maximumDate
+        self.selectedDates = selectedDates
     }
     
-    var calendar : Calendar {
-        didSet {
-            willChange.send()
+    func selectedDatesContains(date: Date) -> Bool {
+        if let _ = self.selectedDates.first(where: { Calendar.current.isDate($0, inSameDayAs: date) }) {
+            return true
         }
+        return false
     }
     
-    var minimumDate : Date {
-        didSet {
-            willChange.send()
-        }
+    func selectedDatesFindIndex(date: Date) -> Int? {
+        return self.selectedDates.firstIndex(where: { Calendar.current.isDate($0, inSameDayAs: date) })
     }
     
-    var maximumDate : Date {
-        didSet {
-            willChange.send()
-        }
-    }
-    
-    var selectedDate : Date! {
-        didSet {
-            willChange.send()
-        }
-    }
-    
-    var startDate : Date! {
-        didSet {
-            willChange.send()
-        }
-    }
-    
-    var endDate : Date! {
-        didSet {
-            willChange.send()
-        }
-    }
 }
