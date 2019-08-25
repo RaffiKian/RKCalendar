@@ -61,8 +61,8 @@ struct ContentView : View {
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
         self.rkManager3.selectedDates.append(contentsOf: testOnDates)
         
-        let testOfDates = [Date().addingTimeInterval(60*60*24*4), Date().addingTimeInterval(60*60*24*5)]
-        self.rkManager4.disabledDates.append(contentsOf: testOfDates)
+        let testOffDates = [Date().addingTimeInterval(60*60*24*4), Date().addingTimeInterval(60*60*24*5)]
+        self.rkManager4.disabledDates.append(contentsOf: testOffDates)
     }
     
 }
