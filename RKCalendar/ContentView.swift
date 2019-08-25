@@ -20,6 +20,8 @@ struct ContentView : View {
     var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
     
     var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
+    
+    var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
 
     
     var body: some View {
@@ -38,7 +40,11 @@ struct ContentView : View {
                 Divider()
                 NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3, mode: 3)) {
                     Text("Example 3 - Multiple Dates Selection").foregroundColor(.blue)
-                }     
+                }
+                Divider()
+                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager4, mode: 1)) {
+                    Text("Example 4 - Disabled Dates Setting").foregroundColor(.blue)
+                }
             }
         }.onAppear(perform: startUp)
     }
@@ -47,12 +53,16 @@ struct ContentView : View {
         self.rkManager1.selectedDate = nil
         self.rkManager2.selectedDate = nil
         self.rkManager3.selectedDate = nil
+        self.rkManager4.selectedDate = nil
         
         self.rkManager2.startDate = nil
         self.rkManager2.endDate = nil
         
-        let testDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
-        self.rkManager3.selectedDates.append(contentsOf: testDates)
+        let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
+        self.rkManager3.selectedDates.append(contentsOf: testOnDates)
+        
+        let testOfDates = [Date().addingTimeInterval(60*60*24*4), Date().addingTimeInterval(60*60*24*5)]
+        self.rkManager4.disabledDates.append(contentsOf: testOfDates)
     }
     
 }

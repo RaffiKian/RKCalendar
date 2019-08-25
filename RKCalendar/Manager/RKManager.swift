@@ -14,6 +14,7 @@ class RKManager : ObservableObject {
     @Published var calendar = Calendar.current
     @Published var minimumDate: Date = Date()
     @Published var maximumDate: Date = Date()
+    @Published var disabledDates: [Date] = [Date]()
     @Published var selectedDates: [Date] = [Date]()
     @Published var selectedDate: Date! = nil
     @Published var startDate: Date! = nil
@@ -36,6 +37,17 @@ class RKManager : ObservableObject {
     
     func selectedDatesFindIndex(date: Date) -> Int? {
         return self.selectedDates.firstIndex(where: { Calendar.current.isDate($0, inSameDayAs: date) })
+    }
+    
+    func disabledDatesContains(date: Date) -> Bool {
+        if let _ = self.disabledDates.first(where: { Calendar.current.isDate($0, inSameDayAs: date) }) {
+            return true
+        }
+        return false
+    }
+    
+    func disabledDatesFindIndex(date: Date) -> Int? {
+        return self.disabledDates.firstIndex(where: { Calendar.current.isDate($0, inSameDayAs: date) })
     }
     
 }

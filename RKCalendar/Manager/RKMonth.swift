@@ -22,6 +22,7 @@ struct RKMonth: View {
     var monthsArray: [[Date]] {
         monthArray()
     }
+    var cellWidth = CGFloat(UIScreen.main.bounds.width/9)
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.center, spacing: 10) {
@@ -41,7 +42,7 @@ struct RKMonth: View {
                                     isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)))
                                     .onTapGesture { self.dateTapped(date: column) })
                                 :
-                                AnyView(Text("").frame(width: 32, height: 32))
+                                AnyView(Text("").frame(width: self.cellWidth, height: self.cellWidth))
                         }
                     }
                 }
@@ -158,7 +159,7 @@ struct RKMonth: View {
     func isOneOfSelectedDates(date: Date) -> Bool {
         return self.rkManager.selectedDatesContains(date: date)
     }
-    
+
     func isSelectedDate(date: Date) -> Bool {
         if rkManager.selectedDate == nil {
             return false
@@ -193,12 +194,16 @@ struct RKMonth: View {
         return true
     }
     
+    func isOneOfDisabledDates(date: Date) -> Bool {
+        return self.rkManager.disabledDatesContains(date: date)
+    }
+    
     func isEnabled(date: Date) -> Bool {
         let clampedDate = RKFormatDate(date: date)
         if rkManager.calendar.compare(clampedDate, to: rkManager.minimumDate, toGranularity: .day) == .orderedAscending || rkManager.calendar.compare(clampedDate, to: rkManager.maximumDate, toGranularity: .day) == .orderedDescending {
             return false
         }
-        return true
+        return !isOneOfDisabledDates(date: date)
     }
     
     func isStartDateAfterEndDate() -> Bool {

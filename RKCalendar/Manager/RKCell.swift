@@ -12,11 +12,13 @@ struct RKCell: View {
     
     var rkDate: RKDate
     
+    var cellWidth = CGFloat(UIScreen.main.bounds.width/9)
+    
     var body: some View {
         Text(rkDate.getText())
             .fontWeight(rkDate.getFontWeight())
             .foregroundColor(rkDate.getTextColor())
-            .frame(width: 32, height: 32)
+            .frame(width: cellWidth, height: cellWidth)
             .font(.system(size: 20))
             .background(rkDate.getBackgroundColor())
             .cornerRadius(8)
