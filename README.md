@@ -6,8 +6,10 @@
 - Added disabled dates option: *disabledDates: [Date] to RKManager*
 - some other bits
 
-
-
+***
+<br>
+<br>
+<br>
 
 # RKCalendar
 SwiftUI Simple Calendar / Date Picker for iOS
