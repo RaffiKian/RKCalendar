@@ -2,10 +2,12 @@
 ### In addition to the original code
 - Compatibility with xCode 11 beta 6
 - Added multiple dates selection: *selectedDates: [Date] to RKManager*
-- Added a new mode=3 for the selectedDates
+- Added a new mode=3 for the multiple selectedDates
 - Added disabled dates option: *disabledDates: [Date] to RKManager*
 - Moved the mode variable to the RKManager to allow for dynamic setting.
-- Start and End dates selections (mode=1 and 2) are set automaticaly upon tapping. So start in mode=1. Note start date must be greater than the end date.
+- Updated the contiguous range of dates selection (mode=1). Start in mode=1 and mode=2 is set automatically internally. Note the start date must be greater than the end date.
+- Updated the README.md file
+- Plus some other bits
 
 ***
 <br>
@@ -26,38 +28,58 @@ SwiftUI Simple Calendar / Date Picker for iOS
 - Swift 5.1+
 
 # Installation
+
 You can integrate RKCalendar into your project manually.
 
 # Usage 
 
-//Provide Calendar, minimum and maximum date that can be selected
+See **ContenView.swift** for some example usage. Typically create a **RKManager** and pass it to a **RKViewController**.
 
-RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)
+Customise the **RKManager** for the desired effects as follows:
 
-## Single Date Selection
 
-//Pass mode 0 to select a single date
+## Calendar minimum and maximum date setting
 
-PresentationLink(destination: RKViewController(rkManager : self.exampleOne, mode: 0), label:{
-    Text(getTextFromDate(date: self.exampleOne.selectedDate, mode: 0))
-    }
-)
+Provide a calendar, minimum and maximum dates that can be selected.
 
-## Start and End Date Selection
+    let minDate = Date()
+    let maxDate = Date().addingTimeInterval(60*60*24*365)
+    RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 0)
 
-//Pass mode 1 to select start date
+## Single date selection
 
-PresentationLink(destination: RKViewController(rkManager : self.exampleTwo, mode: 1), label:{
-    Text(getTextFromDate(date: self.exampleTwo.startDate, mode: 1))
-    }
-)
+Use mode 0 to select a single date.
 
-//Pass mode 2 to select end date
+    RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 0)
 
-PresentationLink(destination: RKViewController(rkManager : self.exampleTwo, mode: 2), label:{
-    Text(getTextFromDate(date: self.exampleTwo.endDate, mode: 2))
-    }
-)
+## Range of dates selection
+
+Use mode 1 to select a contiguous range of dates, from a start date to an end date.
+
+    RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 1)
+
+Note mode 2 is automatically set internally.
+
+## Multi-dates selection
+
+Use mode 3 for selecting a number of dates.
+
+    RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 3)
+
+## Disabled-dates setting
+
+Use any mode and set one or more dates to be disabled (un-selectable).
+
+For example:
+
+    var rkManager = RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 1)
+
+    self.rkManager.disabledDates.append(contentsOf: [
+        Date().addingTimeInterval(60*60*24*4),
+        Date().addingTimeInterval(60*60*24*5),
+        Date().addingTimeInterval(60*60*24*7)
+    ])
+
 
 # License
 RKCalendar is available under the MIT license. See the LICENSE file for more info.
