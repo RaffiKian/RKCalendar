@@ -42,21 +42,19 @@ Customise the **RKManager** for the desired effects as follows:
 
 Provide a calendar, minimum and maximum dates that can be selected.
 
-    let minDate = Date()
-    let maxDate = Date().addingTimeInterval(60*60*24*365)
-    RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 0)
+    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
 
 ## Single date selection
 
 Use mode 0 to select a single date.
 
-    RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 0)
+    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
 
 ## Range of dates selection
 
 Use mode 1 to select a contiguous range of dates, from a start date to an end date.
 
-    RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 1)
+    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 1)
 
 Note mode 2 is automatically set internally.
 
@@ -64,7 +62,7 @@ Note mode 2 is automatically set internally.
 
 Use mode 3 for selecting a number of dates.
 
-    RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 3)
+    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 3)
 
 ## Disabled-dates setting
 
@@ -72,7 +70,7 @@ Use any mode and set one or more dates to be disabled (un-selectable).
 
 For example:
 
-    var rkManager = RKManager(calendar: Calendar.current, minimumDate: minDate, maximumDate: maxDate, mode: 1)
+    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 1)
 
     self.rkManager.disabledDates.append(contentsOf: [
         Date().addingTimeInterval(60*60*24*4),
