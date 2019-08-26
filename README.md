@@ -4,7 +4,8 @@
 - Added multiple dates selection: *selectedDates: [Date] to RKManager*
 - Added a new mode=3 for the selectedDates
 - Added disabled dates option: *disabledDates: [Date] to RKManager*
-- some other bits
+- Moved the mode variable to the RKManager to allow for dynamic setting.
+- Start and End dates selections (mode=1 and 2) are set automaticaly upon tapping. So start in mode=1. Note start date must be greater than the end date.
 
 ***
 <br>

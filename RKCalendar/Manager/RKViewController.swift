@@ -13,17 +13,12 @@ struct RKViewController: View {
     @Binding var isPresented: Bool
     
     @ObservedObject var rkManager: RKManager
-
-    var mode: Int
-    
+ 
     var body: some View {
         List {
             RKWeekdayHeader(calendar: self.rkManager.calendar)
             ForEach(0..<numberOfMonths()) { index in
-                RKMonth(isPresented: self.$isPresented,
-                        rkManager: self.rkManager,
-                        mode: self.mode,
-                        monthOffset: index)
+                RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
             }
         }
     }
@@ -45,8 +40,8 @@ struct RKViewController: View {
 struct RKViewController_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365)), mode: 0)
-            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32)), mode: 0)
+            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
+            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32), mode: 0))
                 .environment(\.colorScheme, .dark)
                 .environment(\.layoutDirection, .rightToLeft)
         }

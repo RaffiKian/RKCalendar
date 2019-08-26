@@ -15,34 +15,31 @@ struct ContentView : View {
     @State var endIsPresented = false
     @State var multipleIsPresented = false
     
-    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
+    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
-    var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
+    var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 1) // automatically goes to mode=2 after start selection, and vice versa.
     
-    var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
+    var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 3)
     
-    var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365))
+    var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 1)
 
     
     var body: some View {
         NavigationView {
             VStack (spacing: 15) {
-                NavigationLink(destination: RKViewController(isPresented: self.$singleIsPresented, rkManager: rkManager1, mode: 0)) {
+                NavigationLink(destination: RKViewController(isPresented: self.$singleIsPresented, rkManager: rkManager1)) {
                     Text("Example 1 - Single Date Selection").foregroundColor(.blue)
                 }
                 Divider()
-                NavigationLink(destination: RKViewController(isPresented: self.$startIsPresented, rkManager: rkManager2, mode: 1)) {
-                    Text("Example 2 - Start Date Selection").foregroundColor(.blue)
-                }
-                NavigationLink(destination: RKViewController(isPresented: self.$endIsPresented, rkManager: rkManager2, mode: 2)) {
-                    Text("Example 2 - End Date Selection").foregroundColor(.blue)
+                NavigationLink(destination: RKViewController(isPresented: self.$startIsPresented, rkManager: rkManager2)) {
+                    Text("Example 2 - Range of Dates Selection").foregroundColor(.blue)
                 }
                 Divider()
-                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3, mode: 3)) {
+                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3)) {
                     Text("Example 3 - Multiple Dates Selection").foregroundColor(.blue)
                 }
                 Divider()
-                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager4, mode: 1)) {
+                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager4)) {
                     Text("Example 4 - Disabled Dates Setting").foregroundColor(.blue)
                 }
             }
@@ -61,7 +58,10 @@ struct ContentView : View {
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
         self.rkManager3.selectedDates.append(contentsOf: testOnDates)
         
-        let testOffDates = [Date().addingTimeInterval(60*60*24*4), Date().addingTimeInterval(60*60*24*5)]
+        let testOffDates = [
+            Date().addingTimeInterval(60*60*24*4),
+            Date().addingTimeInterval(60*60*24*5),
+            Date().addingTimeInterval(60*60*24*7)]
         self.rkManager4.disabledDates.append(contentsOf: testOffDates)
     }
     
