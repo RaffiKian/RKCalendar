@@ -21,7 +21,7 @@ struct RKMonth: View {
     var monthsArray: [[Date]] {
         monthArray()
     }
-    var cellWidth = CGFloat(UIScreen.main.bounds.width/8)
+    let cellWidth = CGFloat(UIScreen.main.bounds.width/8)
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.center, spacing: 10) {
@@ -59,7 +59,11 @@ struct RKMonth: View {
         if self.isEnabled(date: date) {
             switch self.rkManager.mode {
             case 0:
-                self.rkManager.selectedDate = date
+                if self.rkManager.selectedDate != nil && Calendar.current.isDate(self.rkManager.selectedDate, inSameDayAs: date) {
+                    self.rkManager.selectedDate = nil
+                } else {
+                    self.rkManager.selectedDate = date
+                }
             case 1:
                 self.rkManager.startDate = date
                 self.rkManager.endDate = nil
