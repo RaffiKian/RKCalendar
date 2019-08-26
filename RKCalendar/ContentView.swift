@@ -47,14 +47,6 @@ struct ContentView : View {
     }
     
     func startUp() {
-        self.rkManager1.selectedDate = nil
-        self.rkManager2.selectedDate = nil
-        self.rkManager3.selectedDate = nil
-        self.rkManager4.selectedDate = nil
-        
-        self.rkManager2.startDate = nil
-        self.rkManager2.endDate = nil
-        
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
         self.rkManager3.selectedDates.append(contentsOf: testOnDates)
         
