@@ -21,7 +21,7 @@ struct RKMonth: View {
     var monthsArray: [[Date]] {
         monthArray()
     }
-    var cellWidth = CGFloat(UIScreen.main.bounds.width/9)
+    var cellWidth = CGFloat(UIScreen.main.bounds.width/8)
     
     var body: some View {
         VStack(alignment: HorizontalAlignment.center, spacing: 10) {
@@ -38,8 +38,10 @@ struct RKMonth: View {
                                     isDisabled: !self.isEnabled(date: column),
                                     isToday: self.isToday(date: column),
                                     isSelected: self.isSpecialDate(date: column),
-                                    isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)))
+                                    isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
+                                    cellWidth: self.cellWidth)
                                     .onTapGesture { self.dateTapped(date: column) })
+                                    
                                 :
                                 AnyView(Text("").frame(width: self.cellWidth, height: self.cellWidth))
                         }
