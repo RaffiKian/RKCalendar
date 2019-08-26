@@ -95,7 +95,7 @@ struct RKMonth: View {
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
             var columnArray = [Date]()
             for column in 0 ... 6 {
-                let abc = self.getaDateAtIndex(index: (row * 7) + column)
+                let abc = self.getDateAtIndex(index: (row * 7) + column)
                 columnArray.append(abc)
             }
             rowArray.append(columnArray)
@@ -110,7 +110,7 @@ struct RKMonth: View {
         return headerDateFormatter.string(from: firstOfMonthForOffset()).uppercased()
     }
     
-    func getaDateAtIndex(index: Int) -> Date {
+    func getDateAtIndex(index: Int) -> Date {
         let firstOfMonth = firstOfMonthForOffset()
         let weekday = rkManager.calendar.component(.weekday, from: firstOfMonth)
         var startOffset = weekday - rkManager.calendar.firstWeekday
