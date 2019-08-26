@@ -29,7 +29,7 @@ struct RKViewController: View {
     
     func RKMaximumDateMonthLastDay() -> Date {
         var components = rkManager.calendar.dateComponents([.year, .month, .day], from: rkManager.maximumDate)
-        components.month! += 1;
+        components.month! += 1
         components.day = 0
         
         return rkManager.calendar.date(from: components)!

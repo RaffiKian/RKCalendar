@@ -40,8 +40,7 @@ struct RKMonth: View {
                                     isSelected: self.isSpecialDate(date: column),
                                     isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
                                     cellWidth: self.cellWidth)
-                                    .onTapGesture { self.dateTapped(date: column) })
-                                    
+                                    .onTapGesture { self.dateTapped(date: column) })    
                                 :
                                 AnyView(Text("").frame(width: self.cellWidth, height: self.cellWidth))
                         }

@@ -12,7 +12,6 @@ struct ContentView : View {
 
     @State var singleIsPresented = false
     @State var startIsPresented = false
-    @State var endIsPresented = false
     @State var multipleIsPresented = false
     
     var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
@@ -57,7 +56,7 @@ struct ContentView : View {
             Date().addingTimeInterval(60*60*24*7)]
         self.rkManager4.disabledDates.append(contentsOf: testOffDates)
     }
-    
+ 
 }
 
 #if DEBUG

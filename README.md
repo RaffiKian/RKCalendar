@@ -13,7 +13,7 @@
 <br>
 
 # RKCalendar
-SwiftUI Simple Calendar / Date Picker for iOS
+**RKCalendar** is a SwiftUI Calendar / Date Picker for iOS.
 
 ### Light Mode
 <img src="https://github.com/RaffiKian/RKCalendar/blob/master/RKCalendar/Images/demo-app-light-mode-1.png" alt="demo app first screenshot" width="260"/> <img src="https://github.com/RaffiKian/RKCalendar/blob/master/RKCalendar/Images/demo-app-light-mode-2.png" alt="demo app first screenshot" width="260"/> 
@@ -29,18 +29,18 @@ SwiftUI Simple Calendar / Date Picker for iOS
 
 # Installation
 
-You can integrate RKCalendar into your project manually.
+Integrate RKCalendar into your project by including the files in the "Manager" group.
 
 # Usage 
 
-See **ContenView.swift** for some example usage. Typically create a **RKManager** and pass it to a **RKViewController**.
+See **ContenView.swift** for some examples. Typically create a **RKManager** and pass it to a **RKViewController**.
 
 Customise the **RKManager** for the desired effects as follows:
 
 
 ## Calendar minimum and maximum date setting
 
-Provide a calendar, minimum and maximum dates that can be selected.
+Setting the calendar, minimum and maximum dates that can be selected.
 
     RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
 
@@ -56,7 +56,7 @@ Use mode 1 to select a contiguous range of dates, from a start date to an end da
 
     RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 1)
 
-Note mode 2 is automatically set internally.
+Note, mode 2 is automatically set internally.
 
 ## Multi-dates selection
 
@@ -66,7 +66,7 @@ Use mode 3 for selecting a number of dates.
 
 ## Disabled-dates setting
 
-Use any mode and set one or more dates to be disabled (un-selectable).
+Use any mode and set zero or more dates to be disabled (un-selectable).
 
 For example:
 

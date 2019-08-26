@@ -32,7 +32,7 @@ struct RKDate {
         return day
     }
     
-    func getTextColor() -> Color{
+    func getTextColor() -> Color {
         var textColor = Color.primary
         if isDisabled {
             textColor = Color.gray

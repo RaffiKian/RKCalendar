@@ -25,6 +25,7 @@
 		019D282922DBCD2E0001C990 /* demo-app-light-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */; };
 		019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */; };
 		C7A3D61B23126E230065D6FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C7A3D61A23126E230065D6FF /* README.md */; };
+		C7B814EA2313D285006F399C /* temp.txt in Resources */ = {isa = PBXBuildFile; fileRef = C7B814E92313D285006F399C /* temp.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-1.png"; sourceTree = "<group>"; };
 		019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-2.png"; sourceTree = "<group>"; };
 		C7A3D61A23126E230065D6FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C7B814E92313D285006F399C /* temp.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = temp.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		0112FD4822DB8D6800BB8F94 = {
 			isa = PBXGroup;
 			children = (
+				C7B814E92313D285006F399C /* temp.txt */,
 				C7A3D61A23126E230065D6FF /* README.md */,
 				0179442A22DBB2AE0059FCF6 /* LICENSE.txt */,
 				0112FD5322DB8D6800BB8F94 /* RKCalendar */,
@@ -189,6 +192,7 @@
 				0112FD6122DB8D6A00BB8F94 /* LaunchScreen.storyboard in Resources */,
 				0112FD5E22DB8D6A00BB8F94 /* Preview Assets.xcassets in Resources */,
 				019D282422DBCCC00001C990 /* demo-app-dark-mode-1.png in Resources */,
+				C7B814EA2313D285006F399C /* temp.txt in Resources */,
 				019D282322DBCCC00001C990 /* demo-app-dark-mode-2.png in Resources */,
 				019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */,
 				C7A3D61B23126E230065D6FF /* README.md in Resources */,
