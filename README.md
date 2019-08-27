@@ -70,7 +70,7 @@ Use any mode and set zero or more dates to be disabled (un-selectable).
 
 For example:
 
-    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 1)
+    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 0)
 
     self.rkManager.disabledDates.append(contentsOf: [
         Date().addingTimeInterval(60*60*24*4),
