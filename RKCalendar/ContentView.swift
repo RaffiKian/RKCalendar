@@ -55,16 +55,19 @@ struct ContentView : View {
     }
     
     func startUp() {
+        // example of presetting selected dates
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
         self.rkManager3.selectedDates.append(contentsOf: testOnDates)
         
+        // example of presetting disabled dates
         let testOffDates = [
             Date().addingTimeInterval(60*60*24*4),
             Date().addingTimeInterval(60*60*24*5),
             Date().addingTimeInterval(60*60*24*7)]
         self.rkManager4.disabledDates.append(contentsOf: testOffDates)
         
-         rkManager5.isVertical = false
+        // exampe of a horizontal scrolling calendar
+        rkManager5.isVertical = false
     }
  
 }
