@@ -7,6 +7,7 @@
 - Moved the mode variable to the RKManager to allow for dynamic setting.
 - Updated the contiguous range of dates selection (mode=1). Start in mode=1 and mode=2 is set automatically internally. Note the start date must be greater than the end date.
 - Updated the README.md file
+- Added horizontal scrolling
 - Plus some other bits
 
 ***
