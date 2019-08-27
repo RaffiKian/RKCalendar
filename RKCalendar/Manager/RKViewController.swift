@@ -13,11 +13,12 @@ struct RKViewController: View {
     @Binding var isPresented: Bool
     
     @ObservedObject var rkManager: RKManager
- 
+    
     var body: some View {
         rkManager.isVertical ?
             AnyView(Group {
-                RKWeekdayHeader(calendar: self.rkManager.calendar)
+                RKWeekdayHeader(rkManager: self.rkManager)
+                Divider()
                 List {
                     ForEach(0..<numberOfMonths()) { index in
                         RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
@@ -30,7 +31,8 @@ struct RKViewController: View {
                 HStack {
                     ForEach(0..<numberOfMonths()) { index in
                         VStack {
-                            RKWeekdayHeader(calendar: self.rkManager.calendar)
+                            RKWeekdayHeader(rkManager: self.rkManager)
+                            Divider()
                             RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
                         }
                         Divider()
@@ -38,7 +40,7 @@ struct RKViewController: View {
                 }
             })
     }
-
+    
     func numberOfMonths() -> Int {
         return rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: RKMaximumDateMonthLastDay()).month! + 1
     }

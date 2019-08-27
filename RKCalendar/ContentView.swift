@@ -51,7 +51,7 @@ struct ContentView : View {
                 }
             }
         }.onAppear(perform: startUp)
-        .navigationViewStyle(StackNavigationViewStyle())
+            .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func startUp() {

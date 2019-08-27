@@ -24,9 +24,9 @@ struct RKMonth: View {
     let cellWidth = CGFloat(UIScreen.main.bounds.width/8)
     
     var body: some View {
-        VStack(alignment: HorizontalAlignment.center, spacing: 10) {
+        VStack {
             Text(getMonthHeader())
-            VStack(alignment: .leading, spacing: 5) {
+            VStack {
                 ForEach(monthsArray, id: \.self) { row in
                     HStack() {
                         ForEach(row, id: \.self) { column in
