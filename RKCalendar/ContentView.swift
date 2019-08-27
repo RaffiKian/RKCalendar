@@ -35,7 +35,7 @@ struct ContentView : View {
                     Text("Example 2 - Range of Dates Selection").foregroundColor(.blue)
                 }
                 Divider()
-                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3).foregroundColor(Color.pink)) {
+                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3)) {
                     Text("Example 3 - Multiple Dates Selection").foregroundColor(.blue)
                 }
                 Divider()
