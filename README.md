@@ -78,6 +78,12 @@ For example:
         Date().addingTimeInterval(60*60*24*7)
     ])
 
+## Horizontal scrolling
+
+The default is a vertical scrolling calendar. To have a horizontal scrolling calendar set the **isVertical** parameter to false, such as:
+
+    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 0)
+    rkManager.isVertical = false
 
 # License
 RKCalendar is available under the MIT license. See the LICENSE file for more info.

@@ -20,6 +20,7 @@ class RKManager : ObservableObject {
     @Published var startDate: Date! = nil
     @Published var endDate: Date! = nil
     @Published var mode: Int = 0
+    @Published var isVertical = true
     
     
     init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {

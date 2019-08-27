@@ -14,6 +14,7 @@ struct ContentView : View {
     @State var startIsPresented = false
     @State var multipleIsPresented = false
     @State var deselectedIsPresented = false
+    @State var horizontalIsPresented = false
     
     var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -22,6 +23,8 @@ struct ContentView : View {
     var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 3)
     
     var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    
+    var rkManager5 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
 
     
     var body: some View {
@@ -42,6 +45,10 @@ struct ContentView : View {
                 NavigationLink(destination: RKViewController(isPresented: self.$deselectedIsPresented, rkManager: rkManager4)) {
                     Text("Example 4 - Disabled Dates Setting").foregroundColor(.blue)
                 }
+                Divider()
+                NavigationLink(destination: RKViewController(isPresented: self.$horizontalIsPresented, rkManager: rkManager5)) {
+                    Text("Example 5 - Horizontal Scrolling").foregroundColor(.blue)
+                }
             }
         }.onAppear(perform: startUp)
         .navigationViewStyle(StackNavigationViewStyle())
@@ -56,6 +63,8 @@ struct ContentView : View {
             Date().addingTimeInterval(60*60*24*5),
             Date().addingTimeInterval(60*60*24*7)]
         self.rkManager4.disabledDates.append(contentsOf: testOffDates)
+        
+         rkManager5.isVertical = false
     }
  
 }
