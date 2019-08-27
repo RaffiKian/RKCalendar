@@ -13,6 +13,7 @@ struct ContentView : View {
     @State var singleIsPresented = false
     @State var startIsPresented = false
     @State var multipleIsPresented = false
+    @State var deselectedIsPresented = false
     
     var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -20,7 +21,7 @@ struct ContentView : View {
     
     var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 3)
     
-    var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 1)
+    var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
 
     
     var body: some View {
@@ -34,11 +35,11 @@ struct ContentView : View {
                     Text("Example 2 - Range of Dates Selection").foregroundColor(.blue)
                 }
                 Divider()
-                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3)) {
+                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3).foregroundColor(Color.pink)) {
                     Text("Example 3 - Multiple Dates Selection").foregroundColor(.blue)
                 }
                 Divider()
-                NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager4)) {
+                NavigationLink(destination: RKViewController(isPresented: self.$deselectedIsPresented, rkManager: rkManager4)) {
                     Text("Example 4 - Disabled Dates Setting").foregroundColor(.blue)
                 }
             }

@@ -1,0 +1,27 @@
+
+     
+     
+     
+     
+     let d1 = Date()
+     var d2 = Date().addingTimeInterval(60*60*24*2)
+     print("Calendar 1 is same date: \(Calendar.current.isDate(d1, inSameDayAs: d2)) ")
+     print(" 1 same: \(RKFormatAndCompareDate(date: d1, referenceDate: d2))")
+     d2 = Date()
+     print("Calendar 2 is same date: \(Calendar.current.isDate(d1, inSameDayAs: d2)) ")
+     print(" 2 same: \(RKFormatAndCompareDate(date: d1, referenceDate: d2))")
+     
+     
+     print("\n====> RKFormatDate(date: Date()): \(RKFormatDate(date: Date()))")
+ }
+ 
+ func RKFormatDate(date: Date) -> Date {
+     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
+     let components = self.rkManager4.calendar.dateComponents(calendarUnitYMD, from: date)
+     return self.rkManager4.calendar.date(from: components)!
+ }
+ func RKFormatAndCompareDate(date: Date, referenceDate: Date) -> Bool {
+     let refDate = RKFormatDate(date: referenceDate)
+     let clampedDate = RKFormatDate(date: date)
+     return refDate == clampedDate
+ }
