@@ -1,6 +1,6 @@
 
 ### In addition to the original code
-- Compatibility with xCode 11 beta 6
+- Compatibility with xCode 11 beta 7
 - Added multiple dates selection: *selectedDates: [Date] to RKManager*
 - Added a new mode=3 for the multiple selectedDates
 - Added disabled dates option: *disabledDates: [Date] to RKManager*
