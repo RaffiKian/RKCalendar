@@ -33,32 +33,32 @@ struct RKDate {
     }
     
     func getTextColor() -> Color {
-        var textColor = rkManager.textColor
+        var textColor = rkManager.colors.textColor
         if isDisabled {
-            textColor = rkManager.disabledColor
+            textColor = rkManager.colors.disabledColor
         } else if isSelected {
-            textColor = rkManager.selectedColor
+            textColor = rkManager.colors.selectedColor
         } else if isToday {
-            textColor = rkManager.todayColor
+            textColor = rkManager.colors.todayColor
         } else if isBetweenStartAndEnd {
-            textColor = rkManager.betweenStartAndEndColor
+            textColor = rkManager.colors.betweenStartAndEndColor
         }
         return textColor
     }
     
     func getBackgroundColor() -> Color {
-        var backgroundColor = rkManager.textBackColor
+        var backgroundColor = rkManager.colors.textBackColor
         if isBetweenStartAndEnd {
-            backgroundColor = rkManager.betweenStartAndEndBackColor
+            backgroundColor = rkManager.colors.betweenStartAndEndBackColor
         }
         if isToday {
-            backgroundColor = rkManager.todayBackColor
+            backgroundColor = rkManager.colors.todayBackColor
         }
         if isDisabled {
-            backgroundColor = rkManager.disabledBackColor
+            backgroundColor = rkManager.colors.disabledBackColor
         }
         if isSelected {
-            backgroundColor = rkManager.selectedBackColor
+            backgroundColor = rkManager.colors.selectedBackColor
         }
         return backgroundColor
     }

@@ -8,7 +8,7 @@
 - Updated the contiguous range of dates selection (mode=1). Start in mode=1 and mode=2 is set automatically internally. Note the start date must be greater than the end date.
 - Updated the README.md file
 - Added horizontal scrolling
-- Added color settings for text, headers, foreground, background etc... in RKManager
+- Added **ColorSettings** for text, headers, foreground, background etc... in RKManager
 - Plus some other bits
 
 ***

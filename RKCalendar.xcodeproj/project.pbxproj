@@ -24,6 +24,7 @@
 		019D282422DBCCC00001C990 /* demo-app-dark-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */; };
 		019D282922DBCD2E0001C990 /* demo-app-light-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */; };
 		019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */; };
+		C72D24C62317A99D00A37CC1 /* ColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D24C52317A99D00A37CC1 /* ColorSettings.swift */; };
 		C7A3D61B23126E230065D6FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C7A3D61A23126E230065D6FF /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-1.png"; sourceTree = "<group>"; };
 		019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-1.png"; sourceTree = "<group>"; };
 		019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-2.png"; sourceTree = "<group>"; };
+		C72D24C52317A99D00A37CC1 /* ColorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSettings.swift; sourceTree = "<group>"; };
 		C7A3D61A23126E230065D6FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +114,7 @@
 				0112FD7322DB926A00BB8F94 /* RKMonth.swift */,
 				0112FD7522DB954900BB8F94 /* RKViewController.swift */,
 				0112FD6F22DB91DB00BB8F94 /* RKManager.swift */,
+				C72D24C52317A99D00A37CC1 /* ColorSettings.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				0112FD6C22DB901B00BB8F94 /* RKCell.swift in Sources */,
 				0112FD6E22DB912B00BB8F94 /* RKWeekdayHeader.swift in Sources */,
 				0112FD7422DB926A00BB8F94 /* RKMonth.swift in Sources */,
+				C72D24C62317A99D00A37CC1 /* ColorSettings.swift in Sources */,
 				0112FD5722DB8D6800BB8F94 /* SceneDelegate.swift in Sources */,
 				0112FD6A22DB8EA800BB8F94 /* RKDate.swift in Sources */,
 				0112FD5922DB8D6800BB8F94 /* ContentView.swift in Sources */,

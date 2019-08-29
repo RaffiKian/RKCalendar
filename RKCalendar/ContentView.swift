@@ -60,10 +60,10 @@ struct ContentView : View {
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
         rkManager3.selectedDates.append(contentsOf: testOnDates)
         // some foreground colors
-        rkManager3.weekdayHeaderColor = Color.blue
-        rkManager3.monthHeaderColor = Color.green
-        rkManager3.textColor = Color.blue
-        rkManager3.disabledColor = Color.red
+        rkManager3.colors.weekdayHeaderColor = Color.blue
+        rkManager3.colors.monthHeaderColor = Color.green
+        rkManager3.colors.textColor = Color.blue
+        rkManager3.colors.disabledColor = Color.red
         
         // example of presetting disabled dates
         let testOffDates = [
@@ -75,8 +75,8 @@ struct ContentView : View {
         // exampe of a horizontal scrolling calendar
         rkManager5.isVertical = false
         // some background colors
-        rkManager5.weekdayHeaderBackColor = Color.blue
-        rkManager5.monthBackColor = Color.green
+        rkManager5.colors.weekdayHeaderBackColor = Color.blue
+        rkManager5.colors.monthBackColor = Color.green
     }
  
 }

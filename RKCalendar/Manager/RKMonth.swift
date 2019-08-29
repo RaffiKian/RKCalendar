@@ -25,7 +25,7 @@ struct RKMonth: View {
     
     var body: some View {
         VStack {
-            Text(getMonthHeader()).foregroundColor(self.rkManager.monthHeaderColor)
+            Text(getMonthHeader()).foregroundColor(self.rkManager.colors.monthHeaderColor)
             VStack {
                 ForEach(monthsArray, id: \.self) { row in
                     HStack() {
@@ -47,7 +47,7 @@ struct RKMonth: View {
                     }
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
-        }.background(rkManager.monthBackColor)
+        }.background(rkManager.colors.monthBackColor)
     }
 
      func isThisMonth(date: Date) -> Bool {
