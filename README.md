@@ -8,7 +8,7 @@
 - Updated the contiguous range of dates selection (mode=1). Start in mode=1 and mode=2 is set automatically internally. Note the start date must be greater than the end date.
 - Updated the README.md file
 - Added horizontal scrolling
-- Added **ColorSettings** for text, headers, foreground, background etc... in RKManager
+- Added **ColorSettings** for text, headers, foreground, background etc... 
 - Plus some other bits
 
 ***
@@ -74,7 +74,7 @@ For example:
 
     var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 0)
 
-    self.rkManager.disabledDates.append(contentsOf: [
+    rkManager.disabledDates.append(contentsOf: [
         Date().addingTimeInterval(60*60*24*4),
         Date().addingTimeInterval(60*60*24*5),
         Date().addingTimeInterval(60*60*24*7)
