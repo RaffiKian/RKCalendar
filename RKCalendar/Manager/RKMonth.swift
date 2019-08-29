@@ -34,7 +34,7 @@ struct RKMonth: View {
                                 ?
                                 AnyView(RKCell(rkDate: RKDate(
                                     date: column,
-                                    calendar: self.rkManager.calendar,
+                                    rkManager: self.rkManager,
                                     isDisabled: !self.isEnabled(date: column),
                                     isToday: self.isToday(date: column),
                                     isSelected: self.isSpecialDate(date: column),
@@ -47,7 +47,7 @@ struct RKMonth: View {
                     }
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
-        }
+        }.background(rkManager.monthBackColor)
     }
 
      func isThisMonth(date: Date) -> Bool {

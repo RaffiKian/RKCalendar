@@ -47,7 +47,7 @@ struct ContentView : View {
                 }
                 Divider()
                 NavigationLink(destination: RKViewController(isPresented: self.$horizontalIsPresented, rkManager: rkManager5)) {
-                    Text("Example 5 - Horizontal Scrolling").foregroundColor(.blue)
+                    Text("Example 5 - Horizontal Scrolling with colors").foregroundColor(.blue)
                 }
             }
         }.onAppear(perform: startUp)
@@ -67,8 +67,10 @@ struct ContentView : View {
             Date().addingTimeInterval(60*60*24*7)]
         self.rkManager4.disabledDates.append(contentsOf: testOffDates)
         
-        // exampe of a horizontal scrolling calendar
+        // exampe of a horizontal scrolling calendar with different headers and months background colors
         rkManager5.isVertical = false
+        rkManager5.weekdayHeaderBackColor = Color.blue
+        rkManager5.monthBackColor = Color.green
     }
  
 }

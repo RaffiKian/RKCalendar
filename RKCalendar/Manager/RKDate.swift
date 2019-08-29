@@ -11,16 +11,16 @@ import SwiftUI
 struct RKDate {
     
     var date: Date
-    let calendar: Calendar
+    let rkManager: RKManager
     
     var isDisabled: Bool = false
     var isToday: Bool = false
     var isSelected: Bool = false
     var isBetweenStartAndEnd: Bool = false
     
-    init(date: Date, calendar: Calendar, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
+    init(date: Date, rkManager: RKManager, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
         self.date = date
-        self.calendar = calendar
+        self.rkManager = rkManager
         self.isDisabled = isDisabled
         self.isToday = isToday
         self.isSelected = isSelected
@@ -28,37 +28,37 @@ struct RKDate {
     }
     
     func getText() -> String {
-        let day = formatDate(date: date, calendar: calendar)
+        let day = formatDate(date: date, calendar: self.rkManager.calendar)
         return day
     }
     
     func getTextColor() -> Color {
-        var textColor = Color.primary
+        var textColor = rkManager.textColor
         if isDisabled {
-            textColor = Color.gray
+            textColor = rkManager.disabledColor
         } else if isSelected {
-            textColor = Color.white
+            textColor = rkManager.selectedColor
         } else if isToday {
-            textColor = Color.white
+            textColor = rkManager.todayColor
         } else if isBetweenStartAndEnd {
-            textColor = Color.white
+            textColor = rkManager.betweenStartAndEndColor
         }
         return textColor
     }
     
     func getBackgroundColor() -> Color {
-        var backgroundColor = Color.clear
+        var backgroundColor = rkManager.textBackColor
         if isBetweenStartAndEnd {
-            backgroundColor = Color.blue
+            backgroundColor = rkManager.betweenStartAndEndBackColor
         }
         if isToday {
-            backgroundColor = Color.gray
+            backgroundColor = rkManager.todayBackColor
         }
         if isDisabled {
-            backgroundColor = Color.clear
+            backgroundColor = rkManager.disabledBackColor
         }
         if isSelected {
-            backgroundColor = Color.red
+            backgroundColor = rkManager.selectedBackColor
         }
         return backgroundColor
     }
