@@ -39,7 +39,7 @@ struct ContentView : View {
                 }
                 Divider()
                 NavigationLink(destination: RKViewController(isPresented: self.$multipleIsPresented, rkManager: rkManager3)) {
-                    Text("Example 3 - Multiple Dates Selection").foregroundColor(.blue)
+                    Text("Example 3 - Multiple Dates Selection ").foregroundColor(.blue)
                 }
                 Divider()
                 NavigationLink(destination: RKViewController(isPresented: self.$deselectedIsPresented, rkManager: rkManager4)) {
@@ -58,17 +58,23 @@ struct ContentView : View {
     func startUp() {
         // example of presetting selected dates
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
-        self.rkManager3.selectedDates.append(contentsOf: testOnDates)
+        rkManager3.selectedDates.append(contentsOf: testOnDates)
+        // some foreground colors
+        rkManager3.weekdayHeaderColor = Color.blue
+        rkManager3.monthHeaderColor = Color.green
+        rkManager3.textColor = Color.blue
+        rkManager3.disabledColor = Color.red
         
         // example of presetting disabled dates
         let testOffDates = [
             Date().addingTimeInterval(60*60*24*4),
             Date().addingTimeInterval(60*60*24*5),
             Date().addingTimeInterval(60*60*24*7)]
-        self.rkManager4.disabledDates.append(contentsOf: testOffDates)
+        rkManager4.disabledDates.append(contentsOf: testOffDates)
         
-        // exampe of a horizontal scrolling calendar with different headers and months background colors
+        // exampe of a horizontal scrolling calendar
         rkManager5.isVertical = false
+        // some background colors
         rkManager5.weekdayHeaderBackColor = Color.blue
         rkManager5.monthBackColor = Color.green
     }

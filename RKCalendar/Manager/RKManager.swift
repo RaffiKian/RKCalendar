@@ -34,7 +34,8 @@ class RKManager : ObservableObject {
     @Published var todayBackColor: Color = Color.gray
     @Published var selectedBackColor: Color = Color.red
     @Published var disabledBackColor: Color = Color.clear
-    @Published var betweenStartAndEndBackColor: Color = Color.blue    
+    @Published var betweenStartAndEndBackColor: Color = Color.blue
+    
     // headers foreground colors
     @Published var weekdayHeaderColor: Color = Color.primary
     @Published var monthHeaderColor: Color = Color.primary
