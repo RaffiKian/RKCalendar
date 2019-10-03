@@ -10,8 +10,8 @@ import SwiftUI
 
 struct ContentView : View {
     
-    @ObjectBinding var exampleOne : RKManager
-    @ObjectBinding var exampleTwo : RKManager
+    @ObservedObject var exampleOne : RKManager
+    @ObservedObject var exampleTwo : RKManager
     
     @State var singleDateSelectionIsPresented = false
     @State var startDateSelectionIsPresented = false

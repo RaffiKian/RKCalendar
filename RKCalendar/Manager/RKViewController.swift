@@ -11,7 +11,7 @@ import SwiftUI
 struct RKViewController : View {
     
     @Binding var viewIsPresented: Bool
-    @ObjectBinding var rkManager : RKManager
+    @ObservedObject var rkManager : RKManager
     var mode : Int
     
     var body: some View {

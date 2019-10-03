@@ -12,7 +12,7 @@ struct RKMonth : View {
     
     @Binding var viewIsPresented: Bool
     
-    @ObjectBinding var rkManager : RKManager
+    @ObservedObject var rkManager : RKManager
     var mode : Int
     let monthOffset : Int
     
@@ -32,24 +32,25 @@ struct RKMonth : View {
                 ForEach(monthsArray, id:  \.self) { row in
                     HStack() {
                         ForEach(row, id:  \.self) { column in
-                            Spacer()
-                            if self.isThisMonth(date: column){
-                                
-                                RKCell(rkDate: RKDate(
-                                    date: column,
-                                    calendar: self.rkManager.calendar,
-                                    isDisabled: !self.isEnabled(date: column),
-                                    isToday: self.isToday(date: column),
-                                    isSelected: self.isSpecialDate(date: column),
-                                    isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)))
-                                    .tapAction {
-                                        self.dateTapped(date: column)
+                            HStack() {
+                                Spacer()
+                                if self.isThisMonth(date: column){
+                                    RKCell(rkDate: RKDate(
+                                        date: column,
+                                        calendar: self.rkManager.calendar,
+                                        isDisabled: !self.isEnabled(date: column),
+                                        isToday: self.isToday(date: column),
+                                        isSelected: self.isSpecialDate(date: column),
+                                        isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)))
+                                        .onTapGesture {
+                                            self.dateTapped(date: column)
+                                    }
+                                }else{
+                                    Text("")
+                                        .frame(width: 32, height: 32)
                                 }
-                            }else{
-                                Text("")
-                                    .frame(width: 32, height: 32)
+                                Spacer()
                             }
-                            Spacer()
                         }
                     }
                 }
