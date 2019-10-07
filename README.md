@@ -1,28 +1,22 @@
 
-### In addition to the original code
-- Compatibility with xCode 11 beta 7
-- Added multiple dates selection: *selectedDates: [Date] to RKManager*
-- Added a new mode=3 for the multiple selectedDates
-- Added disabled dates option: *disabledDates: [Date] to RKManager*
-- Moved the mode variable to the RKManager to allow for dynamic setting.
-- Updated the contiguous range of dates selection (mode=1). Start in mode=1 and mode=2 is set automatically internally. Note the start date must be greater than the end date.
-- Updated the README.md file
-- Added horizontal scrolling
-- Added **ColorSettings** for text, headers, foreground, background etc... 
-- Plus some other bits
-
-***
-<br>
-
 # RKCalendar
 **RKCalendar** is a SwiftUI Calendar / Date Picker for iOS.
+
+Features include
+
+- minimum and maximum calendar dates selectable,
+- single date selection, 
+- range of dates selection, 
+- multi-dates selection, 
+- disabled dates setting,
+
 
 ### Light Mode
 <img src="https://github.com/RaffiKian/RKCalendar/blob/master/RKCalendar/Images/demo-app-light-mode-1.png" alt="demo app first screenshot" width="260"/> <img src="https://github.com/RaffiKian/RKCalendar/blob/master/RKCalendar/Images/demo-app-light-mode-2.png" alt="demo app first screenshot" width="260"/> 
 ### Dark Mode
 <img src="https://github.com/RaffiKian/RKCalendar/blob/master/RKCalendar/Images/demo-app-dark-mode-1.png" alt="demo app first screenshot" width="260"/> <img src="https://github.com/RaffiKian/RKCalendar/blob/master/RKCalendar/Images/demo-app-dark-mode-2.png" alt="demo app first screenshot" width="260"/> 
 
-**⚠️ WARNING ⚠️** This is an early version of this library that requires Swift 5.1 and Xcode 11 that are currently still in beta.
+**⚠️ WARNING ⚠️** This is an early version of this library that requires Swift 5.1 and Xcode 11 
 
 # Requirements
 - iOS 13.0+
@@ -58,7 +52,7 @@ Use mode 1 to select a contiguous range of dates, from a start date to an end da
 
     RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 1)
 
-Note, mode 2 is automatically set internally.
+Note, mode 2 is automatically toggled internally.
 
 ## Multi-dates selection
 
@@ -79,13 +73,6 @@ For example:
         Date().addingTimeInterval(60*60*24*5),
         Date().addingTimeInterval(60*60*24*7)
     ])
-
-## Horizontal scrolling
-
-The default is a vertical scrolling calendar. To have a horizontal scrolling calendar set the **isVertical** parameter to false, such as:
-
-    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 0)
-    rkManager.isVertical = false
 
 # License
 RKCalendar is available under the MIT license. See the LICENSE file for more info.

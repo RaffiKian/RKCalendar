@@ -15,30 +15,16 @@ struct RKViewController: View {
     @ObservedObject var rkManager: RKManager
     
     var body: some View {
-        rkManager.isVertical ?
-            AnyView(Group {
-                RKWeekdayHeader(rkManager: self.rkManager)
+        Group {
+            RKWeekdayHeader(rkManager: self.rkManager)
+            Divider()
+            List {
+                ForEach(0..<numberOfMonths()) { index in
+                    RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                }
                 Divider()
-                List {
-                    ForEach(0..<numberOfMonths()) { index in
-                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
-                    }
-                    Divider()
-                }
-            })
-            :
-            AnyView(ScrollView (.horizontal) {
-                HStack {
-                    ForEach(0..<numberOfMonths()) { index in
-                        VStack {
-                            RKWeekdayHeader(rkManager: self.rkManager)
-                            Divider()
-                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
-                        }
-                        Divider()
-                    }
-                }
-            })
+            }
+        }
     }
     
     func numberOfMonths() -> Int {

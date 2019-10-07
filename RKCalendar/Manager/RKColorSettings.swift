@@ -1,8 +1,7 @@
 //
-//  ColorSettings.swift
+//  RKColorSettings.swift
 //  RKCalendar
 //
-//  Created by Ringo Wathelet on 2019/08/29.
 //  Copyright © 2019 Raffi Kian. All rights reserved.
 //
 
@@ -10,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class ColorSettings : ObservableObject {
+class RKColorSettings : ObservableObject {
 
     // foreground colors
     @Published var textColor: Color = Color.primary

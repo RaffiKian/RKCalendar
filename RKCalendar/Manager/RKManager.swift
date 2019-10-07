@@ -6,7 +6,6 @@
 //  Copyright © 2019 Raffi Kian. All rights reserved.
 //
 
-import Combine
 import SwiftUI
 
 class RKManager : ObservableObject {
@@ -21,10 +20,8 @@ class RKManager : ObservableObject {
     @Published var endDate: Date! = nil
     
     @Published var mode: Int = 0
-    @Published var isVertical = true
     
-    // color settings
-    var colors = ColorSettings()
+    var colors = RKColorSettings()
   
     init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
         self.calendar = calendar
