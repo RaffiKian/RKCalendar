@@ -2,13 +2,13 @@
 # RKCalendar
 **RKCalendar** is a SwiftUI Calendar / Date Picker for iOS.
 
-Features include
+Features include:
 
 - minimum and maximum calendar dates selectable,
 - single date selection, 
 - range of dates selection, 
 - multi-dates selection, 
-- disabled dates setting,
+- disabled dates setting.
 
 
 ### Light Mode
