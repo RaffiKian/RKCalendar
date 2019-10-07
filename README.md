@@ -52,7 +52,7 @@ Use mode 1 to select a contiguous range of dates, from a start date to an end da
 
     RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 1)
 
-Note, mode 2 is automatically toggled internally.
+Note, mode 2 is automatically toggled internally and the end date must be greater than the start date.
 
 ## Multi-dates selection
 
