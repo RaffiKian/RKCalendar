@@ -9,17 +9,18 @@
 import SwiftUI
 
 struct RKDate {
-    var date : Date
-    let calendar : Calendar
     
-    var isDisabled : Bool = false
-    var isToday : Bool = false
-    var isSelected : Bool = false
-    var isBetweenStartAndEnd : Bool = false
+    var date: Date
+    let rkManager: RKManager
     
-    init(date: Date, calendar: Calendar, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
+    var isDisabled: Bool = false
+    var isToday: Bool = false
+    var isSelected: Bool = false
+    var isBetweenStartAndEnd: Bool = false
+    
+    init(date: Date, rkManager: RKManager, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
         self.date = date
-        self.calendar = calendar
+        self.rkManager = rkManager
         self.isDisabled = isDisabled
         self.isToday = isToday
         self.isSelected = isSelected
@@ -27,56 +28,52 @@ struct RKDate {
     }
     
     func getText() -> String {
-        let day = formatDate(date: date, calendar: calendar)
-        
+        let day = formatDate(date: date, calendar: self.rkManager.calendar)
         return day
     }
     
-    func getTextColor() -> Color{
-        var textColor = Color.primary
-        
+    func getTextColor() -> Color {
+        var textColor = rkManager.colors.textColor
         if isDisabled {
-            textColor = Color.gray
-        }else if isSelected {
-            textColor = Color.white
-        }else if isToday {
-            textColor = Color.white
-        }else if isBetweenStartAndEnd {
-            textColor = Color.white
+            textColor = rkManager.colors.disabledColor
+        } else if isSelected {
+            textColor = rkManager.colors.selectedColor
+        } else if isToday {
+            textColor = rkManager.colors.todayColor
+        } else if isBetweenStartAndEnd {
+            textColor = rkManager.colors.betweenStartAndEndColor
         }
-        
         return textColor
     }
     
-    func getBackgroundColor() -> Color{
-        var backgroundColor = Color.clear
-        
-        if isDisabled {
-            backgroundColor = Color.clear
-        }else if isSelected {
-            backgroundColor = Color.red
-        }else if isToday {
-            backgroundColor = Color.gray
-        }else if isBetweenStartAndEnd {
-            backgroundColor = Color.blue
+    func getBackgroundColor() -> Color {
+        var backgroundColor = rkManager.colors.textBackColor
+        if isBetweenStartAndEnd {
+            backgroundColor = rkManager.colors.betweenStartAndEndBackColor
         }
-        
+        if isToday {
+            backgroundColor = rkManager.colors.todayBackColor
+        }
+        if isDisabled {
+            backgroundColor = rkManager.colors.disabledBackColor
+        }
+        if isSelected {
+            backgroundColor = rkManager.colors.selectedBackColor
+        }
         return backgroundColor
     }
     
-    func getFontWight() -> Font.Weight {
+    func getFontWeight() -> Font.Weight {
         var fontWeight = Font.Weight.medium
-        
         if isDisabled {
             fontWeight = Font.Weight.thin
-        }else if isSelected {
+        } else if isSelected {
             fontWeight = Font.Weight.heavy
-        }else if isToday {
+        } else if isToday {
             fontWeight = Font.Weight.heavy
-        }else if isBetweenStartAndEnd {
+        } else if isBetweenStartAndEnd {
             fontWeight = Font.Weight.heavy
         }
-        
         return fontWeight
     }
     
@@ -91,7 +88,6 @@ struct RKDate {
         let formatter = DateFormatter()
         formatter.locale = .current
         formatter.dateFormat = "d"
-        
         return formatter
     }
     
@@ -99,7 +95,7 @@ struct RKDate {
         if formatter.calendar != calendar {
             formatter.calendar = calendar
         }
-        
         return formatter.string(from: date)
     }
 }
+
