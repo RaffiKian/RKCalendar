@@ -24,6 +24,9 @@ struct RKMonth: View {
     let cellWidth = CGFloat(32)
     
     @State var showTime = false
+    @State var hasTime = false
+
+    @State var timeDate = Date()
     
     
     var body: some View {
@@ -43,8 +46,9 @@ struct RKMonth: View {
                                         isToday: self.isToday(date: column),
                                         isSelected: self.isSpecialDate(date: column),
                                         isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
-                                        cellWidth: self.cellWidth)
+                                        cellWidth: self.cellWidth, hasTime: self.$hasTime)
                                         .onTapGesture { self.dateTapped(date: column) }
+                                        .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
                                 } else {
                                     Text("").frame(width: self.cellWidth, height: self.cellWidth)
                                 }
@@ -55,6 +59,16 @@ struct RKMonth: View {
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
         }.background(rkManager.colors.monthBackColor)
+        .sheet(isPresented: self.$showTime) {
+            RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
+        }
+    }
+    
+    func isLongEnabled(date: Date) -> Bool {
+        if self.isEnabled(date: date) {
+            timeDate = rkManager.calendar.startOfDay(for: date)
+        }
+        return self.isEnabled(date: date) && rkManager.displayTime
     }
 
      func isThisMonth(date: Date) -> Bool {
@@ -71,7 +85,7 @@ struct RKMonth: View {
                 } else {
                     self.rkManager.selectedDate = date
                 }
-                self.isPresented = false
+ //               self.isPresented = false
             case 1:
                 self.rkManager.startDate = date
                 self.rkManager.endDate = nil
@@ -83,7 +97,7 @@ struct RKMonth: View {
                     self.rkManager.startDate = nil
                 }
                 self.rkManager.mode = 1
-                self.isPresented = false
+ //               self.isPresented = false
             case 3:
                 if self.rkManager.selectedDatesContains(date: date) {
                     if let ndx = self.rkManager.selectedDatesFindIndex(date: date) {
@@ -94,7 +108,7 @@ struct RKMonth: View {
                 }
             default:
                 self.rkManager.selectedDate = date
-                self.isPresented = false
+ //               self.isPresented = false
             }
         }
     }

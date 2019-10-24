@@ -2,7 +2,18 @@
 # RKCalendar
 **RKCalendar** is a SwiftUI Calendar / Date Picker for iOS.
 
-Features include:
+
+### In addition to the original features
+
+- added a time (hh:mm) selection option on a long press, see example 5 in **ContentView.swift**
+
+Time selection is available for single and multi-dates selections only (mode 0 and 3).
+Time selection is activated by setting **displayTime** in RKManager (default **false**).
+When set to **true** and there is a long press, a time selection view will popup allowing hours and minutes to be selected.
+
+
+
+### Features include:
 
 - minimum and maximum calendar dates selectable,
 - single date selection, 

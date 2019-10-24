@@ -31,6 +31,27 @@ struct RKDate {
         let day = formatDate(date: date, calendar: self.rkManager.calendar)
         return day
     }
+     
+    func getTimeText() -> String {
+        var txt = ""
+        switch self.rkManager.mode {
+        case 0:
+            let hours = self.rkManager.calendar.component(.hour, from: rkManager.selectedDate)
+            let minutes = self.rkManager.calendar.component(.minute, from: rkManager.selectedDate)
+            txt = (hours <= 9 ? "0" : "") + String(hours) + ":" + (minutes <= 9 ? "0" : "") + String(minutes)
+        case 1, 2:
+            break
+        case 3:
+            if let theDate = rkManager.selectedDates.first(where: {rkManager.calendar.isDate($0, inSameDayAs: date)}) {
+                let hours = self.rkManager.calendar.component(.hour, from: theDate)
+                let minutes = self.rkManager.calendar.component(.minute, from: theDate)
+                txt = (hours <= 9 ? "0" : "") + String(hours) + ":" + (minutes <= 9 ? "0" : "") + String(minutes)
+            }
+        default:
+            break
+        }
+        return txt
+    }
     
     func getTextColor() -> Color {
         var textColor = rkManager.colors.textColor

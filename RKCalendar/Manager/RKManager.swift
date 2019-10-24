@@ -18,8 +18,11 @@ class RKManager : ObservableObject {
     @Published var selectedDate: Date! = nil
     @Published var startDate: Date! = nil
     @Published var endDate: Date! = nil
-    
+
     @Published var mode: Int = 0
+    
+    // allow time (hh:mm) to be set and displayed on a long press
+    @Published var displayTime: Bool = false
     
     var colors = RKColorSettings()
   
@@ -51,6 +54,14 @@ class RKManager : ObservableObject {
     
     func disabledDatesFindIndex(date: Date) -> Int? {
         return self.disabledDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
+    }
+    
+    static func getDateTimeAsString(_ date: Date) -> String {
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd-HH-mm"
+        format.timeZone = TimeZone.current
+        format.locale = Locale.current
+        return format.string(from: date)
     }
     
 }

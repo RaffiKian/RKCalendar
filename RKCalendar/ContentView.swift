@@ -15,6 +15,7 @@ struct ContentView : View {
     @State var startIsPresented = false
     @State var multipleIsPresented = false
     @State var deselectedIsPresented = false
+    @State var timeIsPresented = false
     
     var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -23,6 +24,9 @@ struct ContentView : View {
     var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 3)
     
     var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    
+    var rkManager5 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    
     
     
     var body: some View {
@@ -62,6 +66,13 @@ struct ContentView : View {
                 RKViewController(isPresented: self.$deselectedIsPresented, rkManager: self.rkManager4)})
             datesView(dates: self.rkManager4.disabledDates)
             
+            Button(action: { self.timeIsPresented.toggle() }) {
+                Text("Example 5 - Time setting on long press").foregroundColor(.blue)
+            }
+            .sheet(isPresented: self.$timeIsPresented, content: {
+                RKViewController(isPresented: self.$timeIsPresented, rkManager: self.rkManager5)})
+             Text(self.getTextFromDateTime(date: self.rkManager5.selectedDate))
+            
         }.onAppear(perform: startUp)
             .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -73,11 +84,10 @@ struct ContentView : View {
                     Text(self.getTextFromDate(date: date))
                 }
             }
-        }.padding(.horizontal, 15)
+        }.padding(.horizontal, 5)
     }
  
     func startUp() {
-        
         // example of pre-setting selected dates
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
         rkManager3.selectedDates.append(contentsOf: testOnDates)
@@ -94,12 +104,22 @@ struct ContentView : View {
             Date().addingTimeInterval(60*60*24*5),
             Date().addingTimeInterval(60*60*24*7)]
         rkManager4.disabledDates.append(contentsOf: testOffDates)
+        
+        // example of allowing time (hh:mm) to be set and displayed on a long press
+        rkManager5.displayTime = true
     }
     
     func getTextFromDate(date: Date!) -> String {
         let formatter = DateFormatter()
         formatter.locale = .current
         formatter.dateFormat = "EEEE, MMMM d, yyyy"
+        return date == nil ? "" : formatter.string(from: date)
+    }
+    
+    func getTextFromDateTime(date: Date!) -> String {
+        let formatter = DateFormatter()
+        formatter.locale = .current
+        formatter.dateFormat = "EEEE, MMMM d, yyyy, hh:mm"
         return date == nil ? "" : formatter.string(from: date)
     }
 
