@@ -56,12 +56,31 @@ class RKManager : ObservableObject {
         return self.disabledDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
     }
     
-    static func getDateTimeAsString(_ date: Date) -> String {
+    static func getDateTimeAsString(_ date: Date?) -> String {
+        if date == nil { return "" }
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd-HH-mm"
         format.timeZone = TimeZone.current
         format.locale = Locale.current
-        return format.string(from: date)
+        return format.string(from: date!)
+    }
+    
+    static func getTextFromDate(_ date: Date?) -> String {
+        if date == nil { return "" }
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.locale = Locale.current
+        formatter.dateFormat = "EEEE, MMMM d, yyyy"
+        return date == nil ? "" : formatter.string(from: date!)
+    }
+    
+    static func getTextFromDateTime(_ date: Date?) -> String {
+        if date == nil { return "" }
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.locale = Locale.current
+        formatter.dateFormat = "EEEE, MMMM d HH:mm, yyyy"
+        return date == nil ? "" : formatter.string(from: date!)
     }
     
 }

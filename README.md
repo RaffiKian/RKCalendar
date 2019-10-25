@@ -4,9 +4,10 @@
 
 - added a time (hh:mm) selection option on a long press, see example 5 in **ContentView.swift**
 
-Time selection is available for single and multi-dates selections only (mode 0 and 3).
-Time selection is activated by setting **displayTime** in RKManager (default **false**).
-When set to **true** and there is a long press, a time selection view will popup allowing hours and minutes to be selected.
+Time selection is activated by setting **displayTime=true** in RKManager (default **false**).
+On a long press, a time selection view will popup allowing hours and minutes to be selected.
+Time selection is available for all modes. For mode 1, select the start and end dates as usual with a tap, then with a long press, select the time desired.
+
 
 
 

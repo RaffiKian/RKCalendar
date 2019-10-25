@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 struct RKTimeView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
@@ -43,10 +44,13 @@ struct RKTimeView: View {
         switch rkManager.mode {
         case 0:
             rkManager.selectedDate = date
-        case 1:
-            break
-        case 2:
-            break
+        case 1, 2:
+            if self.rkManager.startDate != nil && self.rkManager.calendar.isDate(self.rkManager.startDate, inSameDayAs: date) {
+                self.rkManager.startDate = date
+            }
+            if self.rkManager.endDate != nil && self.rkManager.calendar.isDate(self.rkManager.endDate, inSameDayAs: date) {
+                self.rkManager.endDate = date
+            }
         case 3:
             if let ndx = rkManager.selectedDates.firstIndex(where: {
                 rkManager.calendar.isDate($0, inSameDayAs: date)}) {

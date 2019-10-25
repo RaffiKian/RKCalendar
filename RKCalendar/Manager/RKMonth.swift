@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct RKMonth: View {
-
+    
     @Binding var isPresented: Bool
     
     @ObservedObject var rkManager: RKManager
@@ -23,9 +23,11 @@ struct RKMonth: View {
     }
     let cellWidth = CGFloat(32)
     
+    // to trigger the time selection view
     @State var showTime = false
+    // to "refresh" the dependent views
     @State var hasTime = false
-
+    // holds the date and time of the selection
     @State var timeDate = Date()
     
     
@@ -46,7 +48,7 @@ struct RKMonth: View {
                                         isToday: self.isToday(date: column),
                                         isSelected: self.isSpecialDate(date: column),
                                         isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
-                                        cellWidth: self.cellWidth, hasTime: self.$hasTime)
+                                           cellWidth: self.cellWidth, hasTime: self.$hasTime)
                                         .onTapGesture { self.dateTapped(date: column) }
                                         .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
                                 } else {
@@ -59,8 +61,8 @@ struct RKMonth: View {
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
         }.background(rkManager.colors.monthBackColor)
-        .sheet(isPresented: self.$showTime) {
-            RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
+            .sheet(isPresented: self.$showTime) {
+                RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
         }
     }
     
@@ -70,49 +72,59 @@ struct RKMonth: View {
         }
         return self.isEnabled(date: date) && rkManager.displayTime
     }
-
-     func isThisMonth(date: Date) -> Bool {
-         return self.rkManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
-     }
+    
+    func isThisMonth(date: Date) -> Bool {
+        return self.rkManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
+    }
     
     func dateTapped(date: Date) {
         if self.isEnabled(date: date) {
-            switch self.rkManager.mode {
+            switch rkManager.mode {
             case 0:
-                if self.rkManager.selectedDate != nil &&
-                    self.rkManager.calendar.isDate(self.rkManager.selectedDate, inSameDayAs: date) {
-                    self.rkManager.selectedDate = nil
+                if rkManager.selectedDate != nil &&
+                    rkManager.calendar.isDate(rkManager.selectedDate, inSameDayAs: date) {
+                    rkManager.selectedDate = nil
                 } else {
-                    self.rkManager.selectedDate = date
+                    rkManager.selectedDate = date
                 }
- //               self.isPresented = false
+            // self.isPresented = false
             case 1:
-                self.rkManager.startDate = date
-                self.rkManager.endDate = nil
-                self.rkManager.mode = 2
-            case 2:
-                self.rkManager.endDate = date
-                if self.isStartDateAfterEndDate() {
-                    self.rkManager.endDate = nil
-                    self.rkManager.startDate = nil
+                if rkManager.startDate != nil &&
+                    rkManager.calendar.isDate(rkManager.startDate, inSameDayAs: date) {
+                    rkManager.startDate = nil
+                } else {
+                    rkManager.startDate = date
+                    rkManager.endDate = nil
+                    rkManager.mode = 2
                 }
-                self.rkManager.mode = 1
- //               self.isPresented = false
+            case 2:
+                if rkManager.endDate != nil &&
+                    rkManager.calendar.isDate(rkManager.endDate, inSameDayAs: date) {
+                    rkManager.endDate = nil
+                } else {
+                    rkManager.endDate = date
+                    if isStartDateAfterEndDate() {
+                        rkManager.endDate = nil
+                        rkManager.startDate = nil
+                    }
+                }
+                rkManager.mode = 1
+            // isPresented = false
             case 3:
-                if self.rkManager.selectedDatesContains(date: date) {
-                    if let ndx = self.rkManager.selectedDatesFindIndex(date: date) {
+                if rkManager.selectedDatesContains(date: date) {
+                    if let ndx = rkManager.selectedDatesFindIndex(date: date) {
                         rkManager.selectedDates.remove(at: ndx)
                     }
                 } else {
-                    self.rkManager.selectedDates.append(date)
+                    rkManager.selectedDates.append(date)
                 }
             default:
-                self.rkManager.selectedDate = date
- //               self.isPresented = false
+                rkManager.selectedDate = date
+                // isPresented = false
             }
         }
     }
-     
+   
     func monthArray() -> [[Date]] {
         var rowArray = [[Date]]()
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
@@ -183,7 +195,7 @@ struct RKMonth: View {
     func isToday(date: Date) -> Bool {
         return RKFormatAndCompareDate(date: date, referenceDate: Date())
     }
-     
+    
     func isSpecialDate(date: Date) -> Bool {
         return isSelectedDate(date: date) ||
             isStartDate(date: date) ||
@@ -194,7 +206,7 @@ struct RKMonth: View {
     func isOneOfSelectedDates(date: Date) -> Bool {
         return self.rkManager.selectedDatesContains(date: date)
     }
-
+    
     func isSelectedDate(date: Date) -> Bool {
         if rkManager.selectedDate == nil {
             return false

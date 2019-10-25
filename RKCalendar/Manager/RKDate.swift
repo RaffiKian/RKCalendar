@@ -34,22 +34,31 @@ struct RKDate {
      
     func getTimeText() -> String {
         var txt = ""
-        switch self.rkManager.mode {
+        var hours = 0
+        var minutes = 0
+
+        switch rkManager.mode {
         case 0:
-            let hours = self.rkManager.calendar.component(.hour, from: rkManager.selectedDate)
-            let minutes = self.rkManager.calendar.component(.minute, from: rkManager.selectedDate)
-            txt = (hours <= 9 ? "0" : "") + String(hours) + ":" + (minutes <= 9 ? "0" : "") + String(minutes)
+            hours = rkManager.calendar.component(.hour, from: rkManager.selectedDate)
+            minutes = rkManager.calendar.component(.minute, from: rkManager.selectedDate)
         case 1, 2:
-            break
+            if rkManager.startDate != nil && rkManager.calendar.isDate(rkManager.startDate, inSameDayAs: date) {
+                hours = rkManager.calendar.component(.hour, from: rkManager.startDate)
+                minutes = rkManager.calendar.component(.minute, from: rkManager.startDate)
+            }
+             if rkManager.endDate != nil && rkManager.calendar.isDate(rkManager.endDate, inSameDayAs: date) {
+                hours = rkManager.calendar.component(.hour, from: rkManager.endDate)
+                minutes = rkManager.calendar.component(.minute, from: rkManager.endDate)
+            }
         case 3:
             if let theDate = rkManager.selectedDates.first(where: {rkManager.calendar.isDate($0, inSameDayAs: date)}) {
-                let hours = self.rkManager.calendar.component(.hour, from: theDate)
-                let minutes = self.rkManager.calendar.component(.minute, from: theDate)
-                txt = (hours <= 9 ? "0" : "") + String(hours) + ":" + (minutes <= 9 ? "0" : "") + String(minutes)
+                hours = rkManager.calendar.component(.hour, from: theDate)
+                minutes = rkManager.calendar.component(.minute, from: theDate)
             }
         default:
             break
         }
+        txt = (hours <= 9 ? "0" : "") + String(hours) + ":" + (minutes <= 9 ? "0" : "") + String(minutes)
         return txt
     }
     

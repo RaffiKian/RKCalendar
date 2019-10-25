@@ -37,7 +37,7 @@ struct ContentView : View {
             }
             .sheet(isPresented: self.$singleIsPresented, content: {
                 RKViewController(isPresented: self.$singleIsPresented, rkManager: self.rkManager1)})
-            Text(self.getTextFromDate(date: self.rkManager1.selectedDate))
+            Text(RKManager.getTextFromDate(self.rkManager1.selectedDate))
             
             Button(action: { self.startIsPresented.toggle() }) {
                 VStack {
@@ -48,8 +48,8 @@ struct ContentView : View {
             .sheet(isPresented: self.$startIsPresented, content: {
                 RKViewController(isPresented: self.$startIsPresented, rkManager: self.rkManager2)})
             VStack {
-                Text(self.getTextFromDate(date: self.rkManager2.startDate))
-                Text(self.getTextFromDate(date: self.rkManager2.endDate))
+                Text(RKManager.getTextFromDate(self.rkManager2.startDate))
+                Text(RKManager.getTextFromDate(self.rkManager2.endDate))
             }
             
             Button(action: { self.multipleIsPresented.toggle() }) {
@@ -71,17 +71,22 @@ struct ContentView : View {
             }
             .sheet(isPresented: self.$timeIsPresented, content: {
                 RKViewController(isPresented: self.$timeIsPresented, rkManager: self.rkManager5)})
-             Text(self.getTextFromDateTime(date: self.rkManager5.selectedDate))
+            Text(RKManager.getTextFromDateTime(self.rkManager5.selectedDate))
+            // datesView(dates: self.rkManager5.selectedDates, true)
+            // VStack {
+            //      Text(RKManager.getTextFromDateTime(self.rkManager5.startDate))
+            //      Text(RKManager.getTextFromDateTime(self.rkManager5.endDate))
+            // }
             
         }.onAppear(perform: startUp)
             .navigationViewStyle(StackNavigationViewStyle())
     }
     
-    func datesView(dates: [Date]) -> some View {
+    func datesView(dates: [Date], _ withTime: Bool = false) -> some View {
         ScrollView (.horizontal) {
             HStack {
                 ForEach(dates, id: \.self) { date in
-                    Text(self.getTextFromDate(date: date))
+                    withTime ? Text(RKManager.getTextFromDateTime(date)) : Text(RKManager.getTextFromDate(date))
                 }
             }
         }.padding(.horizontal, 5)
@@ -107,20 +112,6 @@ struct ContentView : View {
         
         // example of allowing time (hh:mm) to be set and displayed on a long press
         rkManager5.displayTime = true
-    }
-    
-    func getTextFromDate(date: Date!) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = .current
-        formatter.dateFormat = "EEEE, MMMM d, yyyy"
-        return date == nil ? "" : formatter.string(from: date)
-    }
-    
-    func getTextFromDateTime(date: Date!) -> String {
-        let formatter = DateFormatter()
-        formatter.locale = .current
-        formatter.dateFormat = "EEEE, MMMM d, yyyy, hh:mm"
-        return date == nil ? "" : formatter.string(from: date)
     }
 
 }
