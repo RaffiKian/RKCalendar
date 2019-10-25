@@ -28,7 +28,7 @@ struct RKTimeView: View {
     var body: some View {
         NavigationView {
             VStack {
-                DatePicker("", selection: self.$date, in: todayRange, displayedComponents: .hourAndMinute)
+                DatePicker("", selection: self.$date, in: todayRange, displayedComponents: .hourAndMinute).fixedSize()
             }.navigationBarTitle(Text("Time setting"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: self.onDone ) { Text("Done") })
                 .onDisappear(perform: doExit)

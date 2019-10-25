@@ -71,10 +71,13 @@ struct ContentView : View {
             }
             .sheet(isPresented: self.$timeIsPresented, content: {
                 RKViewController(isPresented: self.$timeIsPresented, rkManager: self.rkManager5)})
+            // mode 0
             Text(RKManager.getTextFromDateTime(self.rkManager5.selectedDate))
+            // mode 3
             // datesView(dates: self.rkManager5.selectedDates, true)
+            // mode 1
             // VStack {
-            //      Text(RKManager.getTextFromDateTime(self.rkManager5.startDate))
+            //     Text(RKManager.getTextFromDateTime(self.rkManager5.startDate))
             //      Text(RKManager.getTextFromDateTime(self.rkManager5.endDate))
             // }
             
