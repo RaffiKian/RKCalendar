@@ -14,7 +14,6 @@ struct RKTimeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var rkManager: RKManager
-    @ObservedObject var options = ClockLooks()
     
     @Binding var date: Date
     @Binding var showTime: Bool
