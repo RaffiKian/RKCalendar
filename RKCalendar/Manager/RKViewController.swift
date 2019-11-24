@@ -10,13 +10,21 @@ import SwiftUI
 
 struct RKViewController: View {
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
     @Binding var isPresented: Bool
     
     @ObservedObject var rkManager: RKManager
     
     var body: some View {
         Group {
-            RKWeekdayHeader(rkManager: self.rkManager)
+            Button(action: onDone) {
+                HStack {
+                    Text("Done")
+                    Spacer()
+                }.padding(15)
+            }
+            RKWeekdayHeader(rkManager: self.rkManager).padding(.top, 15)
             Divider()
             List {
                 ForEach(0..<numberOfMonths()) { index in
@@ -25,6 +33,11 @@ struct RKViewController: View {
                 Divider()
             }
         }
+    }
+    
+    func onDone() {
+        // to go back to the previous view
+        self.presentationMode.wrappedValue.dismiss()
     }
     
     func numberOfMonths() -> Int {

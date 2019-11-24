@@ -14,6 +14,7 @@ struct RKTimeView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var rkManager: RKManager
+    @ObservedObject var options = ClockLooks()
     
     @Binding var date: Date
     @Binding var showTime: Bool
@@ -33,8 +34,32 @@ struct RKTimeView: View {
                 .navigationBarItems(trailing: Button(action: self.onDone ) { Text("Done") })
                 .onDisappear(perform: doExit)
         }.navigationViewStyle(StackNavigationViewStyle())
+        .onAppear(perform: loadData)
     }
     
+    func loadData() {
+        // the initial value of the date
+        switch rkManager.mode {
+        case 0:
+            if rkManager.selectedDate != nil && rkManager.calendar.isDate(rkManager.selectedDate, inSameDayAs: date) {
+                date = rkManager.selectedDate
+            }
+        case 1, 2:
+            if rkManager.startDate != nil && rkManager.calendar.isDate(rkManager.startDate, inSameDayAs: date) {
+                date = rkManager.startDate
+            }
+            if rkManager.endDate != nil && rkManager.calendar.isDate(rkManager.endDate, inSameDayAs: date) {
+                date = rkManager.endDate
+            }
+        case 3:
+            if let ndx = rkManager.selectedDatesFindIndex(date: date) {
+                date = rkManager.selectedDates[ndx]
+            }
+        default:
+            break
+        }
+    }
+     
     func onDone() {
         // to go back to the previous view passing through doExit
         self.presentationMode.wrappedValue.dismiss()
