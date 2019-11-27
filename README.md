@@ -8,6 +8,12 @@ Time selection is activated by setting **displayTime=true** in RKManager (defaul
 On a long press, a time selection view will popup allowing hours and minutes to be selected.
 Time selection is available for all modes. For mode 1, select the start and end dates as usual with a tap, then with a long press, select the time desired.
 
+
+- added a **disabled** setting, to prevent any user input for the current mode.
+
+This is activated with **disabled=true** in RKManager (default **false**).
+
+
 ### Time picker
 
 The default time picker is *DatePicker*, however you can easily use [**ClockPicker**](https://github.com/workingDog/ClockPicker) 

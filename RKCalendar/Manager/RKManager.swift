@@ -21,6 +21,9 @@ class RKManager : ObservableObject {
 
     @Published var mode: Int = 0
     
+    // allow disabling of user input for the current mode
+    @Published var disabled: Bool = false
+    
     // allow time (hh:mm) to be set and displayed on a long press
     @Published var displayTime: Bool = false
     

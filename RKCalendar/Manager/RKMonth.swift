@@ -67,6 +67,7 @@ struct RKMonth: View {
     }
     
     func isLongEnabled(date: Date) -> Bool {
+        if rkManager.disabled {return false}
         if self.isEnabled(date: date) {
             timeDate = rkManager.calendar.startOfDay(for: date)
         }
@@ -78,6 +79,7 @@ struct RKMonth: View {
     }
     
     func dateTapped(date: Date) {
+        if rkManager.disabled {return}
         if self.isEnabled(date: date) {
             switch rkManager.mode {
             case 0:
