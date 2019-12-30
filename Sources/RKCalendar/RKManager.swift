@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-class RKManager : ObservableObject {
+public class RKManager : ObservableObject {
 
     @Published var calendar = Calendar.current
     @Published var minimumDate: Date = Date()
@@ -23,7 +23,7 @@ class RKManager : ObservableObject {
     
     var colors = RKColorSettings()
   
-    init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
+    public init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
         self.calendar = calendar
         self.minimumDate = minimumDate
         self.maximumDate = maximumDate

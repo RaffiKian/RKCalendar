@@ -8,19 +8,24 @@
 
 import SwiftUI
 
-struct RKViewController: View {
+public struct RKViewController: View {
     
-    @Binding var isPresented: Bool
+    var isPresented: Binding<Bool>
     
     @ObservedObject var rkManager: RKManager
     
-    var body: some View {
+    public init (isPresented: Binding<Bool>, rkManager: RKManager) {
+        self.isPresented = isPresented
+        self.rkManager = rkManager
+    }
+    
+    public var body: some View {
         Group {
             RKWeekdayHeader(rkManager: self.rkManager)
             Divider()
             List {
                 ForEach(0..<numberOfMonths()) { index in
-                    RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                    RKMonth(isPresented: self.isPresented, rkManager: self.rkManager, monthOffset: index)
                 }
                 Divider()
             }
