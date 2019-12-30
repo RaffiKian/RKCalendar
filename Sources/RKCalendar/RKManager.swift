@@ -10,18 +10,18 @@ import SwiftUI
 
 public class RKManager : ObservableObject {
 
-    @Published var calendar = Calendar.current
-    @Published var minimumDate: Date = Date()
-    @Published var maximumDate: Date = Date()
-    @Published var disabledDates: [Date] = [Date]()
-    @Published var selectedDates: [Date] = [Date]()
-    @Published var selectedDate: Date! = nil
-    @Published var startDate: Date! = nil
-    @Published var endDate: Date! = nil
+    @Published public var calendar = Calendar.current
+    @Published public var minimumDate: Date = Date()
+    @Published public var maximumDate: Date = Date()
+    @Published public var disabledDates: [Date] = [Date]()
+    @Published public var selectedDates: [Date] = [Date]()
+    @Published public var selectedDate: Date! = nil
+    @Published public var startDate: Date! = nil
+    @Published public var endDate: Date! = nil
     
-    @Published var mode: Int = 0
+    @Published public var mode: Int = 0
     
-    var colors = RKColorSettings()
+    public var colors = RKColorSettings()
   
     public init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
         self.calendar = calendar
@@ -31,25 +31,25 @@ public class RKManager : ObservableObject {
         self.mode = mode
     }
     
-    func selectedDatesContains(date: Date) -> Bool {
+    public func selectedDatesContains(date: Date) -> Bool {
         if let _ = self.selectedDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
             return true
         }
         return false
     }
     
-    func selectedDatesFindIndex(date: Date) -> Int? {
+    public func selectedDatesFindIndex(date: Date) -> Int? {
         return self.selectedDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
     }
     
-    func disabledDatesContains(date: Date) -> Bool {
+    public func disabledDatesContains(date: Date) -> Bool {
         if let _ = self.disabledDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
             return true
         }
         return false
     }
     
-    func disabledDatesFindIndex(date: Date) -> Int? {
+    public func disabledDatesFindIndex(date: Date) -> Int? {
         return self.disabledDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
     }
     

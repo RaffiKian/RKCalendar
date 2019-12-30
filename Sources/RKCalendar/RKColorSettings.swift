@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import SwiftUI
 
-class RKColorSettings : ObservableObject {
+public class RKColorSettings : ObservableObject {
 
     // foreground colors
     @Published var textColor: Color = Color.primary
