@@ -17,7 +17,9 @@ struct ContentView : View {
     @State var deselectedIsPresented = false
     @State var timeIsPresented = false
     
-    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    var rkManager1 = RKManager(calendar: Calendar.current,
+                               minimumDate: Date().addingTimeInterval(-60*60*24*60),
+                               maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
     var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 1) // automatically goes to mode=2 after start selection, and vice versa.
     
@@ -30,7 +32,7 @@ struct ContentView : View {
     
     
     var body: some View {
-        VStack (spacing: 25) {
+        VStack (spacing: 10) {
             
             Button(action: { self.singleIsPresented.toggle() }) {
                 Text("Example 1 - Single Date Selection").foregroundColor(.blue)
@@ -96,6 +98,7 @@ struct ContentView : View {
     }
  
     func startUp() {
+
         // example of pre-setting selected dates
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
         rkManager3.selectedDates.append(contentsOf: testOnDates)

@@ -8,26 +8,28 @@
 
 import SwiftUI
 
-class RKManager : ObservableObject {
+public class RKManager : ObservableObject {
 
-    @Published var calendar = Calendar.current
-    @Published var minimumDate: Date = Date()
-    @Published var maximumDate: Date = Date()
-    @Published var disabledDates: [Date] = [Date]()
-    @Published var selectedDates: [Date] = [Date]()
-    @Published var selectedDate: Date! = nil
-    @Published var startDate: Date! = nil
-    @Published var endDate: Date! = nil
+    @Published public var calendar = Calendar.current
+    @Published public var minimumDate: Date = Date()
+    @Published public var maximumDate: Date = Date()
+    @Published public var disabledDates: [Date] = [Date]()
+    @Published public var selectedDates: [Date] = [Date]()
+    @Published public var selectedDate: Date! = nil
+    @Published public var startDate: Date! = nil
+    @Published public var endDate: Date! = nil
+    
+    @Published public var isVertical = true
 
-    @Published var mode: Int = 0
+    @Published public var mode: Int = 0
     
     // allow disabling of user input for the current mode
-    @Published var disabled: Bool = false
+    @Published public var disabled: Bool = false
     
     // allow time (hh:mm) to be set and displayed on a long press
-    @Published var displayTime: Bool = false
+    @Published public var displayTime: Bool = false
     
-    var colors = RKColorSettings()
+    public var colors = RKColorSettings()
   
     init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
         self.calendar = calendar
