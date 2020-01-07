@@ -23,7 +23,7 @@ struct RKViewController: View {
                     Text("Done")
                     Spacer()
                 }.padding(15)
-            }
+            }            
             RKWeekdayHeader(rkManager: self.rkManager).padding(.top, 15)
             Divider()
             List {

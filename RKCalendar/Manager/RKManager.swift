@@ -18,8 +18,6 @@ public class RKManager : ObservableObject {
     @Published public var selectedDate: Date! = nil
     @Published public var startDate: Date! = nil
     @Published public var endDate: Date! = nil
-    
-    @Published public var isVertical = true
 
     @Published public var mode: Int = 0
     
