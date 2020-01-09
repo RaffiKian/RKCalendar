@@ -18,19 +18,51 @@ struct RKViewController: View {
     
     var body: some View {
         Group {
+            // needed for Mac
             Button(action: onDone) {
                 HStack {
                     Text("Done")
                     Spacer()
                 }.padding(15)
-            }            
-            RKWeekdayHeader(rkManager: self.rkManager).padding(.top, 15)
-            Divider()
-            List {
-                ForEach(0..<numberOfMonths()) { index in
-                    RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+            }
+            self.rkManager.isVertical ? AnyView(self.verticalView) : AnyView(self.horizontalView)
+            Spacer()
+        }
+    }
+    
+    var verticalView: some View {
+        Group {
+            ScrollView (.vertical) {
+                VStack (spacing: 25) {
+                    ForEach(0..<numberOfMonths()) { index in
+                        VStack(alignment: HorizontalAlignment.center, spacing: 15){
+                            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+                            RKWeekdayHeader(rkManager: self.rkManager)
+                            Divider()
+                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                        }
+       //                 Divider()
+                    }
                 }
-                Divider()
+            }
+        }
+    }
+
+    var horizontalView: some View {
+        Group {
+            ScrollView (.horizontal) {
+                HStack {
+                    ForEach(0..<numberOfMonths()) { index in
+                        VStack (spacing: 15) {
+                            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+                            RKWeekdayHeader(rkManager: self.rkManager)
+                            Divider()
+                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                            Spacer()
+                        }
+                        Divider()
+                    }
+                }
             }
         }
     }

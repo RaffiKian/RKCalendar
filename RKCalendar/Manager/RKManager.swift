@@ -18,6 +18,18 @@ public class RKManager : ObservableObject {
     @Published public var selectedDate: Date! = nil
     @Published public var startDate: Date! = nil
     @Published public var endDate: Date! = nil
+    
+    // this should be used only with the RKViewControler, must have isWeeklyView=false
+    @Published public var isVertical = true
+    
+    // this should be used only with the RKWeeklyViewControler, must have isVertical=false
+    @Published var isWeeklyView: Bool = false {
+        willSet {
+            if isWeeklyView {
+                isVertical = false
+            }
+        }
+    }
 
     @Published public var mode: Int = 0
     

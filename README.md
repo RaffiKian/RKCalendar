@@ -2,16 +2,25 @@
 
 ### In addition to the original features
 
-- added a time (hh:mm) selection option on a long press, see example 5 in **ContentView.swift**
+- added **RKTimeView** a time (hh:mm) selection option on a long press, see example 5 in **ContentView.swift**
 
 Time selection is activated by setting **displayTime=true** in RKManager (default **false**).
 On a long press, a time selection view will popup allowing hours and minutes to be selected.
 Time selection is available for all modes. For mode 1, select the start and end dates as usual with a tap, then with a long press, select the time desired.
 
-
 - added a **disabled** setting, to prevent any user input for the current mode.
 
 This is activated with **disabled=true** in RKManager (default **false**).
+
+- added a basic **horizontal view** of the calendar. 
+
+This is activated by setting **isVertical=false** in RKManager (default **true**).
+
+- added a basic **weekly view** of the calendar. 
+
+This is activated by setting **isWeeklyView=true** in RKManager (default **false**), and by using the special **RKWeeklyViewController**, see example 6.
+
+- added **RKMonthHeader** and separated the month headers from **RKMonth** to allow for better mix and match of week and month headers.
 
 
 ### Time picker

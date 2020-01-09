@@ -32,30 +32,63 @@ struct RKMonth: View {
     
     
     var body: some View {
-        VStack(alignment: HorizontalAlignment.center, spacing: 10){
-            Text(getMonthHeader()).foregroundColor(self.rkManager.colors.monthHeaderColor)
-            VStack(alignment: .leading, spacing: 5) {
-                ForEach(monthsArray, id:  \.self) { row in
-                    HStack() {
-                        ForEach(row, id:  \.self) { column in
-                            HStack() {
-                                Spacer()
-                                if self.isThisMonth(date: column) {
-                                    RKCell(rkDate: RKDate(
-                                        date: column,
-                                        rkManager: self.rkManager,
-                                        isDisabled: !self.isEnabled(date: column),
-                                        isToday: self.isToday(date: column),
-                                        isSelected: self.isSpecialDate(date: column),
-                                        isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
-                                           cellWidth: self.cellWidth, hasTime: self.$hasTime)
-                                        .onTapGesture { self.dateTapped(date: column) }
-                                        .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
-                                } else {
-                                    Text("").frame(width: self.cellWidth, height: self.cellWidth)
-                                }
-                                Spacer()
+        self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
+    }
+    
+    var monthlyView: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            ForEach(monthsArray, id:  \.self) { row in
+                HStack() {
+                    ForEach(row, id:  \.self) { column in
+                        HStack() {
+                            Spacer()
+                            if self.isThisMonth(date: column) {
+                                RKCell(rkDate: RKDate(
+                                    date: column,
+                                    rkManager: self.rkManager,
+                                    isDisabled: !self.isEnabled(date: column),
+                                    isToday: self.isToday(date: column),
+                                    isSelected: self.isSpecialDate(date: column),
+                                    isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
+                                       cellWidth: self.cellWidth, hasTime: self.$hasTime)
+                                    .onTapGesture { self.dateTapped(date: column) }
+                                    .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
+                            } else {
+                                Text("").frame(width: self.cellWidth, height: self.cellWidth)
                             }
+                            Spacer()
+                        }
+                    }
+                }
+            }.frame(minWidth: 0, maxWidth: .infinity)
+        }.background(rkManager.colors.monthBackColor)
+            .sheet(isPresented: self.$showTime) {
+                RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
+        }
+    }
+    
+    var weeklyView: some View {
+        HStack(spacing: 10) {
+            ForEach(monthsArray, id:  \.self) { row in
+                HStack(spacing: 15) {
+                    ForEach(row, id:  \.self) { column in
+                        HStack {
+                            Spacer()
+                            if self.isThisMonth(date: column) {
+                                RKCell(rkDate: RKDate(
+                                    date: column,
+                                    rkManager: self.rkManager,
+                                    isDisabled: !self.isEnabled(date: column),
+                                    isToday: self.isToday(date: column),
+                                    isSelected: self.isSpecialDate(date: column),
+                                    isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
+                                       cellWidth: self.cellWidth, hasTime: self.$hasTime)
+                                    .onTapGesture { self.dateTapped(date: column) }
+                                    .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
+                            } else {
+                                Text("").frame(width: self.cellWidth, height: self.cellWidth)
+                            }
+                            Spacer()
                         }
                     }
                 }
@@ -89,7 +122,6 @@ struct RKMonth: View {
                 } else {
                     rkManager.selectedDate = date
                 }
-            // self.isPresented = false
             case 1:
                 if rkManager.startDate != nil &&
                     rkManager.calendar.isDate(rkManager.startDate, inSameDayAs: date) {
@@ -111,7 +143,6 @@ struct RKMonth: View {
                     }
                 }
                 rkManager.mode = 1
-            // isPresented = false
             case 3:
                 if rkManager.selectedDatesContains(date: date) {
                     if let ndx = rkManager.selectedDatesFindIndex(date: date) {
@@ -122,11 +153,10 @@ struct RKMonth: View {
                 }
             default:
                 rkManager.selectedDate = date
-                // isPresented = false
             }
         }
     }
-   
+    
     func monthArray() -> [[Date]] {
         var rowArray = [[Date]]()
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
@@ -138,14 +168,6 @@ struct RKMonth: View {
             rowArray.append(columnArray)
         }
         return rowArray
-    }
-    
-    func getMonthHeader() -> String {
-        let headerDateFormatter = DateFormatter()
-        headerDateFormatter.calendar = rkManager.calendar
-        headerDateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy LLLL", options: 0, locale: rkManager.calendar.locale)
-        
-        return headerDateFormatter.string(from: firstOfMonthForOffset()).uppercased()
     }
     
     func getDateAtIndex(index: Int) -> Date {
