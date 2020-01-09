@@ -27,14 +27,8 @@
 		C72D24C62317A99D00A37CC1 /* RKColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */; };
 		C73511302360749E00AEAFAE /* RKTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C735112F2360749E00AEAFAE /* RKTimeView.swift */; };
 		C741C31923C5AE1E008C0FE3 /* RKWeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C741C31823C5AE1E008C0FE3 /* RKWeeklyViewController.swift */; };
-		C75E911C2384CD8F00F98BED /* ClockMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E91162384CD8F00F98BED /* ClockMarker.swift */; };
-		C75E911D2384CD8F00F98BED /* ClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E91172384CD8F00F98BED /* ClockFace.swift */; };
-		C75E911E2384CD8F00F98BED /* ClockHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E91182384CD8F00F98BED /* ClockHand.swift */; };
-		C75E911F2384CD8F00F98BED /* ClockPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E91192384CD8F00F98BED /* ClockPickerView.swift */; };
-		C75E91202384CD8F00F98BED /* ClockLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C75E911A2384CD8F00F98BED /* ClockLabelView.swift */; };
 		C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77ABE4823C57DB200574826 /* RKMonthHeader.swift */; };
 		C7A3D61B23126E230065D6FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C7A3D61A23126E230065D6FF /* README.md */; };
-		C7CD8C4A2386429C00A91BA3 /* ClockLooks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7CD8C492386429C00A91BA3 /* ClockLooks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,15 +54,9 @@
 		C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKColorSettings.swift; sourceTree = "<group>"; };
 		C735112F2360749E00AEAFAE /* RKTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKTimeView.swift; sourceTree = "<group>"; };
 		C741C31823C5AE1E008C0FE3 /* RKWeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKWeeklyViewController.swift; sourceTree = "<group>"; };
-		C75E91162384CD8F00F98BED /* ClockMarker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockMarker.swift; sourceTree = "<group>"; };
-		C75E91172384CD8F00F98BED /* ClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFace.swift; sourceTree = "<group>"; };
-		C75E91182384CD8F00F98BED /* ClockHand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockHand.swift; sourceTree = "<group>"; };
-		C75E91192384CD8F00F98BED /* ClockPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockPickerView.swift; sourceTree = "<group>"; };
-		C75E911A2384CD8F00F98BED /* ClockLabelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockLabelView.swift; sourceTree = "<group>"; };
 		C75E91222384CE0400F98BED /* RKCalendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RKCalendar.entitlements; sourceTree = "<group>"; };
 		C77ABE4823C57DB200574826 /* RKMonthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMonthHeader.swift; sourceTree = "<group>"; };
 		C7A3D61A23126E230065D6FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C7CD8C492386429C00A91BA3 /* ClockLooks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLooks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				C75E91222384CE0400F98BED /* RKCalendar.entitlements */,
-				C75E91152384CD8F00F98BED /* ClockPicker */,
 				019D281E22DBCCAE0001C990 /* Images */,
 				0112FD5422DB8D6800BB8F94 /* AppDelegate.swift */,
 				0112FD5622DB8D6800BB8F94 /* SceneDelegate.swift */,
@@ -152,19 +139,6 @@
 				019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */,
 			);
 			path = Images;
-			sourceTree = "<group>";
-		};
-		C75E91152384CD8F00F98BED /* ClockPicker */ = {
-			isa = PBXGroup;
-			children = (
-				C75E91162384CD8F00F98BED /* ClockMarker.swift */,
-				C75E91172384CD8F00F98BED /* ClockFace.swift */,
-				C75E91182384CD8F00F98BED /* ClockHand.swift */,
-				C75E91192384CD8F00F98BED /* ClockPickerView.swift */,
-				C75E911A2384CD8F00F98BED /* ClockLabelView.swift */,
-				C7CD8C492386429C00A91BA3 /* ClockLooks.swift */,
-			);
-			path = ClockPicker;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,18 +219,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0112FD5522DB8D6800BB8F94 /* AppDelegate.swift in Sources */,
-				C75E911C2384CD8F00F98BED /* ClockMarker.swift in Sources */,
 				0112FD6C22DB901B00BB8F94 /* RKCell.swift in Sources */,
-				C75E911D2384CD8F00F98BED /* ClockFace.swift in Sources */,
 				0112FD6E22DB912B00BB8F94 /* RKWeekdayHeader.swift in Sources */,
-				C75E911F2384CD8F00F98BED /* ClockPickerView.swift in Sources */,
 				0112FD7422DB926A00BB8F94 /* RKMonth.swift in Sources */,
-				C75E91202384CD8F00F98BED /* ClockLabelView.swift in Sources */,
 				C72D24C62317A99D00A37CC1 /* RKColorSettings.swift in Sources */,
-				C75E911E2384CD8F00F98BED /* ClockHand.swift in Sources */,
 				C73511302360749E00AEAFAE /* RKTimeView.swift in Sources */,
 				C741C31923C5AE1E008C0FE3 /* RKWeeklyViewController.swift in Sources */,
-				C7CD8C4A2386429C00A91BA3 /* ClockLooks.swift in Sources */,
 				0112FD5722DB8D6800BB8F94 /* SceneDelegate.swift in Sources */,
 				0112FD6A22DB8EA800BB8F94 /* RKDate.swift in Sources */,
 				0112FD5922DB8D6800BB8F94 /* ContentView.swift in Sources */,
