@@ -38,10 +38,10 @@ struct RKViewController: View {
                         VStack(alignment: HorizontalAlignment.center, spacing: 15){
                             RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
                             RKWeekdayHeader(rkManager: self.rkManager)
-                            Divider()
+      //                      Divider()
                             RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
                         }
-       //                 Divider()
+                        Divider()
                     }
                 }
             }
@@ -52,7 +52,7 @@ struct RKViewController: View {
         Group {
             ScrollView (.horizontal) {
                 HStack {
-                    ForEach(0..<numberOfMonths()) { index in
+                    ForEach(0..<self.numberOfMonths()) { index in
                         VStack (spacing: 15) {
                             RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
                             RKWeekdayHeader(rkManager: self.rkManager)
