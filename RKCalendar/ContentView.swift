@@ -136,9 +136,10 @@ struct ContentView : View {
         // example of allowing time (hh:mm) to be set and displayed on a long press
         rkManager5.displayTime = true
         
-        // example of weekly view
+        // example of weekly view with "paging"
         rkManager6.isVertical = false
         rkManager6.isWeeklyView = true
+        rkManager6.isContinuous = false
         rkManager6.colors.weekdayHeaderColor = Color.blue
         rkManager6.colors.monthHeaderColor = Color.green
         

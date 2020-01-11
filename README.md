@@ -15,11 +15,11 @@ to display a nice clock with draggable hands. Just modify the **RKTimeView** and
 
 This is activated by setting **isVertical=false** in RKManager (default **true**). See example 7 in ContentView.
 
-- added  **isContinuous** to display a continuous calendar of months or a one month view at a time. See example 7 in ContentView.
+- added  **isContinuous** to display a continuous calendar of months or a one month view at a time. See example 6,7 in ContentView.
 
 This is activated by setting **isContinuous=false** in RKManager (default **true**). This is a workaround until SwiftUI ScrollView gain the capability to do paging.
 
-- added a  **weekly view** of the calendar (only continuous for now). 
+- added a  **weekly view** of the calendar. See example 6 in ContentView.
 
 This is activated by setting **isWeeklyView=true** in RKManager (default **false**), and by using the special **RKWeeklyViewController**, see example 6.
 

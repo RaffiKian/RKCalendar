@@ -17,6 +17,8 @@ struct RKWeeklyViewController: View {
     
     @ObservedObject var rkManager: RKManager
     
+    @State var pages = [WeeklyPage]()
+    
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
     
     var body: some View {
@@ -28,25 +30,39 @@ struct RKWeeklyViewController: View {
                     Spacer()
                 }.padding(15)
             }
-            ScrollView (.horizontal) {
-                HStack {
-                    ForEach(0..<self.numberOfMonths()) { index in
-                        VStack (spacing: 15) {
-                            Divider()
-                            HStack {
-                                ForEach(0..<self.numberOfWeeks(monthOffset: index)) { _ in
-                                    VStack (spacing: 15) {
-                                        RKWeekdayHeader(rkManager: self.rkManager)
-                                        RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-                                    }
+            self.rkManager.isContinuous
+                ? AnyView(continuousView)
+                : AnyView(SwiftUIPagerView(rkManager: rkManager, pages: pages))
+        }.onAppear(perform: loadData)
+    }
+    
+    var continuousView: some View {
+        ScrollView (.horizontal) {
+            HStack {
+                ForEach(0..<self.numberOfMonths()) { index in
+                    VStack (spacing: 15) {
+                        Divider()
+                        HStack {
+                            ForEach(0..<self.numberOfWeeks(monthOffset: index)) { _ in
+                                VStack (spacing: 15) {
+                                    RKWeekdayHeader(rkManager: self.rkManager)
+                                    RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
                                 }
                             }
-                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
-                            Spacer()
                         }
-                        Divider()
+                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                        Spacer()
                     }
+                    Divider()
                 }
+            }
+        }
+    }
+    
+    func loadData() {
+        for i in 0..<self.numberOfMonths() {
+            for j in 0..<self.numberOfWeeks(monthOffset: i) {
+                pages.append(WeeklyPage(isPresented: $isPresented, rkManager: rkManager, monthNdx: i, weekNdx: j))
             }
         }
     }

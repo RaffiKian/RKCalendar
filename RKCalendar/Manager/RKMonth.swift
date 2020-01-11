@@ -16,6 +16,8 @@ struct RKMonth: View {
     
     let monthOffset: Int
     
+    @State var weekOffset: Int?
+    
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
     let daysPerWeek = 7
     var monthsArray: [[Date]] {
@@ -68,6 +70,38 @@ struct RKMonth: View {
     }
     
     var weeklyView: some View {
+        weekOffset == nil ? AnyView(self.weeklyViewContinuous) : AnyView(self.weeklyViewPage)
+    }
+    
+    var weeklyViewPage: some View {
+        HStack(spacing: 10) {
+            ForEach(monthsArray[weekOffset!], id:  \.self) { column in
+                HStack {
+                    Spacer()
+                    if self.isThisMonth(date: column) {
+                        RKCell(rkDate: RKDate(
+                            date: column,
+                            rkManager: self.rkManager,
+                            isDisabled: !self.isEnabled(date: column),
+                            isToday: self.isToday(date: column),
+                            isSelected: self.isSpecialDate(date: column),
+                            isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
+                               cellWidth: self.cellWidth, hasTime: self.$hasTime)
+                            .onTapGesture { self.dateTapped(date: column) }
+                            .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
+                    } else {
+                        Text("").frame(width: self.cellWidth, height: self.cellWidth)
+                    }
+                    Spacer()
+                }
+            }.frame(minWidth: 0, maxWidth: .infinity)
+        }.background(rkManager.colors.monthBackColor)
+            .sheet(isPresented: self.$showTime) {
+                RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
+        }
+    }
+    
+    var weeklyViewContinuous: some View {
         HStack(spacing: 10) {
             ForEach(monthsArray, id:  \.self) { row in
                 HStack(spacing: 15) {
@@ -167,6 +201,7 @@ struct RKMonth: View {
             }
             rowArray.append(columnArray)
         }
+//        print("\n-----> monthOffset: \(monthOffset) rowArray: \(rowArray.debugDescription)")
         return rowArray
     }
     
@@ -292,7 +327,7 @@ struct RKMonth: View {
 #if DEBUG
 struct RKMonth_Previews : PreviewProvider {
     static var previews: some View {
-        RKMonth(isPresented: .constant(false),rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), monthOffset: 0)
+        RKMonth(isPresented: .constant(false),rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), monthOffset: 0, weekOffset: -1)
     }
 }
 #endif
