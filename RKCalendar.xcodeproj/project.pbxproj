@@ -24,6 +24,8 @@
 		019D282422DBCCC00001C990 /* demo-app-dark-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */; };
 		019D282922DBCD2E0001C990 /* demo-app-light-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */; };
 		019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */; };
+		C71A20E423C962D700324A59 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A20E323C962D700324A59 /* Page.swift */; };
+		C71A20E623C962FA00324A59 /* SwiftUIPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A20E523C962FA00324A59 /* SwiftUIPagerView.swift */; };
 		C72D24C62317A99D00A37CC1 /* RKColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */; };
 		C73511302360749E00AEAFAE /* RKTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C735112F2360749E00AEAFAE /* RKTimeView.swift */; };
 		C741C31923C5AE1E008C0FE3 /* RKWeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C741C31823C5AE1E008C0FE3 /* RKWeeklyViewController.swift */; };
@@ -51,6 +53,8 @@
 		019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-1.png"; sourceTree = "<group>"; };
 		019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-1.png"; sourceTree = "<group>"; };
 		019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-2.png"; sourceTree = "<group>"; };
+		C71A20E323C962D700324A59 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
+		C71A20E523C962FA00324A59 /* SwiftUIPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPagerView.swift; sourceTree = "<group>"; };
 		C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKColorSettings.swift; sourceTree = "<group>"; };
 		C735112F2360749E00AEAFAE /* RKTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKTimeView.swift; sourceTree = "<group>"; };
 		C741C31823C5AE1E008C0FE3 /* RKWeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKWeeklyViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +120,7 @@
 		0112FD6822DB8DDC00BB8F94 /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				C71A20E223C962C200324A59 /* Scroll */,
 				0112FD6922DB8EA800BB8F94 /* RKDate.swift */,
 				0112FD6B22DB901B00BB8F94 /* RKCell.swift */,
 				0112FD6D22DB912B00BB8F94 /* RKWeekdayHeader.swift */,
@@ -139,6 +144,15 @@
 				019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		C71A20E223C962C200324A59 /* Scroll */ = {
+			isa = PBXGroup;
+			children = (
+				C71A20E323C962D700324A59 /* Page.swift */,
+				C71A20E523C962FA00324A59 /* SwiftUIPagerView.swift */,
+			);
+			path = Scroll;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +237,7 @@
 				0112FD6E22DB912B00BB8F94 /* RKWeekdayHeader.swift in Sources */,
 				0112FD7422DB926A00BB8F94 /* RKMonth.swift in Sources */,
 				C72D24C62317A99D00A37CC1 /* RKColorSettings.swift in Sources */,
+				C71A20E623C962FA00324A59 /* SwiftUIPagerView.swift in Sources */,
 				C73511302360749E00AEAFAE /* RKTimeView.swift in Sources */,
 				C741C31923C5AE1E008C0FE3 /* RKWeeklyViewController.swift in Sources */,
 				0112FD5722DB8D6800BB8F94 /* SceneDelegate.swift in Sources */,
@@ -231,6 +246,7 @@
 				0112FD7622DB954900BB8F94 /* RKViewController.swift in Sources */,
 				C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */,
 				0112FD7022DB91DB00BB8F94 /* RKManager.swift in Sources */,
+				C71A20E423C962D700324A59 /* Page.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,25 +8,27 @@ Time selection is activated by setting **displayTime=true** in RKManager (defaul
 On a long press, a time selection view will popup allowing hours and minutes to be selected.
 Time selection is available for all modes. For mode 1, select the start and end dates as usual with a tap, then with a long press, select the time desired.
 
-- added a **disabled** setting, to prevent any user input for the current mode.
+The default time picker is *DatePicker*, however you can easily use [**ClockPicker**](https://github.com/workingDog/ClockPicker) 
+to display a nice clock with draggable hands. Just modify the **RKTimeView** and include the **ClockPicker** code.
 
-This is activated with **disabled=true** in RKManager (default **false**).
+- added a  **horizontal view** of the calendar. 
 
-- added a basic **horizontal view** of the calendar. 
+This is activated by setting **isVertical=false** in RKManager (default **true**). See example 7 in ContentView.
 
-This is activated by setting **isVertical=false** in RKManager (default **true**).
+- added  **isContinuous** to display a continuous calendar of months or a one month view at a time. See example 7 in ContentView.
 
-- added a basic **weekly view** of the calendar. 
+This is activated by setting **isContinuous=false** in RKManager (default **true**). This is a workaround until SwiftUI ScrollView gain the capability to do paging.
+
+- added a  **weekly view** of the calendar (only continuous for now). 
 
 This is activated by setting **isWeeklyView=true** in RKManager (default **false**), and by using the special **RKWeeklyViewController**, see example 6.
 
 - added **RKMonthHeader** and separated the month headers from **RKMonth** to allow for better mix and match of week and month headers.
 
+- added a **disabled** setting, to prevent any user input for the current mode.
 
-### Time picker
+This is activated with **disabled=true** in RKManager (default **false**).
 
-The default time picker is *DatePicker*, however you can easily use [**ClockPicker**](https://github.com/workingDog/ClockPicker) 
-to display a nice clock with draggable hands. Just modify the **RKTimeView** and include the **ClockPicker** code.
 
 
 # RKCalendar

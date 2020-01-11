@@ -16,6 +16,9 @@ struct RKViewController: View {
     
     @ObservedObject var rkManager: RKManager
     
+    @State var index: Int = 0
+
+    
     var body: some View {
         Group {
             // needed for Mac
@@ -25,11 +28,14 @@ struct RKViewController: View {
                     Spacer()
                 }.padding(15)
             }
-            self.rkManager.isVertical ? AnyView(self.verticalView) : AnyView(self.horizontalView)
+            self.rkManager.isVertical
+                ? self.rkManager.isContinuous ? AnyView(self.verticalView) : AnyView(self.verticalViewPage)
+                : self.rkManager.isContinuous ? AnyView(self.horizontalView) : AnyView(self.horizontalViewPage)
             Spacer()
         }
     }
     
+    // continuous scroll
     var verticalView: some View {
         Group {
             ScrollView (.vertical) {
@@ -38,7 +44,7 @@ struct RKViewController: View {
                         VStack(alignment: HorizontalAlignment.center, spacing: 15){
                             RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
                             RKWeekdayHeader(rkManager: self.rkManager)
-      //                      Divider()
+                            // Divider()
                             RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
                         }
                         Divider()
@@ -47,7 +53,8 @@ struct RKViewController: View {
             }
         }
     }
-
+    
+    // continuous scroll
     var horizontalView: some View {
         Group {
             ScrollView (.horizontal) {
@@ -65,6 +72,22 @@ struct RKViewController: View {
                 }
             }
         }
+    }
+    
+    // page scroll
+    var verticalViewPage: some View {
+        SwiftUIPagerView(rkManager: rkManager,
+            pages: (0..<numberOfMonths()).map {
+                index in Page(isPresented: $isPresented, rkManager: rkManager, index: index)
+        })
+    }
+    
+    // page scroll
+    var horizontalViewPage: some View {
+        SwiftUIPagerView(rkManager: rkManager,
+            pages: (0..<numberOfMonths()).map {
+                index in Page(isPresented: $isPresented, rkManager: rkManager, index: index)
+        })
     }
     
     func onDone() {
@@ -97,4 +120,5 @@ struct RKViewController_Previews : PreviewProvider {
     }
 }
 #endif
+
 

@@ -94,7 +94,7 @@ struct ContentView : View {
                 Text(RKManager.getTextFromDate(self.rkManager6.selectedDate))
                 
                 Button(action: { self.horizIsPresented.toggle() }) {
-                    Text("Example 7 - Horizontal view").foregroundColor(.blue)
+                    Text("Example 7 - Horizontal view with paging").foregroundColor(.blue)
                 }
                 .sheet(isPresented: self.$horizIsPresented, content: {
                     RKViewController(isPresented: self.$horizIsPresented, rkManager: self.rkManager7)})
@@ -142,8 +142,9 @@ struct ContentView : View {
         rkManager6.colors.weekdayHeaderColor = Color.blue
         rkManager6.colors.monthHeaderColor = Color.green
         
-        // example of horizontal view
+        // example of horizontal view with "paging"
         rkManager7.isVertical = false
+        rkManager7.isContinuous = false
         rkManager7.colors.weekdayHeaderColor = Color.blue
         rkManager7.colors.monthHeaderColor = Color.green
     }

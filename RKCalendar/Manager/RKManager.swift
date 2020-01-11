@@ -19,6 +19,9 @@ public class RKManager : ObservableObject {
     @Published public var startDate: Date! = nil
     @Published public var endDate: Date! = nil
     
+    // when true display a continuous calendar of months, when false display one month at a time
+    @Published public var isContinuous = true
+    
     // this should be used only with the RKViewControler, must have isWeeklyView=false
     @Published public var isVertical = true
     
