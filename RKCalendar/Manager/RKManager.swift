@@ -123,6 +123,13 @@ public class RKManager : ObservableObject {
         return calendar.date(from: components)!
     }
     
+    func RKMaximumDateMonthLastDay() -> Date {
+        var components = calendar.dateComponents([.year, .month, .day], from: maximumDate)
+        components.month! += 1
+        components.day = 0
+        return calendar.date(from: components)!
+    }
+    
     // MARK: - Date Property functions
     
     func isToday(date: Date) -> Bool {

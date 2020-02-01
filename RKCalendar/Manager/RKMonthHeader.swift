@@ -16,8 +16,7 @@ struct RKMonthHeader : View {
     
     let monthOffset: Int
     
-    let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
-    
+
     var body: some View {
         Text(getMonthHeader()).foregroundColor(self.rkManager.colors.monthHeaderColor)
     }
@@ -34,14 +33,7 @@ struct RKMonthHeader : View {
         var offset = DateComponents()
         offset.month = monthOffset
         
-        return rkManager.calendar.date(byAdding: offset, to: RKFirstDateMonth())!
-    }
-    
-    func RKFirstDateMonth() -> Date {
-        var components = rkManager.calendar.dateComponents(calendarUnitYMD, from: rkManager.minimumDate)
-        components.day = 1
-        
-        return rkManager.calendar.date(from: components)!
+        return rkManager.calendar.date(byAdding: offset, to: rkManager.RKFirstDateMonth())!
     }
     
 }

@@ -19,8 +19,7 @@ struct RKWeeklyViewController: View {
     
     @State var pages = [WeeklyPage]()
     
-    let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
-    
+
     var body: some View {
         Group {
             // needed for Mac
@@ -73,37 +72,23 @@ struct RKWeeklyViewController: View {
     }
     
     func numberOfMonths() -> Int {
-        return rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: RKMaximumDateMonthLastDay()).month! 
+        return rkManager.calendar.dateComponents([.month],
+                                                 from: rkManager.minimumDate,
+                                                 to: rkManager.RKMaximumDateMonthLastDay()).month!
     }
     
     func numberOfWeeks(monthOffset: Int) -> Int {
         let firstOfMonth = firstOfMonthForOffset(monthOffset: monthOffset)
         let rangeOfWeeks = rkManager.calendar.range(of: .weekOfMonth, in: .month, for: firstOfMonth)
-        
         return (rangeOfWeeks?.count)!
     }
     
     func firstOfMonthForOffset(monthOffset : Int) -> Date {
         var offset = DateComponents()
         offset.month = monthOffset
-        
-        return rkManager.calendar.date(byAdding: offset, to: RKFirstDateMonth())!
+        return rkManager.calendar.date(byAdding: offset, to: rkManager.RKFirstDateMonth())!
     }
-    
-    func RKFirstDateMonth() -> Date {
-        var components = rkManager.calendar.dateComponents(calendarUnitYMD, from: rkManager.minimumDate)
-        components.day = 1
-        
-        return rkManager.calendar.date(from: components)!
-    }
-    
-    func RKMaximumDateMonthLastDay() -> Date {
-        var components = rkManager.calendar.dateComponents([.year, .month, .day], from: rkManager.maximumDate)
-        components.month! += 1
-        components.day = 0
-        
-        return rkManager.calendar.date(from: components)!
-    }
+
 }
 
 #if DEBUG
