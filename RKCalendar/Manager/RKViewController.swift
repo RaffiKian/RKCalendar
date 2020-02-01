@@ -35,12 +35,12 @@ struct RKViewController: View {
         }
     }
     
-    // continuous scroll
+    // vertical continuous scroll
     var verticalView: some View {
         Group {
-            ScrollView (.vertical) {
+            ScrollView(.vertical) {
                 VStack (spacing: 25) {
-                    ForEach(0..<numberOfMonths()) { index in
+                    ForEach(0..<self.numberOfMonths()) { index in
                         VStack(alignment: HorizontalAlignment.center, spacing: 15){
                             RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
                             RKWeekdayHeader(rkManager: self.rkManager)
@@ -54,10 +54,10 @@ struct RKViewController: View {
         }
     }
     
-    // continuous scroll
+    // horizontal continuous scroll
     var horizontalView: some View {
         Group {
-            ScrollView (.horizontal) {
+            ScrollView(.horizontal) {
                 HStack {
                     ForEach(0..<self.numberOfMonths()) { index in
                         VStack (spacing: 15) {
@@ -74,7 +74,7 @@ struct RKViewController: View {
         }
     }
     
-    // page scroll
+    // vertical page scroll
     var verticalViewPage: some View {
         SwiftUIPagerView(rkManager: rkManager,
             pages: (0..<numberOfMonths()).map {
@@ -82,7 +82,7 @@ struct RKViewController: View {
         })
     }
     
-    // page scroll
+    // horizontal page scroll
     var horizontalViewPage: some View {
         SwiftUIPagerView(rkManager: rkManager,
             pages: (0..<numberOfMonths()).map {
@@ -98,14 +98,14 @@ struct RKViewController: View {
     func numberOfMonths() -> Int {
         return rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: RKMaximumDateMonthLastDay()).month! + 1
     }
-    
+
     func RKMaximumDateMonthLastDay() -> Date {
         var components = rkManager.calendar.dateComponents([.year, .month, .day], from: rkManager.maximumDate)
         components.month! += 1
         components.day = 0
-        
         return rkManager.calendar.date(from: components)!
     }
+ 
 }
 
 #if DEBUG

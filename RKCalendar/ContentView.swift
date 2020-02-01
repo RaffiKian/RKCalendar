@@ -115,6 +115,9 @@ struct ContentView : View {
     }
     
     func startUp() {
+        
+        // example of horizontal view
+  //      rkManager1.isVertical = false
 
         // example of pre-setting selected dates
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]

@@ -18,7 +18,6 @@ struct RKMonth: View {
     
     @State var weekOffset: Int?
     
-    let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
     let daysPerWeek = 7
     var monthsArray: [[Date]] {
         monthArray()
@@ -45,13 +44,7 @@ struct RKMonth: View {
                         HStack() {
                             Spacer()
                             if self.isThisMonth(date: column) {
-                                RKCell(rkDate: RKDate(
-                                    date: column,
-                                    rkManager: self.rkManager,
-                                    isDisabled: !self.isEnabled(date: column),
-                                    isToday: self.isToday(date: column),
-                                    isSelected: self.isSpecialDate(date: column),
-                                    isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
+                                RKCell(rkDate: RKDate(date: column, rkManager: self.rkManager),
                                        cellWidth: self.cellWidth, hasTime: self.$hasTime)
                                     .onTapGesture { self.dateTapped(date: column) }
                                     .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
@@ -79,13 +72,7 @@ struct RKMonth: View {
                 HStack {
                     Spacer()
                     if self.isThisMonth(date: column) {
-                        RKCell(rkDate: RKDate(
-                            date: column,
-                            rkManager: self.rkManager,
-                            isDisabled: !self.isEnabled(date: column),
-                            isToday: self.isToday(date: column),
-                            isSelected: self.isSpecialDate(date: column),
-                            isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
+                        RKCell(rkDate: RKDate(date: column, rkManager: self.rkManager),
                                cellWidth: self.cellWidth, hasTime: self.$hasTime)
                             .onTapGesture { self.dateTapped(date: column) }
                             .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
@@ -109,13 +96,7 @@ struct RKMonth: View {
                         HStack {
                             Spacer()
                             if self.isThisMonth(date: column) {
-                                RKCell(rkDate: RKDate(
-                                    date: column,
-                                    rkManager: self.rkManager,
-                                    isDisabled: !self.isEnabled(date: column),
-                                    isToday: self.isToday(date: column),
-                                    isSelected: self.isSpecialDate(date: column),
-                                    isBetweenStartAndEnd: self.isBetweenStartAndEnd(date: column)),
+                                RKCell(rkDate: RKDate(date: column, rkManager: self.rkManager),
                                        cellWidth: self.cellWidth, hasTime: self.$hasTime)
                                     .onTapGesture { self.dateTapped(date: column) }
                                     .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
@@ -135,10 +116,10 @@ struct RKMonth: View {
     
     func isLongEnabled(date: Date) -> Bool {
         if rkManager.disabled {return false}
-        if self.isEnabled(date: date) {
+        if self.rkManager.isEnabled(date: date) {
             timeDate = rkManager.calendar.startOfDay(for: date)
         }
-        return self.isEnabled(date: date) && rkManager.displayTime
+        return self.rkManager.isEnabled(date: date) && rkManager.displayTime
     }
     
     func isThisMonth(date: Date) -> Bool {
@@ -147,7 +128,7 @@ struct RKMonth: View {
     
     func dateTapped(date: Date) {
         if rkManager.disabled {return}
-        if self.isEnabled(date: date) {
+        if self.rkManager.isEnabled(date: date) {
             switch rkManager.mode {
             case 0:
                 if rkManager.selectedDate != nil &&
@@ -171,7 +152,7 @@ struct RKMonth: View {
                     rkManager.endDate = nil
                 } else {
                     rkManager.endDate = date
-                    if isStartDateAfterEndDate() {
+                    if rkManager.isStartDateAfterEndDate() {
                         rkManager.endDate = nil
                         rkManager.startDate = nil
                     }
@@ -201,7 +182,6 @@ struct RKMonth: View {
             }
             rowArray.append(columnArray)
         }
-//        print("\n-----> monthOffset: \(monthOffset) rowArray: \(rowArray.debugDescription)")
         return rowArray
     }
     
@@ -227,101 +207,9 @@ struct RKMonth: View {
         var offset = DateComponents()
         offset.month = monthOffset
         
-        return rkManager.calendar.date(byAdding: offset, to: RKFirstDateMonth())!
+        return rkManager.calendar.date(byAdding: offset, to: rkManager.RKFirstDateMonth())!
     }
     
-    func RKFormatDate(date: Date) -> Date {
-        let components = rkManager.calendar.dateComponents(calendarUnitYMD, from: date)
-        
-        return rkManager.calendar.date(from: components)!
-    }
-    
-    func RKFormatAndCompareDate(date: Date, referenceDate: Date) -> Bool {
-        let refDate = RKFormatDate(date: referenceDate)
-        let clampedDate = RKFormatDate(date: date)
-        return refDate == clampedDate
-    }
-    
-    func RKFirstDateMonth() -> Date {
-        var components = rkManager.calendar.dateComponents(calendarUnitYMD, from: rkManager.minimumDate)
-        components.day = 1
-        
-        return rkManager.calendar.date(from: components)!
-    }
-    
-    // MARK: - Date Property Checkers
-    
-    func isToday(date: Date) -> Bool {
-        return RKFormatAndCompareDate(date: date, referenceDate: Date())
-    }
-    
-    func isSpecialDate(date: Date) -> Bool {
-        return isSelectedDate(date: date) ||
-            isStartDate(date: date) ||
-            isEndDate(date: date) ||
-            isOneOfSelectedDates(date: date)
-    }
-    
-    func isOneOfSelectedDates(date: Date) -> Bool {
-        return self.rkManager.selectedDatesContains(date: date)
-    }
-    
-    func isSelectedDate(date: Date) -> Bool {
-        if rkManager.selectedDate == nil {
-            return false
-        }
-        return RKFormatAndCompareDate(date: date, referenceDate: rkManager.selectedDate)
-    }
-    
-    func isStartDate(date: Date) -> Bool {
-        if rkManager.startDate == nil {
-            return false
-        }
-        return RKFormatAndCompareDate(date: date, referenceDate: rkManager.startDate)
-    }
-    
-    func isEndDate(date: Date) -> Bool {
-        if rkManager.endDate == nil {
-            return false
-        }
-        return RKFormatAndCompareDate(date: date, referenceDate: rkManager.endDate)
-    }
-    
-    func isBetweenStartAndEnd(date: Date) -> Bool {
-        if rkManager.startDate == nil {
-            return false
-        } else if rkManager.endDate == nil {
-            return false
-        } else if rkManager.calendar.compare(date, to: rkManager.startDate, toGranularity: .day) == .orderedAscending {
-            return false
-        } else if rkManager.calendar.compare(date, to: rkManager.endDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return true
-    }
-    
-    func isOneOfDisabledDates(date: Date) -> Bool {
-        return self.rkManager.disabledDatesContains(date: date)
-    }
-    
-    func isEnabled(date: Date) -> Bool {
-        let clampedDate = RKFormatDate(date: date)
-        if rkManager.calendar.compare(clampedDate, to: rkManager.minimumDate, toGranularity: .day) == .orderedAscending || rkManager.calendar.compare(clampedDate, to: rkManager.maximumDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return !isOneOfDisabledDates(date: date)
-    }
-    
-    func isStartDateAfterEndDate() -> Bool {
-        if rkManager.startDate == nil {
-            return false
-        } else if rkManager.endDate == nil {
-            return false
-        } else if rkManager.calendar.compare(rkManager.endDate, to: rkManager.startDate, toGranularity: .day) == .orderedDescending {
-            return false
-        }
-        return true
-    }
 }
 
 #if DEBUG

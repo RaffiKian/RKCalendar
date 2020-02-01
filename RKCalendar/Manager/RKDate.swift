@@ -18,13 +18,14 @@ struct RKDate {
     var isSelected: Bool = false
     var isBetweenStartAndEnd: Bool = false
     
-    init(date: Date, rkManager: RKManager, isDisabled: Bool, isToday: Bool, isSelected: Bool, isBetweenStartAndEnd: Bool) {
+
+    init(date: Date, rkManager: RKManager) {
         self.date = date
         self.rkManager = rkManager
-        self.isDisabled = isDisabled
-        self.isToday = isToday
-        self.isSelected = isSelected
-        self.isBetweenStartAndEnd = isBetweenStartAndEnd
+        self.isDisabled = !rkManager.isEnabled(date: date)
+        self.isToday = rkManager.isToday(date: date)
+        self.isSelected = rkManager.isSpecialDate(date: date)
+        self.isBetweenStartAndEnd = rkManager.isBetweenStartAndEnd(date: date)
     }
     
     func getText() -> String {

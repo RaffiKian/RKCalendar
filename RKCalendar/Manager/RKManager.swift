@@ -9,7 +9,7 @@
 import SwiftUI
 
 public class RKManager : ObservableObject {
-
+    
     @Published public var calendar = Calendar.current
     @Published public var minimumDate: Date = Date()
     @Published public var maximumDate: Date = Date()
@@ -33,7 +33,10 @@ public class RKManager : ObservableObject {
             }
         }
     }
-
+    
+    // mode=0 to select a single date.
+    // mode=1 to select a contiguous range of dates, from a start date (mode=1) to an end date (mode=2).
+    // mode=3 for multi dates selections.
     @Published public var mode: Int = 0
     
     // allow disabling of user input for the current mode
@@ -43,7 +46,9 @@ public class RKManager : ObservableObject {
     @Published public var displayTime: Bool = false
     
     public var colors = RKColorSettings()
-  
+    
+    let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
+    
     init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
         self.calendar = calendar
         self.minimumDate = minimumDate
@@ -101,4 +106,99 @@ public class RKManager : ObservableObject {
         return date == nil ? "" : formatter.string(from: date!)
     }
     
+    func RKFormatDate(date: Date) -> Date {
+        let components = calendar.dateComponents(calendarUnitYMD, from: date)
+        return calendar.date(from: components)!
+    }
+    
+    func RKFormatAndCompareDate(date: Date, referenceDate: Date) -> Bool {
+        let refDate = RKFormatDate(date: referenceDate)
+        let clampedDate = RKFormatDate(date: date)
+        return refDate == clampedDate
+    }
+    
+    func RKFirstDateMonth() -> Date {
+        var components = calendar.dateComponents(calendarUnitYMD, from: minimumDate)
+        components.day = 1
+        return calendar.date(from: components)!
+    }
+    
+    // MARK: - Date Property functions
+    
+    func isToday(date: Date) -> Bool {
+        return RKFormatAndCompareDate(date: date, referenceDate: Date())
+    }
+    
+    func isSpecialDate(date: Date) -> Bool {
+        return isSelectedDate(date: date) ||
+            isStartDate(date: date) ||
+            isEndDate(date: date) ||
+            isOneOfSelectedDates(date: date)
+    }
+    
+    func isOneOfSelectedDates(date: Date) -> Bool {
+        return selectedDatesContains(date: date)
+    }
+    
+    func isSelectedDate(date: Date) -> Bool {
+        if selectedDate == nil {
+            return false
+        }
+        return RKFormatAndCompareDate(date: date, referenceDate: selectedDate)
+    }
+    
+    func isStartDate(date: Date) -> Bool {
+        if startDate == nil {
+            return false
+        }
+        return RKFormatAndCompareDate(date: date, referenceDate: startDate)
+    }
+    
+    func isEndDate(date: Date) -> Bool {
+        if endDate == nil {
+            return false
+        }
+        return RKFormatAndCompareDate(date: date, referenceDate: endDate)
+    }
+    
+    func isOneOfDisabledDates(date: Date) -> Bool {
+        return disabledDatesContains(date: date)
+    }
+    
+    func isEnabled(date: Date) -> Bool {
+        let clampedDate = RKFormatDate(date: date)
+        if calendar.compare(clampedDate, to: minimumDate, toGranularity: .day) == .orderedAscending || calendar.compare(clampedDate, to: maximumDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return !isOneOfDisabledDates(date: date)
+    }
+    
+    func isStartDateAfterEndDate() -> Bool {
+        if startDate == nil {
+            return false
+        } else if endDate == nil {
+            return false
+        } else if calendar.compare(endDate, to: startDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return true
+    }
+    
+    func isBetweenStartAndEnd(date: Date) -> Bool {
+        if startDate == nil {
+            return false
+        } else if endDate == nil {
+            return false
+        } else if calendar.compare(date, to: startDate, toGranularity: .day) == .orderedAscending {
+            return false
+        } else if calendar.compare(date, to: endDate, toGranularity: .day) == .orderedDescending {
+            return false
+        }
+        return true
+    }
+    
+    func isBetweenMinAndMaxDates(date: Date) -> Bool {
+        return (min(minimumDate, maximumDate) ... max(minimumDate, maximumDate)).contains(date)
+    }
+  
 }
