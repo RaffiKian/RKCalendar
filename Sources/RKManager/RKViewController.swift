@@ -76,17 +76,17 @@ struct RKViewController: View {
     
     // vertical page scroll
     var verticalViewPage: some View {
-        SwiftUIPagerView(rkManager: rkManager,
+        RKPageView(rkManager: rkManager,
             pages: (0..<numberOfMonths()).map {
-                index in Page(isPresented: $isPresented, rkManager: rkManager, index: index)
+                index in RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
         })
     }
     
     // horizontal page scroll
     var horizontalViewPage: some View {
-        SwiftUIPagerView(rkManager: rkManager,
+        RKPageView(rkManager: rkManager,
             pages: (0..<numberOfMonths()).map {
-                index in Page(isPresented: $isPresented, rkManager: rkManager, index: index)
+                index in RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
         })
     }
     

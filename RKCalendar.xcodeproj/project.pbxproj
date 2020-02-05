@@ -24,12 +24,12 @@
 		019D282422DBCCC00001C990 /* demo-app-dark-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */; };
 		019D282922DBCD2E0001C990 /* demo-app-light-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */; };
 		019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */; };
-		C71A20E423C962D700324A59 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A20E323C962D700324A59 /* Page.swift */; };
-		C71A20E623C962FA00324A59 /* SwiftUIPagerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A20E523C962FA00324A59 /* SwiftUIPagerView.swift */; };
+		C71A20E423C962D700324A59 /* RKPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A20E323C962D700324A59 /* RKPage.swift */; };
+		C71A20E623C962FA00324A59 /* RKPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A20E523C962FA00324A59 /* RKPageView.swift */; };
 		C72D24C62317A99D00A37CC1 /* RKColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */; };
 		C73511302360749E00AEAFAE /* RKTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C735112F2360749E00AEAFAE /* RKTimeView.swift */; };
 		C741C31923C5AE1E008C0FE3 /* RKWeeklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C741C31823C5AE1E008C0FE3 /* RKWeeklyViewController.swift */; };
-		C743AE0623C9DB1000DE4808 /* WeeklyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C743AE0523C9DB1000DE4808 /* WeeklyPage.swift */; };
+		C743AE0623C9DB1000DE4808 /* RKWeeklyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */; };
 		C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77ABE4823C57DB200574826 /* RKMonthHeader.swift */; };
 		C7A3D61B23126E230065D6FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C7A3D61A23126E230065D6FF /* README.md */; };
 /* End PBXBuildFile section */
@@ -54,12 +54,12 @@
 		019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-1.png"; sourceTree = "<group>"; };
 		019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-1.png"; sourceTree = "<group>"; };
 		019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-2.png"; sourceTree = "<group>"; };
-		C71A20E323C962D700324A59 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
-		C71A20E523C962FA00324A59 /* SwiftUIPagerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPagerView.swift; sourceTree = "<group>"; };
+		C71A20E323C962D700324A59 /* RKPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKPage.swift; sourceTree = "<group>"; };
+		C71A20E523C962FA00324A59 /* RKPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKPageView.swift; sourceTree = "<group>"; };
 		C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKColorSettings.swift; sourceTree = "<group>"; };
 		C735112F2360749E00AEAFAE /* RKTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKTimeView.swift; sourceTree = "<group>"; };
 		C741C31823C5AE1E008C0FE3 /* RKWeeklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKWeeklyViewController.swift; sourceTree = "<group>"; };
-		C743AE0523C9DB1000DE4808 /* WeeklyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyPage.swift; sourceTree = "<group>"; };
+		C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKWeeklyPage.swift; sourceTree = "<group>"; };
 		C75E91222384CE0400F98BED /* RKCalendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RKCalendar.entitlements; sourceTree = "<group>"; };
 		C77ABE4823C57DB200574826 /* RKMonthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMonthHeader.swift; sourceTree = "<group>"; };
 		C7A3D61A23126E230065D6FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -81,8 +81,10 @@
 			children = (
 				C7A3D61A23126E230065D6FF /* README.md */,
 				0179442A22DBB2AE0059FCF6 /* LICENSE.txt */,
-				0112FD5322DB8D6800BB8F94 /* RKCalendar */,
+				C704965923EA359900F17186 /* Sources */,
+				0112FD5322DB8D6800BB8F94 /* Example */,
 				0112FD5222DB8D6800BB8F94 /* Products */,
+				019D281E22DBCCAE0001C990 /* Images */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,21 +96,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0112FD5322DB8D6800BB8F94 /* RKCalendar */ = {
+		0112FD5322DB8D6800BB8F94 /* Example */ = {
 			isa = PBXGroup;
 			children = (
 				C75E91222384CE0400F98BED /* RKCalendar.entitlements */,
-				019D281E22DBCCAE0001C990 /* Images */,
 				0112FD5422DB8D6800BB8F94 /* AppDelegate.swift */,
 				0112FD5622DB8D6800BB8F94 /* SceneDelegate.swift */,
 				0112FD5822DB8D6800BB8F94 /* ContentView.swift */,
-				0112FD6822DB8DDC00BB8F94 /* Manager */,
 				0112FD5A22DB8D6A00BB8F94 /* Assets.xcassets */,
 				0112FD5F22DB8D6A00BB8F94 /* LaunchScreen.storyboard */,
 				0112FD6222DB8D6A00BB8F94 /* Info.plist */,
 				0112FD5C22DB8D6A00BB8F94 /* Preview Content */,
 			);
-			path = RKCalendar;
+			path = Example;
 			sourceTree = "<group>";
 		};
 		0112FD5C22DB8D6A00BB8F94 /* Preview Content */ = {
@@ -119,10 +119,10 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		0112FD6822DB8DDC00BB8F94 /* Manager */ = {
+		0112FD6822DB8DDC00BB8F94 /* RKManager */ = {
 			isa = PBXGroup;
 			children = (
-				C71A20E223C962C200324A59 /* Scroll */,
+				C71A20E223C962C200324A59 /* RKScroll */,
 				0112FD6922DB8EA800BB8F94 /* RKDate.swift */,
 				0112FD6B22DB901B00BB8F94 /* RKCell.swift */,
 				0112FD6D22DB912B00BB8F94 /* RKWeekdayHeader.swift */,
@@ -134,7 +134,7 @@
 				C77ABE4823C57DB200574826 /* RKMonthHeader.swift */,
 				C741C31823C5AE1E008C0FE3 /* RKWeeklyViewController.swift */,
 			);
-			path = Manager;
+			path = RKManager;
 			sourceTree = "<group>";
 		};
 		019D281E22DBCCAE0001C990 /* Images */ = {
@@ -148,14 +148,22 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		C71A20E223C962C200324A59 /* Scroll */ = {
+		C704965923EA359900F17186 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C71A20E323C962D700324A59 /* Page.swift */,
-				C71A20E523C962FA00324A59 /* SwiftUIPagerView.swift */,
-				C743AE0523C9DB1000DE4808 /* WeeklyPage.swift */,
+				0112FD6822DB8DDC00BB8F94 /* RKManager */,
 			);
-			path = Scroll;
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		C71A20E223C962C200324A59 /* RKScroll */ = {
+			isa = PBXGroup;
+			children = (
+				C71A20E323C962D700324A59 /* RKPage.swift */,
+				C71A20E523C962FA00324A59 /* RKPageView.swift */,
+				C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */,
+			);
+			path = RKScroll;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,17 +248,17 @@
 				0112FD6E22DB912B00BB8F94 /* RKWeekdayHeader.swift in Sources */,
 				0112FD7422DB926A00BB8F94 /* RKMonth.swift in Sources */,
 				C72D24C62317A99D00A37CC1 /* RKColorSettings.swift in Sources */,
-				C71A20E623C962FA00324A59 /* SwiftUIPagerView.swift in Sources */,
+				C71A20E623C962FA00324A59 /* RKPageView.swift in Sources */,
 				C73511302360749E00AEAFAE /* RKTimeView.swift in Sources */,
 				C741C31923C5AE1E008C0FE3 /* RKWeeklyViewController.swift in Sources */,
 				0112FD5722DB8D6800BB8F94 /* SceneDelegate.swift in Sources */,
-				C743AE0623C9DB1000DE4808 /* WeeklyPage.swift in Sources */,
+				C743AE0623C9DB1000DE4808 /* RKWeeklyPage.swift in Sources */,
 				0112FD6A22DB8EA800BB8F94 /* RKDate.swift in Sources */,
 				0112FD5922DB8D6800BB8F94 /* ContentView.swift in Sources */,
 				0112FD7622DB954900BB8F94 /* RKViewController.swift in Sources */,
 				C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */,
 				0112FD7022DB91DB00BB8F94 /* RKManager.swift in Sources */,
-				C71A20E423C962D700324A59 /* Page.swift in Sources */,
+				C71A20E423C962D700324A59 /* RKPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,13 +396,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RKCalendar/RKCalendar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Example/RKCalendar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_ASSET_PATHS = "RKCalendar/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "Example/Preview\\ Content";
 				DEVELOPMENT_TEAM = N7KF5K7NET;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = RKCalendar/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,13 +419,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = RKCalendar/RKCalendar.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Example/RKCalendar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_ASSET_PATHS = "RKCalendar/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "Example/Preview\\ Content";
 				DEVELOPMENT_TEAM = N7KF5K7NET;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = RKCalendar/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -17,7 +17,7 @@ struct RKWeeklyViewController: View {
     
     @ObservedObject var rkManager: RKManager
     
-    @State var pages = [WeeklyPage]()
+    @State var pages = [RKWeeklyPage]()
     
 
     var body: some View {
@@ -31,7 +31,7 @@ struct RKWeeklyViewController: View {
             }
             self.rkManager.isContinuous
                 ? AnyView(continuousView)
-                : AnyView(SwiftUIPagerView(rkManager: rkManager, pages: pages))
+                : AnyView(RKPageView(rkManager: rkManager, pages: pages))
         }.onAppear(perform: loadData)
     }
     
@@ -61,7 +61,7 @@ struct RKWeeklyViewController: View {
     func loadData() {
         for i in 0..<self.numberOfMonths() {
             for j in 0..<self.numberOfWeeks(monthOffset: i) {
-                pages.append(WeeklyPage(isPresented: $isPresented, rkManager: rkManager, monthNdx: i, weekNdx: j))
+                pages.append(RKWeeklyPage(isPresented: $isPresented, rkManager: rkManager, monthNdx: i, weekNdx: j))
             }
         }
     }

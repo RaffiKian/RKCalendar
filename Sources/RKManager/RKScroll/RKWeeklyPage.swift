@@ -1,5 +1,5 @@
 //
-//  Page.swift
+//  RKWeeklyPage.swift
 //  RKCalendar
 //
 //  Adapted by Ringo Wathelet on 2020/01/11.
@@ -9,20 +9,19 @@
 
 import SwiftUI
 
-struct Page: View, Identifiable {
+struct RKWeeklyPage: View, Identifiable {
     let id = UUID()
     
     @Binding var isPresented: Bool
     @ObservedObject var rkManager: RKManager
-    @State var index: Int
+    @State var monthNdx: Int
+    @State var weekNdx: Int
     
     var body: some View {
         VStack(spacing: 15) {
-            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-            RKWeekdayHeader(rkManager: self.rkManager)
-            Divider()
-            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
-            Spacer()
+            RKWeekdayHeader(rkManager: rkManager)
+            RKMonthHeader(rkManager: rkManager, monthOffset: monthNdx)
+            RKMonth(isPresented: $isPresented, rkManager: rkManager, monthOffset: monthNdx, weekOffset: weekNdx)
         }.fixedSize(horizontal: false, vertical: false)
     }
 }

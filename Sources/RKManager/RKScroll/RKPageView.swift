@@ -1,5 +1,5 @@
 //
-//  SwiftUIPagerView.swift
+//  RKPageView.swift
 //  RKCalendar
 //
 //  Adapted by Ringo Wathelet on 2020/01/11.
@@ -12,7 +12,7 @@ import SwiftUI
 import Foundation
 
 
-struct SwiftUIPagerView<Content: View & Identifiable>: View {
+struct RKPageView<Content: View & Identifiable>: View {
 
     @ObservedObject var rkManager: RKManager
 
