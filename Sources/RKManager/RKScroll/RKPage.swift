@@ -9,14 +9,14 @@
 
 import SwiftUI
 
-struct RKPage: View, Identifiable {
-    let id = UUID()
+public struct RKPage: View, Identifiable {
+    public let id = UUID()
     
     @Binding var isPresented: Bool
     @ObservedObject var rkManager: RKManager
     @State var index: Int
     
-    var body: some View {
+    public var body: some View {
         VStack(spacing: 15) {
             RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
             RKWeekdayHeader(rkManager: self.rkManager)

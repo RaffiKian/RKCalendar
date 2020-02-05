@@ -12,7 +12,7 @@ import SwiftUI
 import Foundation
 
 
-struct RKPageView<Content: View & Identifiable>: View {
+public struct RKPageView<Content: View & Identifiable>: View {
 
     @ObservedObject var rkManager: RKManager
 
@@ -23,7 +23,7 @@ struct RKPageView<Content: View & Identifiable>: View {
 
     @State private var isGestureActive: Bool = false
 
-    var body: some View {
+    public var body: some View {
         self.rkManager.isVertical ? AnyView(self.verticalView) : AnyView(self.horizontalView)
     }
 

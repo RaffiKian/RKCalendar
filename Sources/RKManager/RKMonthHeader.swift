@@ -10,14 +10,14 @@ import Foundation
 import SwiftUI
 
 
-struct RKMonthHeader : View {
+public struct RKMonthHeader : View {
     
     var rkManager: RKManager
     
     let monthOffset: Int
     
 
-    var body: some View {
+    public var body: some View {
         Text(getMonthHeader()).foregroundColor(self.rkManager.colors.monthHeaderColor)
     }
     

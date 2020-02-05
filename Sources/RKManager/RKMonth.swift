@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RKMonth: View {
+public struct RKMonth: View {
     
     @Binding var isPresented: Bool
     
@@ -32,7 +32,7 @@ struct RKMonth: View {
     @State var timeDate = Date()
     
     
-    var body: some View {
+    public var body: some View {
         self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
     }
     

@@ -9,7 +9,7 @@
 import SwiftUI
 
 
-struct RKTimeView: View {
+public struct RKTimeView: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -27,7 +27,7 @@ struct RKTimeView: View {
         return min...max
     }
     
-    var body: some View {
+    public var body: some View {
         NavigationView {
             VStack {
   //              ClockPickerView(date: self.$date, options: self.options)

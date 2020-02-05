@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RKViewController: View {
+public struct RKViewController: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -19,7 +19,7 @@ struct RKViewController: View {
     @State var index: Int = 0
 
     
-    var body: some View {
+    public var body: some View {
         Group {
             // needed for Mac
             Button(action: onDone) {

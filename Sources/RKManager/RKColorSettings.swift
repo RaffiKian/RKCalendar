@@ -30,4 +30,5 @@ public class RKColorSettings : ObservableObject {
     @Published public var weekdayHeaderBackColor: Color = Color.clear
     @Published public var monthBackColor: Color = Color.clear
 
+    public init() {}
 }

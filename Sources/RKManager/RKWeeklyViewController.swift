@@ -9,7 +9,7 @@
 
 import SwiftUI
 
-struct RKWeeklyViewController: View {
+public struct RKWeeklyViewController: View {
     
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
@@ -20,7 +20,7 @@ struct RKWeeklyViewController: View {
     @State var pages = [RKWeeklyPage]()
     
 
-    var body: some View {
+    public var body: some View {
         Group {
             // needed for Mac
             Button(action: self.onDone) {

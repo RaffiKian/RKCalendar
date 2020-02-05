@@ -49,7 +49,7 @@ public class RKManager : ObservableObject {
     
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
     
-    init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
+    public init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
         self.calendar = calendar
         self.minimumDate = minimumDate
         self.maximumDate = maximumDate
