@@ -21,7 +21,7 @@ This is activated by setting **isContinuous=false** in RKManager (default **true
 
 - added a  **weekly view** of the calendar. See example 6 in ContentView.
 
-This is activated by setting **isWeeklyView=true** in RKManager (default **false**), see example 6.
+This is activated by setting **isWeeklyView=true** in RKManager (default **false**), see example 6. Note you must also set **isVertical=false**.
 
 - added **RKMonthHeader** and separated the month headers from **RKMonth** to allow for better mix and match of week and month headers.
 
