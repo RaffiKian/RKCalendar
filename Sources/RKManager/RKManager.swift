@@ -22,10 +22,10 @@ public class RKManager : ObservableObject {
     // when true display a continuous calendar of months, when false display one month at a time
     @Published public var isContinuous = true
     
-    // this should be used only with the RKViewControler, must have isWeeklyView=false
+    // must have isWeeklyView=false
     @Published public var isVertical = true
     
-    // this should be used only with the RKWeeklyViewControler, must have isVertical=false
+    // must have isVertical=false
     @Published var isWeeklyView: Bool = false {
         willSet {
             if isWeeklyView {
