@@ -29,7 +29,7 @@ struct ContentView : View {
     
     var rkManager5 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
-    var rkManager6 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    var rkManager6 = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
     var rkManager7 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -90,7 +90,7 @@ struct ContentView : View {
                     Text("Example 6 - Weekly view").foregroundColor(.blue)
                 }
                 .sheet(isPresented: self.$weeklyIsPresented, content: {
-                    RKWeeklyViewController(isPresented: self.$weeklyIsPresented, rkManager: self.rkManager6)})
+                    RKViewController(isPresented: self.$weeklyIsPresented, rkManager: self.rkManager6)})
                 Text(RKManager.getTextFromDate(self.rkManager6.selectedDate))
                 
                 Button(action: { self.horizIsPresented.toggle() }) {
