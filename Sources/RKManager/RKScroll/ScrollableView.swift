@@ -32,7 +32,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable {
     // MARK: - Updates
     func makeUIViewController(context: UIViewControllerRepresentableContext<Self>) -> UIViewControllerType {
         
-        let scrollViewController                                       = UIScrollViewController(rootView: self.content(), offset: self.offset, axis: self.axis)
+        let scrollViewController = UIScrollViewController(rootView: self.content(), offset: self.offset, axis: self.axis)
         scrollViewController.scrollView.showsVerticalScrollIndicator   = self.showsScrollIndicator
         scrollViewController.scrollView.showsHorizontalScrollIndicator = self.showsScrollIndicator
         
@@ -130,7 +130,7 @@ final class UIScrollViewController<Content: View> : UIViewController, UIScrollVi
     
     // MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        DispatchQueue.main.async { self.offset.wrappedValue = scrollView.contentOffset}
+//        DispatchQueue.main.async { self.offset.wrappedValue = scrollView.contentOffset}
     }
     
     // MARK: - Constraints

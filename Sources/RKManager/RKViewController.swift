@@ -59,7 +59,7 @@ public struct RKViewController: View {
     
     // todo
     var continuousView: some View {
-     //   ScrollableView(self.$contentOffset, animationDuration: 0.1, axis: .horizontal) {
+        //   ScrollableView(self.$contentOffset, animationDuration: 0.1, axis: .horizontal) {
         ScrollView (.horizontal) {
             HStack {
                 ForEach(0..<self.numberOfMonths()) { index in
@@ -81,22 +81,20 @@ public struct RKViewController: View {
             }
         }//.onAppear(perform: { self.contentOffset = self.todayWeeklyHScrollPos() })
     }
-
+    
     // vertical continuous scroll
     var verticalView: some View {
-        Group {
-            ScrollableView(self.$contentOffset, animationDuration: 0.1) {
-                //     ScrollView(.vertical) {
-                VStack (spacing: 25) {
-                    ForEach(0..<self.numberOfMonths()) { index in
-                        VStack(alignment: HorizontalAlignment.center, spacing: 15){
-                            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-                            RKWeekdayHeader(rkManager: self.rkManager)
-                            // Divider()
-                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
-                        }
-                        Divider()
+        ScrollableView(self.$contentOffset, animationDuration: 0.0) {
+            //     ScrollView(.vertical) {
+            VStack (spacing: 25) {
+                ForEach(0..<self.numberOfMonths()) { index in
+                    VStack(alignment: HorizontalAlignment.center, spacing: 15){
+                        RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+                        RKWeekdayHeader(rkManager: self.rkManager)
+                        // Divider()
+                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
                     }
+                    Divider()
                 }
             }
         }.onAppear(perform: { self.contentOffset = self.todayVScrollPos() })
@@ -104,20 +102,18 @@ public struct RKViewController: View {
     
     // horizontal continuous scroll
     var horizontalView: some View {
-        Group {
-            ScrollableView(self.$contentOffset, animationDuration: 0.1, axis: .horizontal) {
-         //   ScrollView(.horizontal) {
-                HStack {
-                    ForEach(0..<self.numberOfMonths()) { index in
-                        VStack (spacing: 15) {
-                            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-                            RKWeekdayHeader(rkManager: self.rkManager)
-                            Divider()
-                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
-                            Spacer()
-                        }
+        ScrollableView(self.$contentOffset, animationDuration: 0.0, axis: .horizontal) {
+            //   ScrollView(.horizontal) {
+            HStack {
+                ForEach(0..<self.numberOfMonths()) { index in
+                    VStack (spacing: 15) {
+                        RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+                        RKWeekdayHeader(rkManager: self.rkManager)
                         Divider()
+                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                        Spacer()
                     }
+                    Divider()
                 }
             }
         }.onAppear(perform: { self.contentOffset = self.todayHScrollPos() })
@@ -138,7 +134,7 @@ public struct RKViewController: View {
                     RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
         })
     }
-
+    
     func onDone() {
         // to go back to the previous view
         self.presentationMode.wrappedValue.dismiss()
