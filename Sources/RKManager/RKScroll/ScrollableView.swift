@@ -53,7 +53,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable {
         }, completion: nil)
     }
     
-    //Calculate animation speed
+    // Calculate animation speed
     private func duration(_ viewController: UIViewControllerType) -> TimeInterval {
         
         var diff: CGFloat = 0
@@ -81,6 +81,7 @@ final class UIScrollViewController<Content: View> : UIViewController, UIScrollVi
     var offset: Binding<CGPoint>
     let hostingController: UIHostingController<Content>
     private let axis: Axis
+
     lazy var scrollView: UIScrollView = {
         
         let scrollView                                       = UIScrollView()
@@ -130,9 +131,15 @@ final class UIScrollViewController<Content: View> : UIViewController, UIScrollVi
     
     // MARK: - UIScrollViewDelegate
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        DispatchQueue.main.async { self.offset.wrappedValue = scrollView.contentOffset}
+//        DispatchQueue.main.async {
+//            self.offset.wrappedValue = scrollView.contentOffset
+//        }
     }
     
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+       self.offset.wrappedValue = scrollView.contentOffset
+    }
+
     // MARK: - Constraints
     fileprivate func createConstraints() {
         NSLayoutConstraint.activate([
