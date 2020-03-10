@@ -31,6 +31,7 @@
 		C743AE0623C9DB1000DE4808 /* RKWeeklyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */; };
 		C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77ABE4823C57DB200574826 /* RKMonthHeader.swift */; };
 		C7A3D61B23126E230065D6FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C7A3D61A23126E230065D6FF /* README.md */; };
+		C7AA352C2417010D008B9A6A /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AA352B2417010D008B9A6A /* ScrollableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		C75E91222384CE0400F98BED /* RKCalendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RKCalendar.entitlements; sourceTree = "<group>"; };
 		C77ABE4823C57DB200574826 /* RKMonthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMonthHeader.swift; sourceTree = "<group>"; };
 		C7A3D61A23126E230065D6FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C7AA352B2417010D008B9A6A /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +161,7 @@
 				C71A20E323C962D700324A59 /* RKPage.swift */,
 				C71A20E523C962FA00324A59 /* RKPageView.swift */,
 				C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */,
+				C7AA352B2417010D008B9A6A /* ScrollableView.swift */,
 			);
 			path = RKScroll;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				0112FD5922DB8D6800BB8F94 /* ContentView.swift in Sources */,
 				0112FD7622DB954900BB8F94 /* RKViewController.swift in Sources */,
 				C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */,
+				C7AA352C2417010D008B9A6A /* ScrollableView.swift in Sources */,
 				0112FD7022DB91DB00BB8F94 /* RKManager.swift in Sources */,
 				C71A20E423C962D700324A59 /* RKPage.swift in Sources */,
 			);
