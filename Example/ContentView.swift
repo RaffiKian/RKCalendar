@@ -115,7 +115,7 @@ struct ContentView : View {
     }
     
     func startUp() {
-        
+
         // example of horizontal view
   //      rkManager1.isVertical = false
 
@@ -137,6 +137,8 @@ struct ContentView : View {
         rkManager4.disabledDates.append(contentsOf: testOffDates)
         
         // example of allowing time (hh:mm) to be set and displayed on a long press
+        // example to display in Japanese
+        rkManager5.locale = Locale(identifier: "ja")
         rkManager5.displayTime = true
         
         // example of weekly view with "paging"

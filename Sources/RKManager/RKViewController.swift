@@ -59,7 +59,7 @@ public struct RKViewController: View {
     
     // todo
     var continuousView: some View {
-        //   ScrollableView(self.$contentOffset, animationDuration: 0.1, axis: .horizontal) {
+     //      ScrollableView(self.$contentOffset, axis: .horizontal) {
         ScrollView (.horizontal) {
             HStack {
                 ForEach(0..<self.numberOfMonths()) { index in
@@ -84,7 +84,7 @@ public struct RKViewController: View {
     
     // vertical continuous scroll
     var verticalView: some View {
-        ScrollableView(self.$contentOffset, animationDuration: 0.0) {
+        ScrollableView(self.$contentOffset) {
             //     ScrollView(.vertical) {
             VStack (spacing: 25) {
                 ForEach(0..<self.numberOfMonths()) { index in
@@ -102,7 +102,7 @@ public struct RKViewController: View {
     
     // horizontal continuous scroll
     var horizontalView: some View {
-        ScrollableView(self.$contentOffset, animationDuration: 0.0, axis: .horizontal) {
+        ScrollableView(self.$contentOffset, axis: .horizontal) {
             //   ScrollView(.horizontal) {
             HStack {
                 ForEach(0..<self.numberOfMonths()) { index in

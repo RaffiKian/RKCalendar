@@ -18,6 +18,7 @@ public class RKManager : ObservableObject {
     @Published public var selectedDate: Date! = nil
     @Published public var startDate: Date! = nil
     @Published public var endDate: Date! = nil
+    @Published public var locale: Locale = .current
     
     // when true display a continuous calendar of months, when false display one month at a time
     @Published public var isContinuous = true
@@ -55,6 +56,20 @@ public class RKManager : ObservableObject {
         self.maximumDate = maximumDate
         self.selectedDates = selectedDates
         self.mode = mode
+    }
+    
+    public init() {
+        self.calendar = Calendar.current
+        self.minimumDate = Date()
+        self.maximumDate = Date()
+        self.selectedDates = [Date]()
+        self.mode = 0
+        self.disabledDates = [Date]()
+        self.selectedDates = [Date]()
+        self.selectedDate = Date()
+        self.startDate = nil
+        self.endDate = nil
+        self.locale = .current
     }
     
     func selectedDatesContains(date: Date) -> Bool {

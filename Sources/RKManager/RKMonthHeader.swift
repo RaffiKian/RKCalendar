@@ -23,8 +23,9 @@ public struct RKMonthHeader : View {
     
     func getMonthHeader() -> String {
         let headerDateFormatter = DateFormatter()
+        headerDateFormatter.locale = rkManager.locale
         headerDateFormatter.calendar = rkManager.calendar
-        headerDateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy LLLL", options: 0, locale: rkManager.calendar.locale)
+        headerDateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "yyyy LLLL", options: 0, locale: rkManager.locale)
         
         return headerDateFormatter.string(from: firstOfMonthForOffset()).uppercased()
     }

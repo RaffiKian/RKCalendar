@@ -29,6 +29,8 @@ This is activated by setting **isWeeklyView=true** in RKManager (default **false
 
 This is activated with **disabled=true** in RKManager (default **false**).
 
+- added  **locale** in RKManager (default **Local.curent**) to display the months and weeks in the chosen language. See example 5 in ContentView.
+
 - moved some date property functions from **RKMonth** to **RKManager**
 
 - simplified **RKDate** construction.

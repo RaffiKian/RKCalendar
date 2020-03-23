@@ -21,7 +21,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable {
     var axis: Axis
     
     // MARK: - Init
-    init(_ offset: Binding<CGPoint>, animationDuration: TimeInterval, showsScrollIndicator: Bool = true, axis: Axis = .vertical, @ViewBuilder content: @escaping () -> Content) {
+    init(_ offset: Binding<CGPoint>, animationDuration: TimeInterval = 0, showsScrollIndicator: Bool = true, axis: Axis = .vertical, @ViewBuilder content: @escaping () -> Content) {
         self.offset               = offset
         self.animationDuration    = animationDuration
         self.content              = content
@@ -130,11 +130,11 @@ final class UIScrollViewController<Content: View> : UIViewController, UIScrollVi
     }
     
     // MARK: - UIScrollViewDelegate
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        DispatchQueue.main.async {
 //            self.offset.wrappedValue = scrollView.contentOffset
 //        }
-    }
+//    }
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
        self.offset.wrappedValue = scrollView.contentOffset

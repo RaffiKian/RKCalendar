@@ -26,7 +26,8 @@ public struct RKWeekdayHeader : View {
     func getWeekdayHeaders(calendar: Calendar) -> [String] {
         
         let formatter = DateFormatter()
-        
+        formatter.locale = rkManager.locale
+
         var weekdaySymbols = formatter.shortStandaloneWeekdaySymbols
         let weekdaySymbolsCount = weekdaySymbols?.count ?? 0
         
