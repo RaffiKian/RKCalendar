@@ -41,7 +41,7 @@ struct ContentView : View {
                 }
                 .sheet(isPresented: self.$singleIsPresented, content: {
                     RKViewController(isPresented: self.$singleIsPresented, rkManager: self.rkManager1)})
-                Text(RKManager.getTextFromDate(self.rkManager1.selectedDate))
+                Text(ContentView.getTextFromDate(self.rkManager1.selectedDate))
                 
                 Button(action: { self.startIsPresented.toggle() }) {
                     VStack {
@@ -52,8 +52,8 @@ struct ContentView : View {
                 .sheet(isPresented: self.$startIsPresented, content: {
                     RKViewController(isPresented: self.$startIsPresented, rkManager: self.rkManager2)})
                 VStack {
-                    Text(RKManager.getTextFromDate(self.rkManager2.startDate))
-                    Text(RKManager.getTextFromDate(self.rkManager2.endDate))
+                    Text(ContentView.getTextFromDate(self.rkManager2.startDate))
+                    Text(ContentView.getTextFromDate(self.rkManager2.endDate))
                 }
                 
                 Button(action: { self.multipleIsPresented.toggle() }) {
@@ -77,7 +77,7 @@ struct ContentView : View {
                 .sheet(isPresented: self.$timeIsPresented, content: {
                     RKViewController(isPresented: self.$timeIsPresented, rkManager: self.rkManager5)})
                 // mode 0
-                Text(RKManager.getTextFromDateTime(self.rkManager5.selectedDate))
+                Text(ContentView.getTextFromDateTime(self.rkManager5.selectedDate))
                 // mode 3
                 // datesView(dates: self.rkManager5.selectedDates, true)
                 // mode 1
@@ -91,14 +91,14 @@ struct ContentView : View {
                 }
                 .sheet(isPresented: self.$weeklyIsPresented, content: {
                     RKViewController(isPresented: self.$weeklyIsPresented, rkManager: self.rkManager6)})
-                Text(RKManager.getTextFromDate(self.rkManager6.selectedDate))
+                Text(ContentView.getTextFromDate(self.rkManager6.selectedDate))
                 
                 Button(action: { self.horizIsPresented.toggle() }) {
                     Text("Example 7 - Horizontal view with paging").foregroundColor(.blue)
                 }
                 .sheet(isPresented: self.$horizIsPresented, content: {
                     RKViewController(isPresented: self.$horizIsPresented, rkManager: self.rkManager7)})
-                Text(RKManager.getTextFromDate(self.rkManager7.selectedDate))
+                Text(ContentView.getTextFromDate(self.rkManager7.selectedDate))
             }
         }.onAppear(perform: startUp)
             .navigationViewStyle(StackNavigationViewStyle())
@@ -108,7 +108,7 @@ struct ContentView : View {
         ScrollView (.horizontal) {
             HStack {
                 ForEach(dates, id: \.self) { date in
-                    withTime ? Text(RKManager.getTextFromDateTime(date)) : Text(RKManager.getTextFromDate(date))
+                    withTime ? Text(ContentView.getTextFromDateTime(date)) : Text(ContentView.getTextFromDate(date))
                 }
             }
         }.padding(.horizontal, 5)
@@ -155,6 +155,33 @@ struct ContentView : View {
         rkManager7.colors.monthHeaderColor = Color.green
     }
     
+    static func getDateTimeAsString(_ date: Date?) -> String {
+        if date == nil { return "" }
+        let format = DateFormatter()
+        format.dateFormat = "yyyy-MM-dd-HH-mm"
+        format.timeZone = TimeZone.current
+        format.locale = Locale.current
+        return format.string(from: date!)
+    }
+    
+    static func getTextFromDate(_ date: Date?) -> String {
+        if date == nil { return "" }
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.locale = Locale.current
+        formatter.dateFormat = "EEEE, MMMM d, yyyy"
+        return date == nil ? "" : formatter.string(from: date!)
+    }
+    
+    static func getTextFromDateTime(_ date: Date?) -> String {
+        if date == nil { return "" }
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.locale = Locale.current
+        formatter.dateFormat = "EEEE, MMMM d HH:mm, yyyy"
+        return date == nil ? "" : formatter.string(from: date!)
+    }
+
 }
 
 #if DEBUG
