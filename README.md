@@ -1,35 +1,36 @@
-
-
 ### In addition to the original features
 
 - added **RKTimeView** a time (hh:mm) selection option on a long press, see example 5 in **ContentView.swift**
 
-Time selection is activated by setting **displayTime=true** in RKManager (default **false**).
-On a long press, a time selection view will popup allowing hours and minutes to be selected.
-Time selection is available for all modes. For mode 1, select the start and end dates as usual with a tap, then with a long press, select the time desired.
+   Time selection is activated by setting **displayTime=true** in RKManager (default **false**).
+   
+   On a long press, a time selection view will popup allowing hours and minutes to be selected.  
+   
+   Time selection is available for all modes. For mode 1, select the start and end dates as usual with a tap, then with a long press, select the time desired.  
 
-The default time picker is *DatePicker*, however you can easily use [**ClockPicker**](https://github.com/workingDog/ClockPicker) 
-to display a nice clock with draggable hands. Just modify the **RKTimeView** and include the **ClockPicker** code.
+   The default time picker is *DatePicker*, however you can easily use [**ClockPicker**](https://github.com/workingDog/ClockPicker) to display a nice clock with draggable hands. Just modify the **RKTimeView** and include the **ClockPicker** code.  
 
 - added a  **horizontal view** of the calendar. 
 
-This is activated by setting **isVertical=false** in RKManager (default **true**). See example 7 in ContentView.
+   This is activated by setting **isVertical=false** in RKManager (default **true**). See example 7 in ContentView.
 
 - added  **isContinuous** to display a continuous calendar of months or a one month view at a time. See example 6,7 in ContentView.
 
-This is activated by setting **isContinuous=false** in RKManager (default **true**). This is a workaround until SwiftUI ScrollView gain the capability to do paging.
+   This is activated by setting **isContinuous=false** in RKManager (default **true**). This is a workaround until SwiftUI ScrollView gain the capability to do paging.
 
 - added a  **weekly view** of the calendar. See example 6 in ContentView.
 
-This is activated by setting **isWeeklyView=true** in RKManager (default **false**), see example 6. Note you must also set **isVertical=false**.
+   This is activated by setting **isWeeklyView=true** in RKManager (default **false**), see example 6. Note you must also set **isVertical=false**.
 
 - added **RKMonthHeader** and separated the month headers from **RKMonth** to allow for better mix and match of week and month headers.
 
 - added a **disabled** setting, to prevent any user input for the current mode.
 
-This is activated with **disabled=true** in RKManager (default **false**).
+   This is activated with **disabled=true** in RKManager (default **false**).
 
 - added  **locale** in RKManager (default **Local.curent**) to display the months and weeks in the chosen language. See example 5 in ContentView.
+
+- added the calendar scrolling to the current date when first displayed. Note, this is only available for horizontal and vertical continuous months displays.
 
 - moved some date property functions from **RKMonth** to **RKManager**
 
