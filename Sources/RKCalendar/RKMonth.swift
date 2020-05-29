@@ -25,11 +25,11 @@ public struct RKMonth: View {
     let cellWidth = CGFloat(32)
     
     // to trigger the time selection view
-    @State private var showTime = false
+    @State var showTime = false
     // to "refresh" the dependent views
-    @State private var hasTime = false
+    @State var hasTime = false
     // holds the date and time of the selection
-    @State private var timeDate = Date()
+    @State var timeDate = Date()
     
 
     public var body: some View {
