@@ -186,7 +186,7 @@ public struct RKViewController: View {
         let date: Date = rkManager.selectedDate != nil ? rkManager.selectedDate : Date()
         if self.rkManager.isBetweenMinAndMaxDates(date: date) {
             let nMonths = rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
-            let posSize = nMonths * 350
+            let posSize = nMonths * 650
             return CGPoint(x: posSize, y: 0)
         } else {
             return CGPoint.zero

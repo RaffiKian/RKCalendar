@@ -29,14 +29,14 @@ public struct RKCell: View {
                 .fontWeight(rkDate.getFontWeight())
                 .foregroundColor(rkDate.getTextColor())
                 .frame(width: cellWidth, height: cellWidth)
-                .font(.system(size: 22))
+                .font(rkDate.rkManager.dayFont)
                 .background(rkDate.getBackgroundColor())
                 .cornerRadius(cellWidth/2)
             
             if rkDate.isSelected && rkDate.rkManager.displayTime {
-                Text(rkDate.getTimeText()).font(.system(size: 12)).foregroundColor(rkDate.getBackgroundColor())
+                Text(rkDate.getTimeText()).font(rkDate.rkManager.timeFont).foregroundColor(rkDate.getBackgroundColor())
             } else {
-                Text(".").font(.system(size: 12)).foregroundColor(.clear)
+                Text(".").font(rkDate.rkManager.timeFont).foregroundColor(.clear)
             }
         }
     }

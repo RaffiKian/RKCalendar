@@ -20,6 +20,10 @@ public class RKManager : ObservableObject {
     @Published public var endDate: Date! = nil
     @Published public var locale: Locale = .current
     
+    @Published public var weeklyHeaderFont: Font = Font.system(size: 16)
+    @Published public var dayFont: Font = Font.system(size: 18)
+    @Published public var timeFont: Font = Font.system(size: 12)
+    
     // when true display a continuous calendar of months, when false display one month at a time
     @Published public var isContinuous = true
     
