@@ -8,10 +8,12 @@
 import Foundation
 import SwiftUI
 
-struct ScrollableView<Content: View>: UIViewControllerRepresentable {
+
+
+public struct ScrollableView<Content: View>: UIViewControllerRepresentable {
     
     // MARK: - Type
-    typealias UIViewControllerType = UIScrollViewController<Content>
+    public typealias UIViewControllerType = UIScrollViewController<Content>
     
     // MARK: - Properties
     var offset: Binding<CGPoint>
@@ -21,7 +23,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable {
     var axis: Axis
     
     // MARK: - Init
-    init(_ offset: Binding<CGPoint>, animationDuration: TimeInterval = 0, showsScrollIndicator: Bool = true, axis: Axis = .vertical, @ViewBuilder content: @escaping () -> Content) {
+    public init(_ offset: Binding<CGPoint>, animationDuration: TimeInterval = 0, showsScrollIndicator: Bool = true, axis: Axis = .vertical, @ViewBuilder content: @escaping () -> Content) {
         self.offset               = offset
         self.animationDuration    = animationDuration
         self.content              = content
@@ -30,7 +32,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable {
     }
     
     // MARK: - Updates
-    func makeUIViewController(context: UIViewControllerRepresentableContext<Self>) -> UIViewControllerType {
+    public func makeUIViewController(context: UIViewControllerRepresentableContext<Self>) -> UIViewControllerType {
         
         let scrollViewController = UIScrollViewController(rootView: self.content(), offset: self.offset, axis: self.axis)
         scrollViewController.scrollView.showsVerticalScrollIndicator   = self.showsScrollIndicator
@@ -39,7 +41,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable {
         return scrollViewController
     }
     
-    func updateUIViewController(_ viewController: UIViewControllerType, context: UIViewControllerRepresentableContext<Self>) {
+    public func updateUIViewController(_ viewController: UIViewControllerType, context: UIViewControllerRepresentableContext<Self>) {
         viewController.updateContent(self.content)
         
         let duration: TimeInterval = self.duration(viewController)
@@ -75,7 +77,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable {
     }
 }
 
-final class UIScrollViewController<Content: View> : UIViewController, UIScrollViewDelegate, ObservableObject {
+public final class UIScrollViewController<Content: View> : UIViewController, UIScrollViewDelegate, ObservableObject {
     
     // MARK: - Properties
     var offset: Binding<CGPoint>
@@ -93,7 +95,7 @@ final class UIScrollViewController<Content: View> : UIViewController, UIScrollVi
     }()
     
     // MARK: - Init
-    init(rootView: Content, offset: Binding<CGPoint>, axis: Axis) {
+    public init(rootView: Content, offset: Binding<CGPoint>, axis: Axis) {
         self.offset                                 = offset
         self.hostingController                      = UIHostingController<Content>(rootView: rootView)
         self.hostingController.view.backgroundColor = .clear
@@ -102,7 +104,7 @@ final class UIScrollViewController<Content: View> : UIViewController, UIScrollVi
     }
     
     // MARK: - Update
-    func updateContent(_ content: () -> Content) {
+    public func updateContent(_ content: () -> Content) {
         
         self.hostingController.rootView = content()
         self.scrollView.addSubview(self.hostingController.view)
@@ -120,11 +122,11 @@ final class UIScrollViewController<Content: View> : UIViewController, UIScrollVi
         self.scrollView.contentSize            = contentSize
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         self.view.addSubview(self.scrollView)
         self.createConstraints()
     }
@@ -136,7 +138,7 @@ final class UIScrollViewController<Content: View> : UIViewController, UIScrollVi
 //        }
 //    }
     
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
        self.offset.wrappedValue = scrollView.contentOffset
     }
 

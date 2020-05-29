@@ -10,12 +10,12 @@ import SwiftUI
 
 public struct RKViewController: View {
     
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.presentationMode) public var presentationMode: Binding<PresentationMode>
     
-    @Binding var isPresented: Bool
-    @ObservedObject var rkManager: RKManager
-    @State var pages = [RKWeeklyPage]()
-    @State var index: Int = 0
+    @Binding public var isPresented: Bool
+    @ObservedObject public var rkManager: RKManager
+    @State public var pages = [RKWeeklyPage]()
+    @State public var index: Int = 0
     @State private var contentOffset = CGPoint.zero
     
     
@@ -49,7 +49,7 @@ public struct RKViewController: View {
         }.onAppear(perform: loadWeeklyData)
     }
     
-    func loadWeeklyData() {
+    public func loadWeeklyData() {
         for i in 0..<self.numberOfMonths() {
             for j in 0..<self.numberOfWeeks(monthOffset: i) {
                 pages.append(RKWeeklyPage(isPresented: $isPresented, rkManager: rkManager, monthNdx: i, weekNdx: j))
@@ -58,7 +58,7 @@ public struct RKViewController: View {
     }
     
     // todo
-    var continuousView: some View {
+    public var continuousView: some View {
      //      ScrollableView(self.$contentOffset, axis: .horizontal) {
         ScrollView (.horizontal) {
             HStack {
@@ -83,7 +83,7 @@ public struct RKViewController: View {
     }
     
     // vertical continuous scroll
-    var verticalView: some View {
+    public var verticalView: some View {
         ScrollableView(self.$contentOffset) {
             //     ScrollView(.vertical) {
             VStack (spacing: 25) {
@@ -101,7 +101,7 @@ public struct RKViewController: View {
     }
     
     // horizontal continuous scroll
-    var horizontalView: some View {
+    public var horizontalView: some View {
         ScrollableView(self.$contentOffset, axis: .horizontal) {
             //   ScrollView(.horizontal) {
             HStack {
@@ -120,7 +120,7 @@ public struct RKViewController: View {
     }
     
     // vertical page scroll
-    var verticalViewPage: some View {
+    public var verticalViewPage: some View {
         RKPageView(rkManager: rkManager,
                    pages: (0..<numberOfMonths()).map { index in
                     RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
@@ -128,42 +128,42 @@ public struct RKViewController: View {
     }
     
     // horizontal page scroll
-    var horizontalViewPage: some View {
+    public var horizontalViewPage: some View {
         RKPageView(rkManager: rkManager,
                    pages: (0..<numberOfMonths()).map { index in
                     RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
         })
     }
     
-    func onDone() {
+    public func onDone() {
         // to go back to the previous view
         self.presentationMode.wrappedValue.dismiss()
     }
     
-    func numberOfWeeks(monthOffset: Int) -> Int {
+    public func numberOfWeeks(monthOffset: Int) -> Int {
         let firstOfMonth = firstOfMonthForOffset(monthOffset: monthOffset)
         let rangeOfWeeks = rkManager.calendar.range(of: .weekOfMonth, in: .month, for: firstOfMonth)
         return (rangeOfWeeks?.count)!
     }
     
-    func firstOfMonthForOffset(monthOffset : Int) -> Date {
+    public func firstOfMonthForOffset(monthOffset : Int) -> Date {
         var offset = DateComponents()
         offset.month = monthOffset
         return rkManager.calendar.date(byAdding: offset, to: rkManager.RKFirstDateMonth())!
     }
     
-    func numberOfMonths() -> Int {
+    public func numberOfMonths() -> Int {
         return rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: RKMaximumDateMonthLastDay()).month! + 1
     }
     
-    func RKMaximumDateMonthLastDay() -> Date {
+    public func RKMaximumDateMonthLastDay() -> Date {
         var components = rkManager.calendar.dateComponents([.year, .month, .day], from: rkManager.maximumDate)
         components.month! += 1
         components.day = 0
         return rkManager.calendar.date(from: components)!
     }
     
-    func todayVScrollPos() -> CGPoint {
+    public func todayVScrollPos() -> CGPoint {
         if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
             let nMonths = rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
             let posSize = nMonths * 400
@@ -173,7 +173,7 @@ public struct RKViewController: View {
         }
     }
     
-    func todayHScrollPos() -> CGPoint {
+    public func todayHScrollPos() -> CGPoint {
         if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
             let nMonths = rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
             let posSize = nMonths * 350
@@ -184,7 +184,7 @@ public struct RKViewController: View {
     }
     
     // todo
-    func todayWeeklyHScrollPos() -> CGPoint {
+    public func todayWeeklyHScrollPos() -> CGPoint {
         if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
             let nMonths = rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
             var nWeeks = 3

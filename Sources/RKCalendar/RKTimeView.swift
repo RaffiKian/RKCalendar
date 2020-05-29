@@ -11,7 +11,7 @@ import SwiftUI
 
 public struct RKTimeView: View {
     
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.presentationMode) public var presentationMode: Binding<PresentationMode>
     
     @ObservedObject var rkManager: RKManager
     
@@ -39,7 +39,7 @@ public struct RKTimeView: View {
         .onAppear(perform: loadData)
     }
     
-    func loadData() {
+    public func loadData() {
         // the initial value of the date
         switch rkManager.mode {
         case 0:
@@ -62,12 +62,12 @@ public struct RKTimeView: View {
         }
     }
      
-    func onDone() {
+    public func onDone() {
         // to go back to the previous view passing through doExit
         self.presentationMode.wrappedValue.dismiss()
     }
     
-    func doExit() {
+    public func doExit() {
         switch rkManager.mode {
         case 0:
             rkManager.selectedDate = date

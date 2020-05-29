@@ -36,7 +36,7 @@ public struct RKMonth: View {
         self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
     }
     
-    var monthlyView: some View {
+    public var monthlyView: some View {
         VStack(alignment: .leading, spacing: 10) {
             ForEach(monthsArray, id:  \.self) { row in
                 HStack() {
@@ -62,11 +62,11 @@ public struct RKMonth: View {
         }
     }
     
-    var weeklyView: some View {
+    public var weeklyView: some View {
         weekOffset == nil ? AnyView(self.weeklyViewContinuous) : AnyView(self.weeklyViewPage)
     }
     
-    var weeklyViewPage: some View {
+    public var weeklyViewPage: some View {
         HStack(spacing: 10) {
             ForEach(monthsArray[weekOffset!], id:  \.self) { column in
                 HStack {
@@ -88,7 +88,7 @@ public struct RKMonth: View {
         }
     }
     
-    var weeklyViewContinuous: some View {
+    public var weeklyViewContinuous: some View {
         HStack(spacing: 10) {
             ForEach(monthsArray, id:  \.self) { row in
                 HStack(spacing: 15) {
@@ -114,7 +114,7 @@ public struct RKMonth: View {
         }
     }
     
-    func isLongEnabled(date: Date) -> Bool {
+    public func isLongEnabled(date: Date) -> Bool {
         if rkManager.disabled {return false}
         if self.rkManager.isEnabled(date: date) {
             timeDate = rkManager.calendar.startOfDay(for: date)
@@ -122,11 +122,11 @@ public struct RKMonth: View {
         return self.rkManager.isEnabled(date: date) && rkManager.displayTime
     }
     
-    func isThisMonth(date: Date) -> Bool {
+    public func isThisMonth(date: Date) -> Bool {
         return self.rkManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
     }
     
-    func dateTapped(date: Date) {
+    public func dateTapped(date: Date) {
         if rkManager.disabled {return}
         if self.rkManager.isEnabled(date: date) {
             switch rkManager.mode {
@@ -172,7 +172,7 @@ public struct RKMonth: View {
         }
     }
     
-    func monthArray() -> [[Date]] {
+    public func monthArray() -> [[Date]] {
         var rowArray = [[Date]]()
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
             var columnArray = [Date]()
@@ -185,7 +185,7 @@ public struct RKMonth: View {
         return rowArray
     }
     
-    func getDateAtIndex(index: Int) -> Date {
+    public func getDateAtIndex(index: Int) -> Date {
         let firstOfMonth = firstOfMonthForOffset()
         let weekday = rkManager.calendar.component(.weekday, from: firstOfMonth)
         var startOffset = weekday - rkManager.calendar.firstWeekday
@@ -196,14 +196,14 @@ public struct RKMonth: View {
         return rkManager.calendar.date(byAdding: dateComponents, to: firstOfMonth)!
     }
     
-    func numberOfDays(offset : Int) -> Int {
+    public func numberOfDays(offset : Int) -> Int {
         let firstOfMonth = firstOfMonthForOffset()
         let rangeOfWeeks = rkManager.calendar.range(of: .weekOfMonth, in: .month, for: firstOfMonth)
         
         return (rangeOfWeeks?.count)! * daysPerWeek
     }
     
-    func firstOfMonthForOffset() -> Date {
+    public func firstOfMonthForOffset() -> Date {
         var offset = DateComponents()
         offset.month = monthOffset
         

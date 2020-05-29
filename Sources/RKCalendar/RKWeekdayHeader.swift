@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct RKWeekdayHeader : View {
     
-    var rkManager: RKManager
+    public var rkManager: RKManager
      
     public var body: some View {
         HStack(alignment: .center) {
@@ -24,7 +24,7 @@ public struct RKWeekdayHeader : View {
         .padding()
     }
     
-    func getWeekdayHeaders(calendar: Calendar) -> [String] {
+    public func getWeekdayHeaders(calendar: Calendar) -> [String] {
         
         let formatter = DateFormatter()
         formatter.locale = rkManager.locale

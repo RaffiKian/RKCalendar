@@ -16,7 +16,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
     
     @ObservedObject var rkManager: RKManager
     
-    var pages: [Content]
+    public var pages: [Content]
     
     @State private var index: Int = 0
     @State private var offset: CGFloat = 0
@@ -26,7 +26,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
         self.rkManager.isVertical ? AnyView(self.verticalView) : AnyView(self.horizontalView)
     }
     
-    var verticalView: some View {
+    public var verticalView: some View {
         GeometryReader { geometry in
             ScrollView (.vertical) {
                 VStack {
@@ -55,7 +55,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
         }.onAppear(perform: { self.index = self.todayIndex() })
     }
     
-    var horizontalView: some View {
+    public var horizontalView: some View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 HStack {
@@ -84,7 +84,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
         }.onAppear(perform: { self.index = self.todayIndex() })
     }
     
-    func todayIndex() -> Int {
+    public func todayIndex() -> Int {
         if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
             return rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
         } else {
@@ -94,7 +94,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
     
 }
 
-extension Int {
+public extension Int {
     func keepIndexInRange(min: Int, max: Int) -> Int {
         switch self {
         case ..<min: return min

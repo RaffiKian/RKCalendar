@@ -21,7 +21,7 @@ public struct RKMonthHeader : View {
         Text(getMonthHeader()).foregroundColor(self.rkManager.colors.monthHeaderColor)
     }
     
-    func getMonthHeader() -> String {
+    public func getMonthHeader() -> String {
         let headerDateFormatter = DateFormatter()
         headerDateFormatter.locale = rkManager.locale
         headerDateFormatter.calendar = rkManager.calendar
@@ -30,7 +30,7 @@ public struct RKMonthHeader : View {
         return headerDateFormatter.string(from: firstOfMonthForOffset()).uppercased()
     }
     
-    func firstOfMonthForOffset() -> Date {
+    public func firstOfMonthForOffset() -> Date {
         var offset = DateComponents()
         offset.month = monthOffset
         

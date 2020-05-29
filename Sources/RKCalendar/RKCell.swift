@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RKCell: View {
+public struct RKCell: View {
     
     var rkDate: RKDate
     var cellWidth: CGFloat
@@ -17,7 +17,7 @@ struct RKCell: View {
     @Binding var hasTime: Bool
     
 
-    var body: some View {
+    public var body: some View {
         VStack {
             Text(rkDate.getText())
                 .fontWeight(rkDate.getFontWeight())

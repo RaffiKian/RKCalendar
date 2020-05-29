@@ -27,7 +27,7 @@ public class RKManager : ObservableObject {
     @Published public var isVertical = true
     
     // must have isVertical=false
-    @Published var isWeeklyView: Bool = false {
+    @Published public var isWeeklyView: Bool = false {
         willSet {
             if isWeeklyView {
                 isVertical = false
@@ -72,46 +72,46 @@ public class RKManager : ObservableObject {
         self.locale = .current
     }
     
-    func selectedDatesContains(date: Date) -> Bool {
+    public func selectedDatesContains(date: Date) -> Bool {
         if let _ = self.selectedDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
             return true
         }
         return false
     }
     
-    func selectedDatesFindIndex(date: Date) -> Int? {
+    public func selectedDatesFindIndex(date: Date) -> Int? {
         return self.selectedDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
     }
     
-    func disabledDatesContains(date: Date) -> Bool {
+    public func disabledDatesContains(date: Date) -> Bool {
         if let _ = self.disabledDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
             return true
         }
         return false
     }
     
-    func disabledDatesFindIndex(date: Date) -> Int? {
+    public func disabledDatesFindIndex(date: Date) -> Int? {
         return self.disabledDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
     }
   
-    func RKFormatDate(date: Date) -> Date {
+    public func RKFormatDate(date: Date) -> Date {
         let components = calendar.dateComponents(calendarUnitYMD, from: date)
         return calendar.date(from: components)!
     }
     
-    func RKFormatAndCompareDate(date: Date, referenceDate: Date) -> Bool {
+    public func RKFormatAndCompareDate(date: Date, referenceDate: Date) -> Bool {
         let refDate = RKFormatDate(date: referenceDate)
         let clampedDate = RKFormatDate(date: date)
         return refDate == clampedDate
     }
     
-    func RKFirstDateMonth() -> Date {
+    public func RKFirstDateMonth() -> Date {
         var components = calendar.dateComponents(calendarUnitYMD, from: minimumDate)
         components.day = 1
         return calendar.date(from: components)!
     }
     
-    func RKMaximumDateMonthLastDay() -> Date {
+    public func RKMaximumDateMonthLastDay() -> Date {
         var components = calendar.dateComponents([.year, .month, .day], from: maximumDate)
         components.month! += 1
         components.day = 0
@@ -120,47 +120,47 @@ public class RKManager : ObservableObject {
     
     // MARK: - Date Property functions
     
-    func isToday(date: Date) -> Bool {
+    public func isToday(date: Date) -> Bool {
         return RKFormatAndCompareDate(date: date, referenceDate: Date())
     }
     
-    func isSpecialDate(date: Date) -> Bool {
+    public func isSpecialDate(date: Date) -> Bool {
         return isSelectedDate(date: date) ||
             isStartDate(date: date) ||
             isEndDate(date: date) ||
             isOneOfSelectedDates(date: date)
     }
     
-    func isOneOfSelectedDates(date: Date) -> Bool {
+    public func isOneOfSelectedDates(date: Date) -> Bool {
         return selectedDatesContains(date: date)
     }
     
-    func isSelectedDate(date: Date) -> Bool {
+    public func isSelectedDate(date: Date) -> Bool {
         if selectedDate == nil {
             return false
         }
         return RKFormatAndCompareDate(date: date, referenceDate: selectedDate)
     }
     
-    func isStartDate(date: Date) -> Bool {
+    public func isStartDate(date: Date) -> Bool {
         if startDate == nil {
             return false
         }
         return RKFormatAndCompareDate(date: date, referenceDate: startDate)
     }
     
-    func isEndDate(date: Date) -> Bool {
+    public func isEndDate(date: Date) -> Bool {
         if endDate == nil {
             return false
         }
         return RKFormatAndCompareDate(date: date, referenceDate: endDate)
     }
     
-    func isOneOfDisabledDates(date: Date) -> Bool {
+    public func isOneOfDisabledDates(date: Date) -> Bool {
         return disabledDatesContains(date: date)
     }
     
-    func isEnabled(date: Date) -> Bool {
+    public func isEnabled(date: Date) -> Bool {
         let clampedDate = RKFormatDate(date: date)
         if calendar.compare(clampedDate, to: minimumDate, toGranularity: .day) == .orderedAscending || calendar.compare(clampedDate, to: maximumDate, toGranularity: .day) == .orderedDescending {
             return false
@@ -168,7 +168,7 @@ public class RKManager : ObservableObject {
         return !isOneOfDisabledDates(date: date)
     }
     
-    func isStartDateAfterEndDate() -> Bool {
+    public func isStartDateAfterEndDate() -> Bool {
         if startDate == nil {
             return false
         } else if endDate == nil {
@@ -179,7 +179,7 @@ public class RKManager : ObservableObject {
         return true
     }
     
-    func isBetweenStartAndEnd(date: Date) -> Bool {
+    public func isBetweenStartAndEnd(date: Date) -> Bool {
         if startDate == nil {
             return false
         } else if endDate == nil {
@@ -192,7 +192,7 @@ public class RKManager : ObservableObject {
         return true
     }
     
-    func isBetweenMinAndMaxDates(date: Date) -> Bool {
+    public func isBetweenMinAndMaxDates(date: Date) -> Bool {
         return (min(minimumDate, maximumDate) ... max(minimumDate, maximumDate)).contains(date)
     }
   

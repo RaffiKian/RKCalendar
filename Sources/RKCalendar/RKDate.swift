@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct RKDate {
+public struct RKDate {
     
     var date: Date
     let rkManager: RKManager
@@ -19,7 +19,7 @@ struct RKDate {
     var isBetweenStartAndEnd: Bool = false
     
 
-    init(date: Date, rkManager: RKManager) {
+    public init(date: Date, rkManager: RKManager) {
         self.date = date
         self.rkManager = rkManager
         self.isDisabled = !rkManager.isEnabled(date: date)
@@ -28,12 +28,12 @@ struct RKDate {
         self.isBetweenStartAndEnd = rkManager.isBetweenStartAndEnd(date: date)
     }
     
-    func getText() -> String {
+    public func getText() -> String {
         let day = formatDate(date: date, calendar: self.rkManager.calendar)
         return day
     }
      
-    func getTimeText() -> String {
+    public func getTimeText() -> String {
         var txt = ""
         var hours = 0
         var minutes = 0
@@ -63,7 +63,7 @@ struct RKDate {
         return txt
     }
     
-    func getTextColor() -> Color {
+    public func getTextColor() -> Color {
         var textColor = rkManager.colors.textColor
         if isDisabled {
             textColor = rkManager.colors.disabledColor
@@ -77,7 +77,7 @@ struct RKDate {
         return textColor
     }
     
-    func getBackgroundColor() -> Color {
+    public func getBackgroundColor() -> Color {
         var backgroundColor = rkManager.colors.textBackColor
         if isBetweenStartAndEnd {
             backgroundColor = rkManager.colors.betweenStartAndEndBackColor
@@ -94,7 +94,7 @@ struct RKDate {
         return backgroundColor
     }
     
-    func getFontWeight() -> Font.Weight {
+    public func getFontWeight() -> Font.Weight {
         var fontWeight = Font.Weight.medium
         if isDisabled {
             fontWeight = Font.Weight.thin
@@ -110,19 +110,19 @@ struct RKDate {
     
     // MARK: - Date Formats
     
-    func formatDate(date: Date, calendar: Calendar) -> String {
+    public func formatDate(date: Date, calendar: Calendar) -> String {
         let formatter = dateFormatter()
         return stringFrom(date: date, formatter: formatter, calendar: calendar)
     }
     
-    func dateFormatter() -> DateFormatter {
+    public func dateFormatter() -> DateFormatter {
         let formatter = DateFormatter()
         formatter.locale = .current
         formatter.dateFormat = "d"
         return formatter
     }
     
-    func stringFrom(date: Date, formatter: DateFormatter, calendar: Calendar) -> String {
+    public func stringFrom(date: Date, formatter: DateFormatter, calendar: Calendar) -> String {
         if formatter.calendar != calendar {
             formatter.calendar = calendar
         }
