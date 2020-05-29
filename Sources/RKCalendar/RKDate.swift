@@ -10,8 +10,8 @@ import SwiftUI
 
 public struct RKDate {
     
-    var date: Date
-    let rkManager: RKManager
+    public var date: Date
+    public let rkManager: RKManager
     
     var isDisabled: Bool = false
     var isToday: Bool = false

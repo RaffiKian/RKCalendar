@@ -32,6 +32,13 @@ public struct RKMonth: View {
     @State var timeDate = Date()
     
     
+    public init(isPresented: Binding<Bool>, rkManager: RKManager, monthOffset: Int, weekOffset: Int? = nil) {
+        self._isPresented = isPresented
+        self.rkManager = rkManager
+        self.monthOffset = monthOffset
+        self.weekOffset = weekOffset
+    }
+    
     public var body: some View {
         self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
     }

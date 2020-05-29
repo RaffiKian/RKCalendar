@@ -10,12 +10,18 @@ import SwiftUI
 
 public struct RKCell: View {
     
-    var rkDate: RKDate
-    var cellWidth: CGFloat
+   public var rkDate: RKDate
+   public var cellWidth: CGFloat
     
     // this is used only to refresh the view
-    @Binding var hasTime: Bool
+    @Binding public var hasTime: Bool
     
+    
+    public init(rkDate: RKDate, cellWidth: CGFloat, hasTime: Binding<Bool>) {
+        self.rkDate = rkDate
+        self.cellWidth = cellWidth
+        self._hasTime = hasTime
+    }
 
     public var body: some View {
         VStack {
