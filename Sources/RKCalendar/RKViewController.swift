@@ -14,10 +14,18 @@ public struct RKViewController: View {
     
     @Binding public var isPresented: Bool
     @ObservedObject public var rkManager: RKManager
+    
     @State public var pages = [RKWeeklyPage]()
     @State public var index: Int = 0
+    
     @State private var contentOffset = CGPoint.zero
     
+    public init(isPresented: Binding<Bool>, rkManager: RKManager, pages: [RKWeeklyPage] = [], index: Int = 0) {
+        self._isPresented = isPresented
+        self.rkManager = rkManager
+        self.pages = pages
+        self.index = index
+    }
     
     public var body: some View {
         Group {
@@ -200,17 +208,17 @@ public struct RKViewController: View {
     
 }
 
-#if DEBUG
-struct RKViewController_Previews : PreviewProvider {
-    static var previews: some View {
-        Group {
-            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
-            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32), mode: 0))
-                .environment(\.colorScheme, .dark)
-                .environment(\.layoutDirection, .rightToLeft)
-        }
-    }
-}
-#endif
+//#if DEBUG
+//struct RKViewController_Previews : PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
+//            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32), mode: 0))
+//                .environment(\.colorScheme, .dark)
+//                .environment(\.layoutDirection, .rightToLeft)
+//        }
+//    }
+//}
+//#endif
 
 
