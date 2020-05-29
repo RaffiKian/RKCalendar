@@ -115,7 +115,7 @@ struct ContentView : View {
     }
     
     func startUp() {
-
+        
         // example of horizontal view
   //      rkManager1.isVertical = false
 

@@ -172,9 +172,10 @@ public struct RKViewController: View {
     }
     
     public func todayVScrollPos() -> CGPoint {
-        if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
+        let date: Date = rkManager.selectedDate != nil ? rkManager.selectedDate : Date()
+        if self.rkManager.isBetweenMinAndMaxDates(date: date) {
             let nMonths = rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
-            let posSize = nMonths * 400
+            let posSize = nMonths * 650
             return CGPoint(x: 0, y: posSize)
         } else {
             return CGPoint.zero
@@ -182,7 +183,8 @@ public struct RKViewController: View {
     }
     
     public func todayHScrollPos() -> CGPoint {
-        if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
+        let date: Date = rkManager.selectedDate != nil ? rkManager.selectedDate : Date()
+        if self.rkManager.isBetweenMinAndMaxDates(date: date) {
             let nMonths = rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
             let posSize = nMonths * 350
             return CGPoint(x: posSize, y: 0)

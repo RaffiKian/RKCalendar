@@ -18,27 +18,20 @@ public struct RKMonth: View {
     
     @State var weekOffset: Int?
     
-    let daysPerWeek = 7
+    let daysPerWeek: Int = 7
     var monthsArray: [[Date]] {
         monthArray()
     }
     let cellWidth = CGFloat(32)
     
     // to trigger the time selection view
-    @State var showTime = false
+    @State private var showTime = false
     // to "refresh" the dependent views
-    @State var hasTime = false
+    @State private var hasTime = false
     // holds the date and time of the selection
-    @State var timeDate = Date()
+    @State private var timeDate = Date()
     
-    
-    public init(isPresented: Binding<Bool>, rkManager: RKManager, monthOffset: Int, weekOffset: Int? = nil) {
-        self._isPresented = isPresented
-        self.rkManager = rkManager
-        self.monthOffset = monthOffset
-        self.weekOffset = weekOffset
-    }
-    
+
     public var body: some View {
         self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
     }
@@ -226,4 +219,3 @@ struct RKMonth_Previews : PreviewProvider {
     }
 }
 #endif
-
