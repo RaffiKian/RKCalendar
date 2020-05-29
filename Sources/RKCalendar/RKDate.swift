@@ -129,4 +129,3 @@ public struct RKDate {
         return formatter.string(from: date)
     }
 }
-

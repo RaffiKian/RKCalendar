@@ -32,3 +32,4 @@ public class RKColorSettings : ObservableObject {
 
     public init() {}
 }
+

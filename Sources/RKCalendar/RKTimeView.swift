@@ -98,3 +98,4 @@ struct RKTimeView_Previews: PreviewProvider {
         RKTimeView(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), date: .constant(Date()), showTime: .constant(false), hasTime: .constant(false))
     }
 }
+

@@ -197,3 +197,4 @@ public class RKManager : ObservableObject {
     }
   
 }
+
