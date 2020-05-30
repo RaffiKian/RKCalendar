@@ -131,8 +131,8 @@ public final class UIScrollViewController<Content: View> : UIViewController, UIS
         self.createConstraints()
     }
     
-    // MARK: - UIScrollViewDelegate
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//    // MARK: - UIScrollViewDelegate
+//    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //        DispatchQueue.main.async {
 //            self.offset.wrappedValue = scrollView.contentOffset
 //        }

@@ -31,6 +31,7 @@
 		C743AE0623C9DB1000DE4808 /* RKWeeklyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */; };
 		C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77ABE4823C57DB200574826 /* RKMonthHeader.swift */; };
 		C794AC782480A08800695062 /* Packagex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C794AC772480A08800695062 /* Packagex.swift */; };
+		C7989FC3248240FE007C5E3C /* RKHoursMinutesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */; };
 		C7A3D61B23126E230065D6FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C7A3D61A23126E230065D6FF /* README.md */; };
 		C7AA352C2417010D008B9A6A /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AA352B2417010D008B9A6A /* ScrollableView.swift */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		C75E91222384CE0400F98BED /* RKCalendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RKCalendar.entitlements; sourceTree = "<group>"; };
 		C77ABE4823C57DB200574826 /* RKMonthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMonthHeader.swift; sourceTree = "<group>"; };
 		C794AC772480A08800695062 /* Packagex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packagex.swift; sourceTree = "<group>"; };
+		C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKHoursMinutesPicker.swift; sourceTree = "<group>"; };
 		C7A3D61A23126E230065D6FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C7AA352B2417010D008B9A6A /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -135,6 +137,7 @@
 				C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */,
 				C735112F2360749E00AEAFAE /* RKTimeView.swift */,
 				C77ABE4823C57DB200574826 /* RKMonthHeader.swift */,
+				C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */,
 			);
 			path = RKCalendar;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				C7AA352C2417010D008B9A6A /* ScrollableView.swift in Sources */,
 				0112FD7022DB91DB00BB8F94 /* RKManager.swift in Sources */,
 				C71A20E423C962D700324A59 /* RKPage.swift in Sources */,
+				C7989FC3248240FE007C5E3C /* RKHoursMinutesPicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

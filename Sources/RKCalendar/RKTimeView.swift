@@ -18,9 +18,7 @@ public struct RKTimeView: View {
     @Binding var date: Date
     @Binding var showTime: Bool
     @Binding var hasTime: Bool
-    
-//  @ObservedObject var options = ClockLooks()
-    
+
     var todayRange: ClosedRange<Date> {
         let min = Calendar.current.startOfDay(for: date)
         let max = min.addingTimeInterval(60*60*24)
@@ -30,8 +28,12 @@ public struct RKTimeView: View {
     public var body: some View {
         NavigationView {
             VStack {
-                // ClockPickerView(date: self.$date, options: self.options)
-                DatePicker("", selection: self.$date, in: todayRange, displayedComponents: .hourAndMinute).fixedSize()
+                // ClockPickerView(date: self.$date)
+                #if targetEnvironment(macCatalyst)
+                    RKHoursMinutesPicker(date: self.$date)
+                #elseif os(iOS)
+                    DatePicker("", selection: self.$date, in: todayRange, displayedComponents: .hourAndMinute).fixedSize()
+                #endif
             }.navigationBarTitle(Text("Time setting"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: self.onDone ) { Text("Done") })
                 .onDisappear(perform: doExit)
