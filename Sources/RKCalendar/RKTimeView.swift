@@ -19,7 +19,7 @@ public struct RKTimeView: View {
     @Binding var showTime: Bool
     @Binding var hasTime: Bool
     
-//    @ObservedObject var options = ClockLooks()
+//  @ObservedObject var options = ClockLooks()
     
     var todayRange: ClosedRange<Date> {
         let min = Calendar.current.startOfDay(for: date)
@@ -30,13 +30,13 @@ public struct RKTimeView: View {
     public var body: some View {
         NavigationView {
             VStack {
-  //              ClockPickerView(date: self.$date, options: self.options)
+                // ClockPickerView(date: self.$date, options: self.options)
                 DatePicker("", selection: self.$date, in: todayRange, displayedComponents: .hourAndMinute).fixedSize()
             }.navigationBarTitle(Text("Time setting"), displayMode: .inline)
                 .navigationBarItems(trailing: Button(action: self.onDone ) { Text("Done") })
                 .onDisappear(perform: doExit)
         }.navigationViewStyle(StackNavigationViewStyle())
-        .onAppear(perform: loadData)
+            .onAppear(perform: loadData)
     }
     
     public func loadData() {

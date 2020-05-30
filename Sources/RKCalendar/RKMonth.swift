@@ -31,9 +31,13 @@ public struct RKMonth: View {
     // holds the date and time of the selection
     @State var timeDate = Date()
     
-
+    
     public var body: some View {
-        self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
+        Group {
+            self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
+        }.sheet(isPresented: self.$showTime) {
+            RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
+        }
     }
     
     public var monthlyView: some View {
@@ -57,9 +61,6 @@ public struct RKMonth: View {
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
         }.background(rkManager.colors.monthBackColor)
-            .sheet(isPresented: self.$showTime) {
-                RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
-        }
     }
     
     public var weeklyView: some View {
@@ -83,9 +84,6 @@ public struct RKMonth: View {
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
         }.background(rkManager.colors.monthBackColor)
-            .sheet(isPresented: self.$showTime) {
-                RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
-        }
     }
     
     public var weeklyViewContinuous: some View {
@@ -109,9 +107,6 @@ public struct RKMonth: View {
                 }
             }.frame(minWidth: 0, maxWidth: .infinity)
         }.background(rkManager.colors.monthBackColor)
-            .sheet(isPresented: self.$showTime) {
-                RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
-        }
     }
     
     public func isLongEnabled(date: Date) -> Bool {
