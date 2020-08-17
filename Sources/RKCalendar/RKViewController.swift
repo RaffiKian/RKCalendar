@@ -70,11 +70,11 @@ public struct RKViewController: View {
      //      ScrollableView(self.$contentOffset, axis: .horizontal) {
         ScrollView (.horizontal) {
             HStack {
-                ForEach(0..<self.numberOfMonths()) { index in
+                ForEach(0..<self.numberOfMonths(), id: \.self) { index in
                     VStack (spacing: 15) {
                         Divider()
                         HStack {
-                            ForEach(0..<self.numberOfWeeks(monthOffset: index)) { _ in
+                            ForEach(0..<self.numberOfWeeks(monthOffset: index), id: \.self) { _ in
                                 VStack (spacing: 15) {
                                     RKWeekdayHeader(rkManager: self.rkManager)
                                     RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
@@ -95,7 +95,7 @@ public struct RKViewController: View {
         ScrollableView(self.$contentOffset) {
             //     ScrollView(.vertical) {
             VStack (spacing: 25) {
-                ForEach(0..<self.numberOfMonths()) { index in
+                ForEach(0..<self.numberOfMonths(), id: \.self) { index in
                     VStack(alignment: HorizontalAlignment.center, spacing: 15){
                         RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
                         RKWeekdayHeader(rkManager: self.rkManager)
@@ -113,7 +113,7 @@ public struct RKViewController: View {
         ScrollableView(self.$contentOffset, axis: .horizontal) {
             //   ScrollView(.horizontal) {
             HStack {
-                ForEach(0..<self.numberOfMonths()) { index in
+                ForEach(0..<self.numberOfMonths(), id: \.self) { index in
                     VStack (spacing: 15) {
                         RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
                         RKWeekdayHeader(rkManager: self.rkManager)

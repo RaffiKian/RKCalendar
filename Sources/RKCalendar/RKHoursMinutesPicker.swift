@@ -49,7 +49,7 @@ struct RKHoursMinutesPicker: View {
     }
     
     func update() {
-        if let newDate = Calendar.current.date(bySettingHour: self.hours, minute: self.minutes, second: 0, of: date) {
+        if let newDate = Calendar.current.date(bySettingHour: self.hours, minute: self.minutes, second: 0, of: date), date != newDate {
             date = newDate
         }
     }

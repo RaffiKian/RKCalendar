@@ -42,9 +42,9 @@ public struct RKMonth: View {
     
     public var monthlyView: some View {
         VStack(alignment: .leading, spacing: 10) {
-            ForEach(monthsArray, id:  \.self) { row in
+            ForEach(monthsArray, id: \.self) { row in
                 HStack() {
-                    ForEach(row, id:  \.self) { column in
+                    ForEach(row, id: \.self) { column in
                         HStack() {
                             Spacer()
                             if self.isThisMonth(date: column) {
@@ -69,7 +69,7 @@ public struct RKMonth: View {
     
     public var weeklyViewPage: some View {
         HStack(spacing: 10) {
-            ForEach(monthsArray[weekOffset!], id:  \.self) { column in
+            ForEach(monthsArray[weekOffset!], id: \.self) { column in
                 HStack {
                     Spacer()
                     if self.isThisMonth(date: column) {
@@ -88,9 +88,9 @@ public struct RKMonth: View {
     
     public var weeklyViewContinuous: some View {
         HStack(spacing: 10) {
-            ForEach(monthsArray, id:  \.self) { row in
+            ForEach(monthsArray, id: \.self) { row in
                 HStack(spacing: 15) {
-                    ForEach(row, id:  \.self) { column in
+                    ForEach(row, id: \.self) { column in
                         HStack {
                             Spacer()
                             if self.isThisMonth(date: column) {

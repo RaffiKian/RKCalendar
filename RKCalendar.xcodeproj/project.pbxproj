@@ -104,11 +104,11 @@
 		0112FD5322DB8D6800BB8F94 /* Example */ = {
 			isa = PBXGroup;
 			children = (
-				C75E91222384CE0400F98BED /* RKCalendar.entitlements */,
+				0112FD5822DB8D6800BB8F94 /* ContentView.swift */,
 				0112FD5422DB8D6800BB8F94 /* AppDelegate.swift */,
 				0112FD5622DB8D6800BB8F94 /* SceneDelegate.swift */,
-				0112FD5822DB8D6800BB8F94 /* ContentView.swift */,
 				0112FD5A22DB8D6A00BB8F94 /* Assets.xcassets */,
+				C75E91222384CE0400F98BED /* RKCalendar.entitlements */,
 				0112FD5F22DB8D6A00BB8F94 /* LaunchScreen.storyboard */,
 				0112FD6222DB8D6A00BB8F94 /* Info.plist */,
 				0112FD5C22DB8D6A00BB8F94 /* Preview Content */,
