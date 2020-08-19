@@ -18,7 +18,7 @@ public struct RKTimeView: View {
     @Binding var date: Date
     @Binding var showTime: Bool
     @Binding var hasTime: Bool
-
+    
     var todayRange: ClosedRange<Date> {
         let min = Calendar.current.startOfDay(for: date)
         let max = min.addingTimeInterval(60*60*24)
@@ -26,19 +26,34 @@ public struct RKTimeView: View {
     }
     
     public var body: some View {
-        NavigationView {
-            VStack {
-                // ClockPickerView(date: self.$date)
-                #if targetEnvironment(macCatalyst)
-                    RKHoursMinutesPicker(date: self.$date)
-                #elseif os(iOS)
-                    DatePicker("", selection: self.$date, in: todayRange, displayedComponents: .hourAndMinute).fixedSize()
-                #endif
-            }.navigationBarTitle(Text("Time setting"), displayMode: .inline)
-                .navigationBarItems(trailing: Button(action: self.onDone ) { Text("Done") })
-                .onDisappear(perform: doExit)
-        }.navigationViewStyle(StackNavigationViewStyle())
-            .onAppear(perform: loadData)
+        VStack (alignment: .leading) {
+            HStack {
+                Button(action: self.onDone ) { Text("Done") }
+                Spacer()
+            }.padding(10)
+            
+            // ClockPickerView(date: self.$date)
+            #if targetEnvironment(macCatalyst)
+            RKHoursMinutesPicker(date: self.$date)
+            #elseif os(iOS)
+            HStack {
+                Spacer()
+                DatePicker("", selection: Binding<Date>(
+                    get: { self.date },
+                    set: {
+                        self.date = $0
+                        self.update()
+                    }
+                ),
+                in: todayRange, displayedComponents: .hourAndMinute)
+                .labelsHidden()
+                .datePickerStyle(WheelDatePickerStyle())   //  WheelDatePickerStyle  GraphicalDatePickerStyle
+                Spacer()
+            }
+            #endif
+        }
+        .onAppear(perform: loadData)
+        .frame(width: 400, height: 600)
     }
     
     public func loadData() {
@@ -63,13 +78,15 @@ public struct RKTimeView: View {
             break
         }
     }
-     
+    
     public func onDone() {
+        update()
+        showTime = false
         // to go back to the previous view passing through doExit
         self.presentationMode.wrappedValue.dismiss()
     }
     
-    public func doExit() {
+    public func update() {
         switch rkManager.mode {
         case 0:
             rkManager.selectedDate = date
@@ -81,14 +98,12 @@ public struct RKTimeView: View {
                 self.rkManager.endDate = date
             }
         case 3:
-            if let ndx = rkManager.selectedDates.firstIndex(where: {
-                rkManager.calendar.isDate($0, inSameDayAs: date)}) {
+            if let ndx = rkManager.selectedDates.firstIndex(where: {rkManager.calendar.isDate($0, inSameDayAs: date)}) {
                 rkManager.selectedDates[ndx] = date
             }
         default:
             break
         }
-        showTime = false
         hasTime.toggle()
     }
     

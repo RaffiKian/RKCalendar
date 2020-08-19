@@ -21,11 +21,11 @@ public struct RKWeekdayHeader : View {
             ForEach(self.getWeekdayHeaders(calendar: self.rkManager.calendar), id: \.self) { weekday in
                 Text(weekday)
                     .font(self.rkManager.weeklyHeaderFont)
-                    .frame(minWidth: 0, maxWidth: .infinity)
+                    .frame(maxWidth: .infinity)
                     .foregroundColor(self.rkManager.colors.weekdayHeaderColor)
             }
         }.background(rkManager.colors.weekdayHeaderBackColor)
-        .padding()
+        .padding(.horizontal, 12)
     }
     
     public func getWeekdayHeaders(calendar: Calendar) -> [String] {

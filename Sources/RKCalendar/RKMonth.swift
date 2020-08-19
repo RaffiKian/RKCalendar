@@ -35,7 +35,7 @@ public struct RKMonth: View {
     public var body: some View {
         Group {
             self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
-        }.sheet(isPresented: self.$showTime) {
+        }.popover(isPresented: self.$showTime, arrowEdge: .top) {
             RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
         }
     }
@@ -87,26 +87,16 @@ public struct RKMonth: View {
     }
     
     public var weeklyViewContinuous: some View {
-        HStack(spacing: 10) {
-            ForEach(monthsArray, id: \.self) { row in
-                HStack(spacing: 15) {
-                    ForEach(row, id: \.self) { column in
-                        HStack {
-                            Spacer()
-                            if self.isThisMonth(date: column) {
-                                RKCell(rkDate: RKDate(date: column, rkManager: self.rkManager),
-                                       cellWidth: self.cellWidth, hasTime: self.$hasTime)
-                                    .onTapGesture { self.dateTapped(date: column) }
-                                    .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
-                            } else {
-                                Text("").frame(width: self.cellWidth, height: self.cellWidth)
-                            }
-                            Spacer()
-                        }
-                    }
+        HStack {
+            ForEach(monthArray2(), id: \.self) { row in   // 7 days
+                ForEach(row, id: \.self) { column in      // each day
+                    RKCell(rkDate: RKDate(date: column, rkManager: self.rkManager),
+                           cellWidth: self.cellWidth, hasTime: self.$hasTime)
+                        .onTapGesture { self.dateTapped(date: column) }
+                        .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
                 }
-            }.frame(minWidth: 0, maxWidth: .infinity)
-        }.background(rkManager.colors.monthBackColor)
+            }.background(rkManager.colors.monthBackColor)
+        }
     }
     
     public func isLongEnabled(date: Date) -> Bool {
@@ -170,6 +160,19 @@ public struct RKMonth: View {
     public func monthArray() -> [[Date]] {
         var rowArray = [[Date]]()
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
+            var columnArray = [Date]()
+            for column in 0 ... 6 {
+                let abc = self.getDateAtIndex(index: (row * 7) + column)
+                columnArray.append(abc)
+            }
+            rowArray.append(columnArray)
+        }
+        return rowArray
+    }
+    
+    public func monthArray2() -> [[Date]] {
+        var rowArray = [[Date]]()
+        for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) - 1 {
             var columnArray = [Date]()
             for column in 0 ... 6 {
                 let abc = self.getDateAtIndex(index: (row * 7) + column)

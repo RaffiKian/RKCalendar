@@ -16,11 +16,11 @@
 
 - added  **isContinuous** to display a continuous calendar of months or a one month view at a time. See example 6,7 in ContentView.
 
-   This is activated by setting **isContinuous=false** in RKManager (default **true**). This is a workaround until SwiftUI ScrollView gain the capability to do paging.
+   This is activated by setting **isContinuous=false** in RKManager (default **true**). 
 
 - added a  **weekly view** of the calendar. See example 6 in ContentView.
 
-   This is activated by setting **isWeeklyView=true** in RKManager (default **false**), see example 6. Note you must also set **isVertical=false**.
+   This is activated by setting **isWeeklyView=true** in RKManager (default **false**), see example 6. Note you must also set **isVertical=false**. Currently only works well with **isContinuous=false**, that is, horizontal paging only.
 
 - added **RKMonthHeader** and separated the month headers from **RKMonth** to allow for better mix and match of week and month headers.
 

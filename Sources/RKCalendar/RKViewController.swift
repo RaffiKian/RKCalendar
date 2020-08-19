@@ -18,7 +18,7 @@ public struct RKViewController: View {
     @State public var pages = [RKWeeklyPage]()
     @State public var index: Int = 0
     
-    @State private var contentOffset = CGPoint.zero
+    @State var scrollIndex: Int = 1
     
     public init(isPresented: Binding<Bool>, rkManager: RKManager, pages: [RKWeeklyPage] = [], index: Int = 0) {
         self._isPresented = isPresented
@@ -52,7 +52,7 @@ public struct RKViewController: View {
     public var weeklyBody: some View {
         Group {
             self.rkManager.isContinuous
-                ? AnyView(continuousView)
+                ? AnyView(weeklyContinuousView)
                 : AnyView(RKPageView(rkManager: rkManager, pages: pages))
         }.onAppear(perform: loadWeeklyData)
     }
@@ -65,66 +65,80 @@ public struct RKViewController: View {
         }
     }
     
-    // todo
-    public var continuousView: some View {
-     //      ScrollableView(self.$contentOffset, axis: .horizontal) {
-        ScrollView (.horizontal) {
-            HStack {
-                ForEach(0..<self.numberOfMonths(), id: \.self) { index in
-                    VStack (spacing: 15) {
-                        Divider()
-                        HStack {
-                            ForEach(0..<self.numberOfWeeks(monthOffset: index), id: \.self) { _ in
-                                VStack (spacing: 15) {
-                                    RKWeekdayHeader(rkManager: self.rkManager)
-                                    RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+    // weekly continuous
+    public var weeklyContinuousView: some View {
+        ScrollViewReader { scrollProxy in
+            ScrollView (.horizontal) {
+                HStack (spacing: 15) {
+                    ForEach(0..<self.numberOfMonths(), id: \.self) { index in
+                        VStack (spacing: 15) {
+                            Divider()
+                            HStack (spacing: 1) {
+                                ForEach(0..<self.numberOfWeeks(monthOffset: index), id: \.self) { _ in
+                                    VStack (spacing: 15) {
+                                        RKWeekdayHeader(rkManager: self.rkManager)
+                                        RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+                                    }
                                 }
                             }
-                        }
-                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
-                        Spacer()
+                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                            Spacer()
+                        } 
                     }
-                    Divider()
+                }
+            }.onChange(of: scrollIndex) { id in
+                withAnimation {
+                    scrollProxy.scrollTo(id)
                 }
             }
-        }//.onAppear(perform: { self.contentOffset = self.todayWeeklyHScrollPos() })
+        }.onAppear(perform: { scrollIndex = (todayScrollIndex() - 1) })
     }
     
     // vertical continuous scroll
     public var verticalView: some View {
-        ScrollableView(self.$contentOffset) {
-            //     ScrollView(.vertical) {
-            VStack (spacing: 25) {
-                ForEach(0..<self.numberOfMonths(), id: \.self) { index in
-                    VStack(alignment: HorizontalAlignment.center, spacing: 15){
-                        RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-                        RKWeekdayHeader(rkManager: self.rkManager)
-                        // Divider()
-                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+        ScrollViewReader { scrollProxy in
+            ScrollView {
+                VStack (spacing: 25) {
+                    ForEach(0..<self.numberOfMonths(), id: \.self) { index in
+                        VStack(alignment: HorizontalAlignment.center, spacing: 15){
+                            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+                            RKWeekdayHeader(rkManager: self.rkManager)
+                            // Divider()
+                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                        }
+                        Divider()
                     }
-                    Divider()
+                }
+            }.onChange(of: scrollIndex) { id in
+                withAnimation {
+                    scrollProxy.scrollTo(id)
                 }
             }
-        }.onAppear(perform: { self.contentOffset = self.todayVScrollPos() })
+        }.onAppear(perform: { scrollIndex = todayScrollIndex() })
     }
     
     // horizontal continuous scroll
     public var horizontalView: some View {
-        ScrollableView(self.$contentOffset, axis: .horizontal) {
-            //   ScrollView(.horizontal) {
-            HStack {
-                ForEach(0..<self.numberOfMonths(), id: \.self) { index in
-                    VStack (spacing: 15) {
-                        RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-                        RKWeekdayHeader(rkManager: self.rkManager)
+        ScrollViewReader { scrollProxy in
+            ScrollView (.horizontal) {
+                HStack {
+                    ForEach(0..<self.numberOfMonths(), id: \.self) { index in
+                        VStack (spacing: 15) {
+                            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+                            RKWeekdayHeader(rkManager: self.rkManager)
+                            Divider()
+                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                            Spacer()
+                        }
                         Divider()
-                        RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
-                        Spacer()
                     }
-                    Divider()
+                }
+            }.onChange(of: scrollIndex) { id in
+                withAnimation {
+                    scrollProxy.scrollTo(id)
                 }
             }
-        }.onAppear(perform: { self.contentOffset = self.todayHScrollPos() })
+        }.onAppear(perform: { scrollIndex = todayScrollIndex() })
     }
     
     // vertical page scroll
@@ -132,7 +146,7 @@ public struct RKViewController: View {
         RKPageView(rkManager: rkManager,
                    pages: (0..<numberOfMonths()).map { index in
                     RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
-        })
+                   })
     }
     
     // horizontal page scroll
@@ -140,7 +154,7 @@ public struct RKViewController: View {
         RKPageView(rkManager: rkManager,
                    pages: (0..<numberOfMonths()).map { index in
                     RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
-        })
+                   })
     }
     
     public func onDone() {
@@ -151,7 +165,8 @@ public struct RKViewController: View {
     public func numberOfWeeks(monthOffset: Int) -> Int {
         let firstOfMonth = firstOfMonthForOffset(monthOffset: monthOffset)
         let rangeOfWeeks = rkManager.calendar.range(of: .weekOfMonth, in: .month, for: firstOfMonth)
-        return (rangeOfWeeks?.count)!
+        let nw = (rangeOfWeeks?.count)! - 1
+        return nw
     }
     
     public func firstOfMonthForOffset(monthOffset : Int) -> Date {
@@ -171,56 +186,27 @@ public struct RKViewController: View {
         return rkManager.calendar.date(from: components)!
     }
     
-    public func todayVScrollPos() -> CGPoint {
+    public func todayScrollIndex() -> Int {
         let date: Date = Date() // rkManager.selectedDate != nil ? rkManager.selectedDate : Date()
         if self.rkManager.isBetweenMinAndMaxDates(date: date) {
-            let nMonths = 1 + rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
-            let posSize = nMonths * 350
-            return CGPoint(x: 0, y: posSize)
+            let nMonths = 2 + rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
+            return nMonths
         } else {
-            return CGPoint.zero
+            return 0
         }
     }
-    
-    public func todayHScrollPos() -> CGPoint {
-        let date: Date = Date() // rkManager.selectedDate != nil ? rkManager.selectedDate : Date()
-        if self.rkManager.isBetweenMinAndMaxDates(date: date) {
-            let nMonths = 1 + rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
-            let posSize = nMonths * 300
-            return CGPoint(x: posSize, y: 0)
-        } else {
-            return CGPoint.zero
-        }
-    }
-    
-    // todo
-    public func todayWeeklyHScrollPos() -> CGPoint {
-        if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
-            let nMonths = rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
-            var nWeeks = 3
-            for i in 0..<nMonths {
-                nWeeks += numberOfWeeks(monthOffset: i)
-            }
-            let posSize = nWeeks * 350
-            return CGPoint(x: posSize, y: 0)
-        } else {
-            return CGPoint.zero
-        }
-    }
-    
+
 }
 
-//#if DEBUG
-//struct RKViewController_Previews : PreviewProvider {
-//    static var previews: some View {
-//        Group {
-//            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
-//            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32), mode: 0))
-//                .environment(\.colorScheme, .dark)
-//                .environment(\.layoutDirection, .rightToLeft)
-//        }
-//    }
-//}
-//#endif
-
-
+#if DEBUG
+struct RKViewController_Previews : PreviewProvider {
+    static var previews: some View {
+        Group {
+            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
+            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32), mode: 0))
+                .environment(\.colorScheme, .dark)
+                .environment(\.layoutDirection, .rightToLeft)
+        }
+    }
+}
+#endif

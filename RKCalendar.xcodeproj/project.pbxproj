@@ -33,7 +33,6 @@
 		C794AC782480A08800695062 /* Packagex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C794AC772480A08800695062 /* Packagex.swift */; };
 		C7989FC3248240FE007C5E3C /* RKHoursMinutesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */; };
 		C7A3D61B23126E230065D6FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C7A3D61A23126E230065D6FF /* README.md */; };
-		C7AA352C2417010D008B9A6A /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AA352B2417010D008B9A6A /* ScrollableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,7 +65,6 @@
 		C794AC772480A08800695062 /* Packagex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packagex.swift; sourceTree = "<group>"; };
 		C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKHoursMinutesPicker.swift; sourceTree = "<group>"; };
 		C7A3D61A23126E230065D6FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		C7AA352B2417010D008B9A6A /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,7 +128,6 @@
 				C71A20E223C962C200324A59 /* RKScroll */,
 				0112FD6922DB8EA800BB8F94 /* RKDate.swift */,
 				0112FD6B22DB901B00BB8F94 /* RKCell.swift */,
-				0112FD6D22DB912B00BB8F94 /* RKWeekdayHeader.swift */,
 				0112FD7322DB926A00BB8F94 /* RKMonth.swift */,
 				0112FD7522DB954900BB8F94 /* RKViewController.swift */,
 				0112FD6F22DB91DB00BB8F94 /* RKManager.swift */,
@@ -138,6 +135,7 @@
 				C735112F2360749E00AEAFAE /* RKTimeView.swift */,
 				C77ABE4823C57DB200574826 /* RKMonthHeader.swift */,
 				C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */,
+				0112FD6D22DB912B00BB8F94 /* RKWeekdayHeader.swift */,
 			);
 			path = RKCalendar;
 			sourceTree = "<group>";
@@ -167,7 +165,6 @@
 				C71A20E323C962D700324A59 /* RKPage.swift */,
 				C71A20E523C962FA00324A59 /* RKPageView.swift */,
 				C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */,
-				C7AA352B2417010D008B9A6A /* ScrollableView.swift */,
 			);
 			path = RKScroll;
 			sourceTree = "<group>";
@@ -263,7 +260,6 @@
 				0112FD7622DB954900BB8F94 /* RKViewController.swift in Sources */,
 				C794AC782480A08800695062 /* Packagex.swift in Sources */,
 				C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */,
-				C7AA352C2417010D008B9A6A /* ScrollableView.swift in Sources */,
 				0112FD7022DB91DB00BB8F94 /* RKManager.swift in Sources */,
 				C71A20E423C962D700324A59 /* RKPage.swift in Sources */,
 				C7989FC3248240FE007C5E3C /* RKHoursMinutesPicker.swift in Sources */,
@@ -335,7 +331,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -390,7 +386,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
