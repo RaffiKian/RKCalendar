@@ -9,7 +9,7 @@
 import SwiftUI
 
 public struct RKDate {
-    
+
     public var date: Date
     public let rkManager: RKManager
     

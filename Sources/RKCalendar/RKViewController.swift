@@ -12,15 +12,14 @@ public struct RKViewController: View {
     
     @Environment(\.presentationMode) public var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject public var rkManager: RKManager
+    @EnvironmentObject public var rkManager: RKManager
     
     @State public var pages = [RKWeeklyPage]()
     @State public var index: Int = 0
     
     @State var scrollIndex: Int = 1
     
-    public init(rkManager: RKManager, pages: [RKWeeklyPage] = [], index: Int = 0) {
-        self.rkManager = rkManager
+    public init(pages: [RKWeeklyPage] = [], index: Int = 0) {
         self.pages = pages
         self.index = index
     }
@@ -51,14 +50,14 @@ public struct RKViewController: View {
         Group {
             rkManager.isContinuous
                 ? AnyView(weeklyContinuousView)
-                : AnyView(RKPageView(rkManager: rkManager, pages: pages))
+                : AnyView(RKPageView(pages: pages))
         }.onAppear(perform: loadWeeklyData)
     }
     
     public func loadWeeklyData() {
         for i in 0..<numberOfMonths() {
             for j in 0..<numberOfWeeks(monthOffset: i) {
-                pages.append(RKWeeklyPage(rkManager: rkManager, monthNdx: i, weekNdx: j))
+                pages.append(RKWeeklyPage(monthNdx: i, weekNdx: j))
             }
         }
     }
@@ -72,14 +71,14 @@ public struct RKViewController: View {
                         VStack (spacing: 15) {
                             Divider()
                             HStack (spacing: 1) {
-                                ForEach(0..<self.numberOfWeeks(monthOffset: index), id: \.self) { _ in
+                                ForEach(0..<numberOfWeeks(monthOffset: index), id: \.self) { _ in
                                     VStack (spacing: 15) {
-                                        RKWeekdayHeader(rkManager: rkManager)
-                                        RKMonthHeader(rkManager: rkManager, monthOffset: index)
+                                        RKWeekdayHeader()
+                                        RKMonthHeader(monthOffset: index)
                                     }
                                 }
                             }
-                            RKMonth(rkManager: rkManager, monthOffset: index)
+                            RKMonth(monthOffset: index)
                             Spacer()
                         } 
                     }
@@ -97,12 +96,12 @@ public struct RKViewController: View {
         ScrollViewReader { scrollProxy in
             ScrollView {
                 VStack (spacing: 25) {
-                    ForEach(0..<self.numberOfMonths(), id: \.self) { index in
+                    ForEach(0..<numberOfMonths(), id: \.self) { index in
                         VStack(alignment: HorizontalAlignment.center, spacing: 15){
-                            RKMonthHeader(rkManager: rkManager, monthOffset: index)
-                            RKWeekdayHeader(rkManager: rkManager)
+                            RKMonthHeader(monthOffset: index)
+                            RKWeekdayHeader()
                             // Divider()
-                            RKMonth(rkManager: rkManager, monthOffset: index)
+                            RKMonth(monthOffset: index)
                         }
                         Divider()
                     }
@@ -120,12 +119,12 @@ public struct RKViewController: View {
         ScrollViewReader { scrollProxy in
             ScrollView (.horizontal) {
                 HStack {
-                    ForEach(0..<self.numberOfMonths(), id: \.self) { index in
+                    ForEach(0..<numberOfMonths(), id: \.self) { index in
                         VStack (spacing: 15) {
-                            RKMonthHeader(rkManager: rkManager, monthOffset: index)
-                            RKWeekdayHeader(rkManager: rkManager)
+                            RKMonthHeader(monthOffset: index)
+                            RKWeekdayHeader()
                             Divider()
-                            RKMonth(rkManager: rkManager, monthOffset: index)
+                            RKMonth(monthOffset: index)
                             Spacer()
                         }
                         Divider()
@@ -141,14 +140,14 @@ public struct RKViewController: View {
     
     // a vertical or horizontal page scroll   .sorted(by: { $0.index > $1.index })
     public var pageScrollView: some View {
-        RKPageView(rkManager: rkManager, pages: (0..<numberOfMonths()).map { index in
-                    RKPage(rkManager: rkManager, index: index)
+        RKPageView(pages: (0..<numberOfMonths()).map { index in
+                    RKPage(index: index)
         })
     }
  
     public func onDone() {
         // to go back to the previous view
-        self.presentationMode.wrappedValue.dismiss()
+        presentationMode.wrappedValue.dismiss()
     }
     
     public func numberOfWeeks(monthOffset: Int) -> Int {
@@ -177,7 +176,7 @@ public struct RKViewController: View {
     
     public func todayScrollIndex() -> Int {
         let date: Date = Date() // rkManager.selectedDate != nil ? rkManager.selectedDate : Date()
-        if self.rkManager.isBetweenMinAndMaxDates(date: date) {
+        if rkManager.isBetweenMinAndMaxDates(date: date) {
             let nMonths = 2 + rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
             return nMonths
         } else {
@@ -191,8 +190,8 @@ public struct RKViewController: View {
 struct RKViewController_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RKViewController(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
-            RKViewController(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32), mode: 0))
+            RKViewController()
+            RKViewController()
                 .environment(\.colorScheme, .dark)
                 .environment(\.layoutDirection, .rightToLeft)
         }

@@ -12,11 +12,10 @@ import SwiftUI
 
 public struct RKMonthHeader : View {
     
-    var rkManager: RKManager
+    @EnvironmentObject public var rkManager: RKManager
     let monthOffset: Int
     
-    public init(rkManager: RKManager, monthOffset: Int) {
-        self.rkManager = rkManager
+    public init(monthOffset: Int) {
         self.monthOffset = monthOffset
     }
 

@@ -20,20 +20,20 @@ struct RKHoursMinutesPicker: View {
         HStack {
             Spacer()
             Picker("", selection: Binding<Int>(
-                get: { self.hours},
+                get: { hours},
                 set: {
-                    self.hours = $0
-                    self.update()
+                    hours = $0
+                    update()
             })) {
                 ForEach(0..<24, id: \.self) { i in
                     Text("\(i) hours").tag(i)
                 }
             }.pickerStyle(WheelPickerStyle()).frame(width: 90).clipped()
             Picker("", selection: Binding<Int>(
-                get: { self.minutes},
+                get: { minutes},
                 set: {
-                    self.minutes = $0
-                    self.update()
+                    minutes = $0
+                    update()
             })) {
                 ForEach(0..<60, id: \.self) { i in
                     Text("\(i) min").tag(i)
@@ -44,12 +44,12 @@ struct RKHoursMinutesPicker: View {
     }
     
     func loadData() {
-        self.hours = Calendar.current.component(.hour, from: date)
-        self.minutes = Calendar.current.component(.minute, from: date)
+        hours = Calendar.current.component(.hour, from: date)
+        minutes = Calendar.current.component(.minute, from: date)
     }
     
     func update() {
-        if let newDate = Calendar.current.date(bySettingHour: self.hours, minute: self.minutes, second: 0, of: date), date != newDate {
+        if let newDate = Calendar.current.date(bySettingHour: hours, minute: minutes, second: 0, of: date), date != newDate {
             date = newDate
         }
     }

@@ -12,15 +12,15 @@ import SwiftUI
 public struct RKPage: View, Identifiable {
     public let id = UUID()
     
-    @ObservedObject var rkManager: RKManager
+    @EnvironmentObject public var rkManager: RKManager
     @State var index: Int
     
     public var body: some View {
         VStack(spacing: 15) {
-            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-            RKWeekdayHeader(rkManager: self.rkManager)
+            RKMonthHeader(monthOffset: index)
+            RKWeekdayHeader()
             Divider()
-            RKMonth(rkManager: self.rkManager, monthOffset: index)
+            RKMonth(monthOffset: index)
             Spacer()
         }.fixedSize(horizontal: false, vertical: false)
     }

@@ -78,25 +78,25 @@ public class RKManager : ObservableObject {
     }
     
     public func selectedDatesContains(date: Date) -> Bool {
-        if let _ = self.selectedDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
+        if let _ = selectedDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
             return true
         }
         return false
     }
     
     public func selectedDatesFindIndex(date: Date) -> Int? {
-        return self.selectedDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
+        return selectedDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
     }
     
     public func disabledDatesContains(date: Date) -> Bool {
-        if let _ = self.disabledDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
+        if let _ = disabledDates.first(where: { calendar.isDate($0, inSameDayAs: date) }) {
             return true
         }
         return false
     }
     
     public func disabledDatesFindIndex(date: Date) -> Int? {
-        return self.disabledDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
+        return disabledDates.firstIndex(where: { calendar.isDate($0, inSameDayAs: date) })
     }
   
     public func RKFormatDate(date: Date) -> Date {

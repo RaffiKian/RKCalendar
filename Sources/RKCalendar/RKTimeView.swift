@@ -13,7 +13,7 @@ public struct RKTimeView: View {
     
     @Environment(\.presentationMode) public var presentationMode: Binding<PresentationMode>
     
-    @ObservedObject var rkManager: RKManager
+    @EnvironmentObject public var rkManager: RKManager
     
     @Binding var date: Date
     @Binding var showTime: Bool
@@ -28,27 +28,27 @@ public struct RKTimeView: View {
     public var body: some View {
         VStack (alignment: .leading) {
 //            HStack {
-//                Button(action: self.onDone ) { Text("Done") }
+//                Button(action: onDone ) { Text("Done") }
 //                Spacer()
 //            }.padding(10)
             
-            // ClockPickerView(date: self.$date)
+            // ClockPickerView(date: $date)
             #if targetEnvironment(macCatalyst)
-            RKHoursMinutesPicker(date: self.$date)
+            RKHoursMinutesPicker(date: $date)
             #elseif os(iOS)
             Text("Time").padding(10)
             HStack {
                 Spacer()
                 DatePicker("", selection: Binding<Date>(
-                    get: { self.date },
+                    get: { date },
                     set: {
-                        self.date = $0
-                        self.update()
+                        date = $0
+                        update()
                     }
                 ),
                 in: todayRange, displayedComponents: .hourAndMinute)
                 .labelsHidden()
-                .datePickerStyle(GraphicalDatePickerStyle())   //  WheelDatePickerStyle  GraphicalDatePickerStyle
+                .datePickerStyle(GraphicalDatePickerStyle())
                 .frame(width: 300, height: 200)
                 Spacer()
             }
@@ -84,7 +84,7 @@ public struct RKTimeView: View {
         update()
         showTime = false
         // to go back to the previous view passing through doExit
-        self.presentationMode.wrappedValue.dismiss()
+        presentationMode.wrappedValue.dismiss()
     }
     
     public func update() {
@@ -92,11 +92,11 @@ public struct RKTimeView: View {
         case 0:
             rkManager.selectedDate = date
         case 1, 2:
-            if self.rkManager.startDate != nil && self.rkManager.calendar.isDate(self.rkManager.startDate, inSameDayAs: date) {
-                self.rkManager.startDate = date
+            if rkManager.startDate != nil && rkManager.calendar.isDate(rkManager.startDate, inSameDayAs: date) {
+                rkManager.startDate = date
             }
-            if self.rkManager.endDate != nil && self.rkManager.calendar.isDate(self.rkManager.endDate, inSameDayAs: date) {
-                self.rkManager.endDate = date
+            if rkManager.endDate != nil && rkManager.calendar.isDate(rkManager.endDate, inSameDayAs: date) {
+                rkManager.endDate = date
             }
         case 3:
             if let ndx = rkManager.selectedDates.firstIndex(where: {rkManager.calendar.isDate($0, inSameDayAs: date)}) {
@@ -113,6 +113,6 @@ public struct RKTimeView: View {
 
 struct RKTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        RKTimeView(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), date: .constant(Date()), showTime: .constant(false), hasTime: .constant(false))
+        RKTimeView(date: .constant(Date()), showTime: .constant(false), hasTime: .constant(false))
     }
 }

@@ -11,13 +11,13 @@ import SwiftUI
 
 struct ContentView : View {
     
-    @State var singleIsPresented = false
-    @State var startIsPresented = false
-    @State var multipleIsPresented = false
-    @State var deselectedIsPresented = false
-    @State var timeIsPresented = false
-    @State var weeklyIsPresented = false
-    @State var horizIsPresented = false
+    @State var isPresented1 = false
+    @State var isPresented2 = false
+    @State var isPresented3 = false
+    @State var isPresented4 = false
+    @State var isPresented5 = false
+    @State var isPresented6 = false
+    @State var isPresented7 = false
     
     var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
     
@@ -36,72 +36,72 @@ struct ContentView : View {
     var body: some View {
         VStack (spacing: 10) {
             Group {
-                Button(action: { self.singleIsPresented.toggle() }) {
+                Button(action: { isPresented1.toggle() }) {
                     Text("Example 1 - Single Date Selection").foregroundColor(.blue)
                 }
-                .sheet(isPresented: self.$singleIsPresented, content: {
-                    RKViewController(rkManager: self.rkManager1)})
-                Text(ContentView.getTextFromDate(self.rkManager1.selectedDate))
+                .sheet(isPresented: $isPresented1, content: {
+                        RKViewController().environmentObject(rkManager1)})
+                Text(ContentView.getTextFromDate(rkManager1.selectedDate))
                 
-                Button(action: { self.startIsPresented.toggle() }) {
+                Button(action: { isPresented2.toggle() }) {
                     VStack {
                         Text("Example 2 - Range of Dates Selection").foregroundColor(.blue)
                         Text("(end date > start date)").foregroundColor(.blue)
                     }
                 }
-                .sheet(isPresented: self.$startIsPresented, content: {
-                    RKViewController(rkManager: self.rkManager2)})
+                .sheet(isPresented: $isPresented2, content: {
+                        RKViewController().environmentObject(rkManager2)})
                 VStack {
-                    Text(ContentView.getTextFromDate(self.rkManager2.startDate))
-                    Text(ContentView.getTextFromDate(self.rkManager2.endDate))
+                    Text(ContentView.getTextFromDate(rkManager2.startDate))
+                    Text(ContentView.getTextFromDate(rkManager2.endDate))
                 }
                 
-                Button(action: { self.multipleIsPresented.toggle() }) {
+                Button(action: { isPresented3.toggle() }) {
                     Text("Example 3 - Multiple Dates Selection ").foregroundColor(.blue)
                 }
-                .sheet(isPresented: self.$multipleIsPresented, content: {
-                    RKViewController(rkManager: self.rkManager3)})
-                datesView(dates: self.rkManager3.selectedDates)
+                .sheet(isPresented: $isPresented3, content: {
+                        RKViewController().environmentObject(rkManager3)})
+                datesView(dates: rkManager3.selectedDates)
             }
             Group {
-                Button(action: { self.deselectedIsPresented.toggle() }) {
+                Button(action: { isPresented4.toggle() }) {
                     Text("Example 4 - Disabled Dates Setting").foregroundColor(.blue)
                 }
-                .sheet(isPresented: self.$deselectedIsPresented, content: {
-                    RKViewController(rkManager: self.rkManager4)})
-                datesView(dates: self.rkManager4.disabledDates)
+                .sheet(isPresented: $isPresented4, content: {
+                        RKViewController().environmentObject(rkManager4)})
+                datesView(dates: rkManager4.disabledDates)
                 
-                Button(action: { self.timeIsPresented.toggle() }) {
+                Button(action: { isPresented5.toggle() }) {
                     Text("Example 5 - Time setting on long press").foregroundColor(.blue)
                 }
-                .sheet(isPresented: self.$timeIsPresented, content: {
-                    RKViewController(rkManager: self.rkManager5)})
+                .sheet(isPresented: $isPresented5, content: {
+                        RKViewController().environmentObject(rkManager5)})
                 // mode 0
-                Text(ContentView.getTextFromDateTime(self.rkManager5.selectedDate))
+                Text(ContentView.getTextFromDateTime(rkManager5.selectedDate))
                 // mode 3
-                // datesView(dates: self.rkManager5.selectedDates, true)
+                // datesView(dates: rkManager5.selectedDates, true)
                 // mode 1
                 // VStack {
-                //     Text(RKManager.getTextFromDateTime(self.rkManager5.startDate))
-                //      Text(RKManager.getTextFromDateTime(self.rkManager5.endDate))
+                //     Text(RKManager.getTextFromDateTime(rkManager5.startDate))
+                //      Text(RKManager.getTextFromDateTime(rkManager5.endDate))
                 // }
                 
-                Button(action: { self.weeklyIsPresented.toggle() }) {
+                Button(action: { isPresented6.toggle() }) {
                     Text("Example 6 - Weekly view").foregroundColor(.blue)
                 }
-                .sheet(isPresented: self.$weeklyIsPresented, content: {
-                    RKViewController(rkManager: self.rkManager6)})
-                Text(ContentView.getTextFromDate(self.rkManager6.selectedDate))
+                .sheet(isPresented: $isPresented6, content: {
+                        RKViewController().environmentObject(rkManager6)})
+                Text(ContentView.getTextFromDate(rkManager6.selectedDate))
                 
-                Button(action: { self.horizIsPresented.toggle() }) {
+                Button(action: { isPresented7.toggle() }) {
                     Text("Example 7 - Horizontal view with paging").foregroundColor(.blue)
                 }
-                .sheet(isPresented: self.$horizIsPresented, content: {
-                    RKViewController(rkManager: self.rkManager7)})
-                Text(ContentView.getTextFromDate(self.rkManager7.selectedDate))
+                .sheet(isPresented: $isPresented7, content: {
+                        RKViewController().environmentObject(rkManager7)})
+                Text(ContentView.getTextFromDate(rkManager7.selectedDate))
             }
         }.onAppear(perform: startUp)
-            .navigationViewStyle(StackNavigationViewStyle())
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     func datesView(dates: [Date], _ withTime: Bool = false) -> some View {
@@ -113,11 +113,11 @@ struct ContentView : View {
             }
         }.padding(.horizontal, 5)
     }
-
+    
     func startUp() {
-
+        
         // example of horizontal view
-//        rkManager1.isVertical = false
+        //        rkManager1.isVertical = false
         
         // example of pre-setting selected dates
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]
@@ -181,7 +181,7 @@ struct ContentView : View {
         formatter.dateFormat = "EEEE, MMMM d HH:mm, yyyy"
         return date == nil ? "" : formatter.string(from: date!)
     }
-
+    
 }
 
 

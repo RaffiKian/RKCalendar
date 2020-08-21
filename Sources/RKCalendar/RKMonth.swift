@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct RKMonth: View {
 
-    @ObservedObject var rkManager: RKManager
+    @EnvironmentObject public var rkManager: RKManager
     
     let monthOffset: Int
     
@@ -32,9 +32,9 @@ public struct RKMonth: View {
     
     public var body: some View {
         Group {
-            self.rkManager.isWeeklyView ? AnyView(self.weeklyView) : AnyView(self.monthlyView)
-        }.popover(isPresented: self.$showTime, arrowEdge: .top) {
-            RKTimeView(rkManager: self.rkManager, date: self.$timeDate, showTime: self.$showTime, hasTime: self.$hasTime)
+            rkManager.isWeeklyView ? AnyView(weeklyView) : AnyView(monthlyView)
+        }.popover(isPresented: $showTime, arrowEdge: .top) {
+            RKTimeView(date: $timeDate, showTime: $showTime, hasTime: $hasTime).environmentObject(rkManager)
         }
     }
     
@@ -45,13 +45,13 @@ public struct RKMonth: View {
                     ForEach(row, id: \.self) { column in
                         HStack() {
                             Spacer()
-                            if self.isThisMonth(date: column) {
-                                RKCell(rkDate: RKDate(date: column, rkManager: self.rkManager),
-                                       cellWidth: self.cellWidth, hasTime: self.$hasTime)
-                                    .onTapGesture { self.dateTapped(date: column) }
-                                    .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
+                            if isThisMonth(date: column) {
+                                RKCell(rkDate: RKDate(date: column, rkManager: rkManager),
+                                       cellWidth: cellWidth, hasTime: $hasTime)
+                                    .onTapGesture { dateTapped(date: column) }
+                                    .onLongPressGesture { showTime = isLongEnabled(date: column) }
                             } else {
-                                Text("").frame(width: self.cellWidth, height: self.cellWidth)
+                                Text("").frame(width: cellWidth, height: cellWidth)
                             }
                             Spacer()
                         }
@@ -62,7 +62,7 @@ public struct RKMonth: View {
     }
     
     public var weeklyView: some View {
-        weekOffset == nil ? AnyView(self.weeklyViewContinuous) : AnyView(self.weeklyViewPage)
+        weekOffset == nil ? AnyView(weeklyViewContinuous) : AnyView(weeklyViewPage)
     }
     
     public var weeklyViewPage: some View {
@@ -70,13 +70,13 @@ public struct RKMonth: View {
             ForEach(monthsArray[weekOffset!], id: \.self) { column in
                 HStack {
                     Spacer()
-                    if self.isThisMonth(date: column) {
-                        RKCell(rkDate: RKDate(date: column, rkManager: self.rkManager),
-                               cellWidth: self.cellWidth, hasTime: self.$hasTime)
-                            .onTapGesture { self.dateTapped(date: column) }
-                            .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
+                    if isThisMonth(date: column) {
+                        RKCell(rkDate: RKDate(date: column, rkManager: rkManager),
+                               cellWidth: cellWidth, hasTime: $hasTime)
+                            .onTapGesture { dateTapped(date: column) }
+                            .onLongPressGesture { showTime = isLongEnabled(date: column) }
                     } else {
-                        Text("").frame(width: self.cellWidth, height: self.cellWidth)
+                        Text("").frame(width: cellWidth, height: cellWidth)
                     }
                     Spacer()
                 }
@@ -88,10 +88,10 @@ public struct RKMonth: View {
         HStack {
             ForEach(monthArray2(), id: \.self) { row in   // 7 days
                 ForEach(row, id: \.self) { column in      // each day
-                    RKCell(rkDate: RKDate(date: column, rkManager: self.rkManager),
-                           cellWidth: self.cellWidth, hasTime: self.$hasTime)
-                        .onTapGesture { self.dateTapped(date: column) }
-                        .onLongPressGesture { self.showTime = self.isLongEnabled(date: column) }
+                    RKCell(rkDate: RKDate(date: column, rkManager: rkManager),
+                           cellWidth: cellWidth, hasTime: $hasTime)
+                        .onTapGesture { dateTapped(date: column) }
+                        .onLongPressGesture { showTime = isLongEnabled(date: column) }
                 }
             }.background(rkManager.colors.monthBackColor)
         }
@@ -99,19 +99,19 @@ public struct RKMonth: View {
     
     public func isLongEnabled(date: Date) -> Bool {
         if rkManager.disabled {return false}
-        if self.rkManager.isEnabled(date: date) {
+        if rkManager.isEnabled(date: date) {
             timeDate = rkManager.calendar.startOfDay(for: date)
         }
-        return self.rkManager.isEnabled(date: date) && rkManager.displayTime
+        return rkManager.isEnabled(date: date) && rkManager.displayTime
     }
     
     public func isThisMonth(date: Date) -> Bool {
-        return self.rkManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
+        return rkManager.calendar.isDate(date, equalTo: firstOfMonthForOffset(), toGranularity: .month)
     }
     
     public func dateTapped(date: Date) {
         if rkManager.disabled {return}
-        if self.rkManager.isEnabled(date: date) {
+        if rkManager.isEnabled(date: date) {
             switch rkManager.mode {
             case 0:
                 if rkManager.selectedDate != nil &&
@@ -160,7 +160,7 @@ public struct RKMonth: View {
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) {
             var columnArray = [Date]()
             for column in 0 ... 6 {
-                let abc = self.getDateAtIndex(index: (row * 7) + column)
+                let abc = getDateAtIndex(index: (row * 7) + column)
                 columnArray.append(abc)
             }
             rowArray.append(columnArray)
@@ -173,7 +173,7 @@ public struct RKMonth: View {
         for row in 0 ..< (numberOfDays(offset: monthOffset) / 7) - 1 {
             var columnArray = [Date]()
             for column in 0 ... 6 {
-                let abc = self.getDateAtIndex(index: (row * 7) + column)
+                let abc = getDateAtIndex(index: (row * 7) + column)
                 columnArray.append(abc)
             }
             rowArray.append(columnArray)
@@ -211,7 +211,7 @@ public struct RKMonth: View {
 #if DEBUG
 struct RKMonth_Previews : PreviewProvider {
     static var previews: some View {
-        RKMonth(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), monthOffset: 0, weekOffset: -1)
+        RKMonth(monthOffset: 0, weekOffset: -1)
     }
 }
 #endif

@@ -14,7 +14,7 @@ import Foundation
 
 public struct RKPageView<Content: View & Identifiable>: View {
     
-    @ObservedObject var rkManager: RKManager
+    @EnvironmentObject public var rkManager: RKManager
     
     public var pages: [Content]
     
@@ -36,20 +36,20 @@ public struct RKPageView<Content: View & Identifiable>: View {
                     }
                 }
             }
-            .content.offset(y: self.isGestureActive ? self.offset : geometry.size.height * CGFloat(self.index))
+            .content.offset(y: isGestureActive ? offset : geometry.size.height * CGFloat(index))
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .leading)
             .simultaneousGesture(DragGesture()
                                     .onChanged({ value in
-                                        self.isGestureActive = true
-                                        self.offset = value.translation.height - geometry.size.height * CGFloat(self.index)
+                                        isGestureActive = true
+                                        offset = value.translation.height - geometry.size.height * CGFloat(index)
                                     })
                                     .onEnded({ value in
                                         if abs(value.predictedEndTranslation.height) >= geometry.size.height / 2 {
                                             var nextIndex: Int = (value.predictedEndTranslation.height < 0) ? 1 : -1
-                                            nextIndex += self.index
-                                            self.index = nextIndex.keepIndexInRange(min: 0, max: self.pages.endIndex - 1)
+                                            nextIndex += index
+                                            index = nextIndex.keepIndexInRange(min: 0, max: pages.endIndex - 1)
                                         }
-                                        withAnimation { self.offset = -geometry.size.height * CGFloat(self.index) }
+                                        withAnimation { offset = -geometry.size.height * CGFloat(index) }
                                         DispatchQueue.main.async { self.isGestureActive = false }
                                     })
             )
@@ -60,25 +60,25 @@ public struct RKPageView<Content: View & Identifiable>: View {
         GeometryReader { geometry in
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(self.pages) { page in
+                    ForEach(pages) { page in
                         page.frame(width: geometry.size.width, height: geometry.size.height)
                     }
                 }
             }
-            .content.offset(x: self.isGestureActive ? self.offset : -geometry.size.width * CGFloat(self.index))
+            .content.offset(x: isGestureActive ? offset : -geometry.size.width * CGFloat(index))
             .frame(width: geometry.size.width, height: nil, alignment: .leading)
             .simultaneousGesture(DragGesture()
                                     .onChanged({ value in
-                                        self.isGestureActive = true
-                                        self.offset = value.translation.width - geometry.size.width * CGFloat(self.index)
+                                        isGestureActive = true
+                                        offset = value.translation.width - geometry.size.width * CGFloat(index)
                                     })
                                     .onEnded({ value in
                                         if abs(value.predictedEndTranslation.width) >= geometry.size.width / 2 {
                                             var nextIndex: Int = (value.predictedEndTranslation.width < 0) ? 1 : -1
-                                            nextIndex += self.index
-                                            self.index = nextIndex.keepIndexInRange(min: 0, max: self.pages.endIndex - 1)
+                                            nextIndex += index
+                                            index = nextIndex.keepIndexInRange(min: 0, max: pages.endIndex - 1)
                                         }
-                                        withAnimation { self.offset = -geometry.size.width * CGFloat(self.index) }
+                                        withAnimation { offset = -geometry.size.width * CGFloat(index) }
                                         DispatchQueue.main.async { self.isGestureActive = false }
                                     })
             )
@@ -86,7 +86,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
     }
     
     public func todayIndex() -> Int {
-        if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
+        if rkManager.isBetweenMinAndMaxDates(date: Date()) {
             return 1 + rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
         } else {
             return 0
