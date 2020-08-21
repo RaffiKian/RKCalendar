@@ -34,24 +34,23 @@ public struct RKTimeView: View {
             
             // ClockPickerView(date: $date)
             #if targetEnvironment(macCatalyst)
-            RKHoursMinutesPicker(date: $date)
+                RKHoursMinutesPicker(date: $date)
             #elseif os(iOS)
-            Text("Time").padding(10)
-            HStack {
-                Spacer()
-                DatePicker("", selection: Binding<Date>(
-                    get: { date },
-                    set: {
-                        date = $0
-                        update()
-                    }
-                ),
-                in: todayRange, displayedComponents: .hourAndMinute)
-                .labelsHidden()
-                .datePickerStyle(GraphicalDatePickerStyle())
-                .frame(width: 300, height: 200)
-                Spacer()
-            }
+                Text("Time").padding(10)
+                HStack {
+                    Spacer()
+                    DatePicker("Time", selection: Binding<Date>(
+                        get: { date },
+                        set: {
+                            date = $0
+                            update()
+                        }
+                    ),
+                    in: todayRange, displayedComponents: .hourAndMinute)
+                    .frame(minWidth: 300, maxWidth: .infinity, minHeight: 70, maxHeight: .infinity, alignment: .center)
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    Spacer()
+                }
             #endif
         }
         .onAppear(perform: loadData)

@@ -7,68 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0112FD5522DB8D6800BB8F94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD5422DB8D6800BB8F94 /* AppDelegate.swift */; };
-		0112FD5722DB8D6800BB8F94 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD5622DB8D6800BB8F94 /* SceneDelegate.swift */; };
-		0112FD5922DB8D6800BB8F94 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD5822DB8D6800BB8F94 /* ContentView.swift */; };
-		0112FD5B22DB8D6A00BB8F94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0112FD5A22DB8D6A00BB8F94 /* Assets.xcassets */; };
-		0112FD5E22DB8D6A00BB8F94 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0112FD5D22DB8D6A00BB8F94 /* Preview Assets.xcassets */; };
-		0112FD6122DB8D6A00BB8F94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0112FD5F22DB8D6A00BB8F94 /* LaunchScreen.storyboard */; };
-		0112FD6A22DB8EA800BB8F94 /* RKDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD6922DB8EA800BB8F94 /* RKDate.swift */; };
-		0112FD6C22DB901B00BB8F94 /* RKCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD6B22DB901B00BB8F94 /* RKCell.swift */; };
-		0112FD6E22DB912B00BB8F94 /* RKWeekdayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD6D22DB912B00BB8F94 /* RKWeekdayHeader.swift */; };
-		0112FD7022DB91DB00BB8F94 /* RKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD6F22DB91DB00BB8F94 /* RKManager.swift */; };
-		0112FD7422DB926A00BB8F94 /* RKMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD7322DB926A00BB8F94 /* RKMonth.swift */; };
-		0112FD7622DB954900BB8F94 /* RKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0112FD7522DB954900BB8F94 /* RKViewController.swift */; };
-		0179442B22DBB2AE0059FCF6 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 0179442A22DBB2AE0059FCF6 /* LICENSE.txt */; };
-		019D282322DBCCC00001C990 /* demo-app-dark-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D281F22DBCCC00001C990 /* demo-app-dark-mode-2.png */; };
-		019D282422DBCCC00001C990 /* demo-app-dark-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */; };
-		019D282922DBCD2E0001C990 /* demo-app-light-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */; };
-		019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */; };
-		C71A20E423C962D700324A59 /* RKPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A20E323C962D700324A59 /* RKPage.swift */; };
-		C71A20E623C962FA00324A59 /* RKPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C71A20E523C962FA00324A59 /* RKPageView.swift */; };
-		C72D24C62317A99D00A37CC1 /* RKColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */; };
-		C73511302360749E00AEAFAE /* RKTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C735112F2360749E00AEAFAE /* RKTimeView.swift */; };
-		C743AE0623C9DB1000DE4808 /* RKWeeklyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */; };
-		C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C77ABE4823C57DB200574826 /* RKMonthHeader.swift */; };
-		C794AC782480A08800695062 /* Packagex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C794AC772480A08800695062 /* Packagex.swift */; };
-		C7989FC3248240FE007C5E3C /* RKHoursMinutesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */; };
-		C7A3D61B23126E230065D6FF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C7A3D61A23126E230065D6FF /* README.md */; };
+		C700972024F0859E0001FC37 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C700970824F0859D0001FC37 /* README.md */; };
+		C700972124F0859E0001FC37 /* RKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700970B24F0859D0001FC37 /* RKViewController.swift */; };
+		C700972224F0859E0001FC37 /* RKManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700970C24F0859D0001FC37 /* RKManager.swift */; };
+		C700972324F0859E0001FC37 /* RKHoursMinutesPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700970D24F0859D0001FC37 /* RKHoursMinutesPicker.swift */; };
+		C700972424F0859E0001FC37 /* RKPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700970F24F0859D0001FC37 /* RKPage.swift */; };
+		C700972524F0859E0001FC37 /* RKWeeklyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971024F0859D0001FC37 /* RKWeeklyPage.swift */; };
+		C700972624F0859E0001FC37 /* RKPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971124F0859D0001FC37 /* RKPageView.swift */; };
+		C700972724F0859E0001FC37 /* RKWeekdayHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971224F0859D0001FC37 /* RKWeekdayHeader.swift */; };
+		C700972824F0859E0001FC37 /* RKTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971324F0859D0001FC37 /* RKTimeView.swift */; };
+		C700972924F0859E0001FC37 /* RKMonthHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971424F0859D0001FC37 /* RKMonthHeader.swift */; };
+		C700972A24F0859E0001FC37 /* RKMonth.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971524F0859D0001FC37 /* RKMonth.swift */; };
+		C700972B24F0859E0001FC37 /* RKCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971624F0859D0001FC37 /* RKCell.swift */; };
+		C700972C24F0859E0001FC37 /* RKColorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971724F0859D0001FC37 /* RKColorSettings.swift */; };
+		C700972D24F0859E0001FC37 /* RKDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971824F0859D0001FC37 /* RKDate.swift */; };
+		C700972E24F0859E0001FC37 /* demo-app-dark-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = C700971A24F0859D0001FC37 /* demo-app-dark-mode-2.png */; };
+		C700972F24F0859E0001FC37 /* demo-app-dark-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C700971B24F0859D0001FC37 /* demo-app-dark-mode-1.png */; };
+		C700973024F0859E0001FC37 /* demo-app-light-mode-1.png in Resources */ = {isa = PBXBuildFile; fileRef = C700971C24F0859D0001FC37 /* demo-app-light-mode-1.png */; };
+		C700973124F0859E0001FC37 /* demo-app-light-mode-2.png in Resources */ = {isa = PBXBuildFile; fileRef = C700971D24F0859D0001FC37 /* demo-app-light-mode-2.png */; };
+		C700973224F0859E0001FC37 /* Packagex.swift in Sources */ = {isa = PBXBuildFile; fileRef = C700971E24F0859E0001FC37 /* Packagex.swift */; };
+		C700973324F0859E0001FC37 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = C700971F24F0859E0001FC37 /* LICENSE.txt */; };
+		C795EDA724F084F200008B8C /* RKCalendarApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C795EDA624F084F200008B8C /* RKCalendarApp.swift */; };
+		C795EDA924F084F200008B8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C795EDA824F084F200008B8C /* ContentView.swift */; };
+		C795EDAB24F084F300008B8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C795EDAA24F084F300008B8C /* Assets.xcassets */; };
+		C795EDAE24F084F300008B8C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C795EDAD24F084F300008B8C /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0112FD5122DB8D6800BB8F94 /* RKCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0112FD5422DB8D6800BB8F94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0112FD5622DB8D6800BB8F94 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0112FD5822DB8D6800BB8F94 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0112FD5A22DB8D6A00BB8F94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0112FD5D22DB8D6A00BB8F94 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		0112FD6022DB8D6A00BB8F94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		0112FD6222DB8D6A00BB8F94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0112FD6922DB8EA800BB8F94 /* RKDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKDate.swift; sourceTree = "<group>"; };
-		0112FD6B22DB901B00BB8F94 /* RKCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKCell.swift; sourceTree = "<group>"; };
-		0112FD6D22DB912B00BB8F94 /* RKWeekdayHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKWeekdayHeader.swift; sourceTree = "<group>"; };
-		0112FD6F22DB91DB00BB8F94 /* RKManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKManager.swift; sourceTree = "<group>"; };
-		0112FD7322DB926A00BB8F94 /* RKMonth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMonth.swift; sourceTree = "<group>"; };
-		0112FD7522DB954900BB8F94 /* RKViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKViewController.swift; sourceTree = "<group>"; };
-		0179442A22DBB2AE0059FCF6 /* LICENSE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
-		019D281F22DBCCC00001C990 /* demo-app-dark-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-2.png"; sourceTree = "<group>"; };
-		019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-1.png"; sourceTree = "<group>"; };
-		019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-1.png"; sourceTree = "<group>"; };
-		019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-2.png"; sourceTree = "<group>"; };
-		C71A20E323C962D700324A59 /* RKPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKPage.swift; sourceTree = "<group>"; };
-		C71A20E523C962FA00324A59 /* RKPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKPageView.swift; sourceTree = "<group>"; };
-		C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKColorSettings.swift; sourceTree = "<group>"; };
-		C735112F2360749E00AEAFAE /* RKTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKTimeView.swift; sourceTree = "<group>"; };
-		C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKWeeklyPage.swift; sourceTree = "<group>"; };
-		C75E91222384CE0400F98BED /* RKCalendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RKCalendar.entitlements; sourceTree = "<group>"; };
-		C77ABE4823C57DB200574826 /* RKMonthHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKMonthHeader.swift; sourceTree = "<group>"; };
-		C794AC772480A08800695062 /* Packagex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packagex.swift; sourceTree = "<group>"; };
-		C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKHoursMinutesPicker.swift; sourceTree = "<group>"; };
-		C7A3D61A23126E230065D6FF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C700970824F0859D0001FC37 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C700970B24F0859D0001FC37 /* RKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKViewController.swift; sourceTree = "<group>"; };
+		C700970C24F0859D0001FC37 /* RKManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKManager.swift; sourceTree = "<group>"; };
+		C700970D24F0859D0001FC37 /* RKHoursMinutesPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKHoursMinutesPicker.swift; sourceTree = "<group>"; };
+		C700970F24F0859D0001FC37 /* RKPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKPage.swift; sourceTree = "<group>"; };
+		C700971024F0859D0001FC37 /* RKWeeklyPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKWeeklyPage.swift; sourceTree = "<group>"; };
+		C700971124F0859D0001FC37 /* RKPageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKPageView.swift; sourceTree = "<group>"; };
+		C700971224F0859D0001FC37 /* RKWeekdayHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKWeekdayHeader.swift; sourceTree = "<group>"; };
+		C700971324F0859D0001FC37 /* RKTimeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKTimeView.swift; sourceTree = "<group>"; };
+		C700971424F0859D0001FC37 /* RKMonthHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKMonthHeader.swift; sourceTree = "<group>"; };
+		C700971524F0859D0001FC37 /* RKMonth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKMonth.swift; sourceTree = "<group>"; };
+		C700971624F0859D0001FC37 /* RKCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKCell.swift; sourceTree = "<group>"; };
+		C700971724F0859D0001FC37 /* RKColorSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKColorSettings.swift; sourceTree = "<group>"; };
+		C700971824F0859D0001FC37 /* RKDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RKDate.swift; sourceTree = "<group>"; };
+		C700971A24F0859D0001FC37 /* demo-app-dark-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-2.png"; sourceTree = "<group>"; };
+		C700971B24F0859D0001FC37 /* demo-app-dark-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-dark-mode-1.png"; sourceTree = "<group>"; };
+		C700971C24F0859D0001FC37 /* demo-app-light-mode-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-1.png"; sourceTree = "<group>"; };
+		C700971D24F0859D0001FC37 /* demo-app-light-mode-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "demo-app-light-mode-2.png"; sourceTree = "<group>"; };
+		C700971E24F0859E0001FC37 /* Packagex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Packagex.swift; sourceTree = "<group>"; };
+		C700971F24F0859E0001FC37 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		C784F3C124F0865200D976AC /* RKCalendar.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RKCalendar.entitlements; sourceTree = "<group>"; };
+		C795EDA324F084F200008B8C /* RKCalendar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RKCalendar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C795EDA624F084F200008B8C /* RKCalendarApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKCalendarApp.swift; sourceTree = "<group>"; };
+		C795EDA824F084F200008B8C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		C795EDAA24F084F300008B8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C795EDAD24F084F300008B8C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C795EDAF24F084F300008B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		0112FD4E22DB8D6800BB8F94 /* Frameworks */ = {
+		C795EDA024F084F200008B8C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -78,107 +74,105 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0112FD4822DB8D6800BB8F94 = {
+		C700970924F0859D0001FC37 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				C794AC772480A08800695062 /* Packagex.swift */,
-				C7A3D61A23126E230065D6FF /* README.md */,
-				0179442A22DBB2AE0059FCF6 /* LICENSE.txt */,
-				C704965923EA359900F17186 /* Sources */,
-				0112FD5322DB8D6800BB8F94 /* Example */,
-				0112FD5222DB8D6800BB8F94 /* Products */,
-				019D281E22DBCCAE0001C990 /* Images */,
-			);
-			sourceTree = "<group>";
-		};
-		0112FD5222DB8D6800BB8F94 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0112FD5122DB8D6800BB8F94 /* RKCalendar.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		0112FD5322DB8D6800BB8F94 /* Example */ = {
-			isa = PBXGroup;
-			children = (
-				0112FD5822DB8D6800BB8F94 /* ContentView.swift */,
-				0112FD5422DB8D6800BB8F94 /* AppDelegate.swift */,
-				0112FD5622DB8D6800BB8F94 /* SceneDelegate.swift */,
-				0112FD5A22DB8D6A00BB8F94 /* Assets.xcassets */,
-				C75E91222384CE0400F98BED /* RKCalendar.entitlements */,
-				0112FD5F22DB8D6A00BB8F94 /* LaunchScreen.storyboard */,
-				0112FD6222DB8D6A00BB8F94 /* Info.plist */,
-				0112FD5C22DB8D6A00BB8F94 /* Preview Content */,
-			);
-			path = Example;
-			sourceTree = "<group>";
-		};
-		0112FD5C22DB8D6A00BB8F94 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				0112FD5D22DB8D6A00BB8F94 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		0112FD6822DB8DDC00BB8F94 /* RKCalendar */ = {
-			isa = PBXGroup;
-			children = (
-				C71A20E223C962C200324A59 /* RKScroll */,
-				0112FD6922DB8EA800BB8F94 /* RKDate.swift */,
-				0112FD6B22DB901B00BB8F94 /* RKCell.swift */,
-				0112FD7322DB926A00BB8F94 /* RKMonth.swift */,
-				0112FD7522DB954900BB8F94 /* RKViewController.swift */,
-				0112FD6F22DB91DB00BB8F94 /* RKManager.swift */,
-				C72D24C52317A99D00A37CC1 /* RKColorSettings.swift */,
-				C735112F2360749E00AEAFAE /* RKTimeView.swift */,
-				C77ABE4823C57DB200574826 /* RKMonthHeader.swift */,
-				C7989FC2248240FE007C5E3C /* RKHoursMinutesPicker.swift */,
-				0112FD6D22DB912B00BB8F94 /* RKWeekdayHeader.swift */,
-			);
-			path = RKCalendar;
-			sourceTree = "<group>";
-		};
-		019D281E22DBCCAE0001C990 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				019D282022DBCCC00001C990 /* demo-app-dark-mode-1.png */,
-				019D281F22DBCCC00001C990 /* demo-app-dark-mode-2.png */,
-				019D282722DBCD2E0001C990 /* demo-app-light-mode-1.png */,
-				019D282822DBCD2E0001C990 /* demo-app-light-mode-2.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
-		C704965923EA359900F17186 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				0112FD6822DB8DDC00BB8F94 /* RKCalendar */,
+				C700970A24F0859D0001FC37 /* RKCalendar */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		C71A20E223C962C200324A59 /* RKScroll */ = {
+		C700970A24F0859D0001FC37 /* RKCalendar */ = {
 			isa = PBXGroup;
 			children = (
-				C71A20E323C962D700324A59 /* RKPage.swift */,
-				C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */,
-				C71A20E523C962FA00324A59 /* RKPageView.swift */,
+				C700970E24F0859D0001FC37 /* RKScroll */,
+				C700970B24F0859D0001FC37 /* RKViewController.swift */,
+				C700970C24F0859D0001FC37 /* RKManager.swift */,
+				C700970D24F0859D0001FC37 /* RKHoursMinutesPicker.swift */,
+				C700971224F0859D0001FC37 /* RKWeekdayHeader.swift */,
+				C700971324F0859D0001FC37 /* RKTimeView.swift */,
+				C700971424F0859D0001FC37 /* RKMonthHeader.swift */,
+				C700971524F0859D0001FC37 /* RKMonth.swift */,
+				C700971624F0859D0001FC37 /* RKCell.swift */,
+				C700971724F0859D0001FC37 /* RKColorSettings.swift */,
+				C700971824F0859D0001FC37 /* RKDate.swift */,
+			);
+			path = RKCalendar;
+			sourceTree = "<group>";
+		};
+		C700970E24F0859D0001FC37 /* RKScroll */ = {
+			isa = PBXGroup;
+			children = (
+				C700970F24F0859D0001FC37 /* RKPage.swift */,
+				C700971024F0859D0001FC37 /* RKWeeklyPage.swift */,
+				C700971124F0859D0001FC37 /* RKPageView.swift */,
 			);
 			path = RKScroll;
+			sourceTree = "<group>";
+		};
+		C700971924F0859D0001FC37 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				C700971A24F0859D0001FC37 /* demo-app-dark-mode-2.png */,
+				C700971B24F0859D0001FC37 /* demo-app-dark-mode-1.png */,
+				C700971C24F0859D0001FC37 /* demo-app-light-mode-1.png */,
+				C700971D24F0859D0001FC37 /* demo-app-light-mode-2.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		C795ED9A24F084F200008B8C = {
+			isa = PBXGroup;
+			children = (
+				C700971924F0859D0001FC37 /* Images */,
+				C700971F24F0859E0001FC37 /* LICENSE.txt */,
+				C700971E24F0859E0001FC37 /* Packagex.swift */,
+				C700970824F0859D0001FC37 /* README.md */,
+				C700970924F0859D0001FC37 /* Sources */,
+				C795EDA524F084F200008B8C /* RKCalendar */,
+				C795EDA424F084F200008B8C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C795EDA424F084F200008B8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C795EDA324F084F200008B8C /* RKCalendar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C795EDA524F084F200008B8C /* RKCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				C784F3C124F0865200D976AC /* RKCalendar.entitlements */,
+				C795EDA624F084F200008B8C /* RKCalendarApp.swift */,
+				C795EDA824F084F200008B8C /* ContentView.swift */,
+				C795EDAA24F084F300008B8C /* Assets.xcassets */,
+				C795EDAF24F084F300008B8C /* Info.plist */,
+				C795EDAC24F084F300008B8C /* Preview Content */,
+			);
+			path = RKCalendar;
+			sourceTree = "<group>";
+		};
+		C795EDAC24F084F300008B8C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				C795EDAD24F084F300008B8C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0112FD5022DB8D6800BB8F94 /* RKCalendar */ = {
+		C795EDA224F084F200008B8C /* RKCalendar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0112FD6522DB8D6A00BB8F94 /* Build configuration list for PBXNativeTarget "RKCalendar" */;
+			buildConfigurationList = C795EDB224F084F300008B8C /* Build configuration list for PBXNativeTarget "RKCalendar" */;
 			buildPhases = (
-				0112FD4D22DB8D6800BB8F94 /* Sources */,
-				0112FD4E22DB8D6800BB8F94 /* Frameworks */,
-				0112FD4F22DB8D6800BB8F94 /* Resources */,
+				C795ED9F24F084F200008B8C /* Sources */,
+				C795EDA024F084F200008B8C /* Frameworks */,
+				C795EDA124F084F200008B8C /* Resources */,
 			);
 			buildRules = (
 			);
@@ -186,25 +180,24 @@
 			);
 			name = RKCalendar;
 			productName = RKCalendar;
-			productReference = 0112FD5122DB8D6800BB8F94 /* RKCalendar.app */;
+			productReference = C795EDA324F084F200008B8C /* RKCalendar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		0112FD4922DB8D6800BB8F94 /* Project object */ = {
+		C795ED9B24F084F200008B8C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
-				ORGANIZATIONNAME = "Raffi Kian";
 				TargetAttributes = {
-					0112FD5022DB8D6800BB8F94 = {
-						CreatedOnToolsVersion = 11.0;
+					C795EDA224F084F200008B8C = {
+						CreatedOnToolsVersion = 12.0;
 					};
 				};
 			};
-			buildConfigurationList = 0112FD4C22DB8D6800BB8F94 /* Build configuration list for PBXProject "RKCalendar" */;
+			buildConfigurationList = C795ED9E24F084F200008B8C /* Build configuration list for PBXProject "RKCalendar" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -212,79 +205,65 @@
 				en,
 				Base,
 			);
-			mainGroup = 0112FD4822DB8D6800BB8F94;
-			productRefGroup = 0112FD5222DB8D6800BB8F94 /* Products */;
+			mainGroup = C795ED9A24F084F200008B8C;
+			productRefGroup = C795EDA424F084F200008B8C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0112FD5022DB8D6800BB8F94 /* RKCalendar */,
+				C795EDA224F084F200008B8C /* RKCalendar */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		0112FD4F22DB8D6800BB8F94 /* Resources */ = {
+		C795EDA124F084F200008B8C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0179442B22DBB2AE0059FCF6 /* LICENSE.txt in Resources */,
-				0112FD6122DB8D6A00BB8F94 /* LaunchScreen.storyboard in Resources */,
-				0112FD5E22DB8D6A00BB8F94 /* Preview Assets.xcassets in Resources */,
-				019D282422DBCCC00001C990 /* demo-app-dark-mode-1.png in Resources */,
-				019D282322DBCCC00001C990 /* demo-app-dark-mode-2.png in Resources */,
-				019D282A22DBCD2E0001C990 /* demo-app-light-mode-2.png in Resources */,
-				C7A3D61B23126E230065D6FF /* README.md in Resources */,
-				0112FD5B22DB8D6A00BB8F94 /* Assets.xcassets in Resources */,
-				019D282922DBCD2E0001C990 /* demo-app-light-mode-1.png in Resources */,
+				C700973024F0859E0001FC37 /* demo-app-light-mode-1.png in Resources */,
+				C700972024F0859E0001FC37 /* README.md in Resources */,
+				C795EDAE24F084F300008B8C /* Preview Assets.xcassets in Resources */,
+				C700972E24F0859E0001FC37 /* demo-app-dark-mode-2.png in Resources */,
+				C700973324F0859E0001FC37 /* LICENSE.txt in Resources */,
+				C700972F24F0859E0001FC37 /* demo-app-dark-mode-1.png in Resources */,
+				C700973124F0859E0001FC37 /* demo-app-light-mode-2.png in Resources */,
+				C795EDAB24F084F300008B8C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		0112FD4D22DB8D6800BB8F94 /* Sources */ = {
+		C795ED9F24F084F200008B8C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0112FD5522DB8D6800BB8F94 /* AppDelegate.swift in Sources */,
-				0112FD6C22DB901B00BB8F94 /* RKCell.swift in Sources */,
-				0112FD6E22DB912B00BB8F94 /* RKWeekdayHeader.swift in Sources */,
-				0112FD7422DB926A00BB8F94 /* RKMonth.swift in Sources */,
-				C72D24C62317A99D00A37CC1 /* RKColorSettings.swift in Sources */,
-				C71A20E623C962FA00324A59 /* RKPageView.swift in Sources */,
-				C73511302360749E00AEAFAE /* RKTimeView.swift in Sources */,
-				0112FD5722DB8D6800BB8F94 /* SceneDelegate.swift in Sources */,
-				C743AE0623C9DB1000DE4808 /* RKWeeklyPage.swift in Sources */,
-				0112FD6A22DB8EA800BB8F94 /* RKDate.swift in Sources */,
-				0112FD5922DB8D6800BB8F94 /* ContentView.swift in Sources */,
-				0112FD7622DB954900BB8F94 /* RKViewController.swift in Sources */,
-				C794AC782480A08800695062 /* Packagex.swift in Sources */,
-				C77ABE4923C57DB200574826 /* RKMonthHeader.swift in Sources */,
-				0112FD7022DB91DB00BB8F94 /* RKManager.swift in Sources */,
-				C71A20E423C962D700324A59 /* RKPage.swift in Sources */,
-				C7989FC3248240FE007C5E3C /* RKHoursMinutesPicker.swift in Sources */,
+				C700972B24F0859E0001FC37 /* RKCell.swift in Sources */,
+				C700972924F0859E0001FC37 /* RKMonthHeader.swift in Sources */,
+				C700972624F0859E0001FC37 /* RKPageView.swift in Sources */,
+				C795EDA924F084F200008B8C /* ContentView.swift in Sources */,
+				C700972324F0859E0001FC37 /* RKHoursMinutesPicker.swift in Sources */,
+				C700972124F0859E0001FC37 /* RKViewController.swift in Sources */,
+				C700972424F0859E0001FC37 /* RKPage.swift in Sources */,
+				C700972C24F0859E0001FC37 /* RKColorSettings.swift in Sources */,
+				C700972224F0859E0001FC37 /* RKManager.swift in Sources */,
+				C795EDA724F084F200008B8C /* RKCalendarApp.swift in Sources */,
+				C700972524F0859E0001FC37 /* RKWeeklyPage.swift in Sources */,
+				C700972824F0859E0001FC37 /* RKTimeView.swift in Sources */,
+				C700972724F0859E0001FC37 /* RKWeekdayHeader.swift in Sources */,
+				C700973224F0859E0001FC37 /* Packagex.swift in Sources */,
+				C700972D24F0859E0001FC37 /* RKDate.swift in Sources */,
+				C700972A24F0859E0001FC37 /* RKMonth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXVariantGroup section */
-		0112FD5F22DB8D6A00BB8F94 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0112FD6022DB8D6A00BB8F94 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		0112FD6322DB8D6A00BB8F94 /* Debug */ = {
+		C795EDB024F084F300008B8C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -342,11 +321,10 @@
 			};
 			name = Debug;
 		};
-		0112FD6422DB8D6A00BB8F94 /* Release */ = {
+		C795EDB124F084F300008B8C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -398,22 +376,23 @@
 			};
 			name = Release;
 		};
-		0112FD6622DB8D6A00BB8F94 /* Debug */ = {
+		C795EDB324F084F300008B8C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Example/RKCalendar.entitlements;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RKCalendar/RKCalendar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_ASSET_PATHS = "Example/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "\"RKCalendar/Preview Content\"";
 				DEVELOPMENT_TEAM = N7KF5K7NET;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
+				INFOPLIST_FILE = RKCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = raffikian.RKCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = ringo.rkcalendar.com.RKCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -421,22 +400,23 @@
 			};
 			name = Debug;
 		};
-		0112FD6722DB8D6A00BB8F94 /* Release */ = {
+		C795EDB424F084F300008B8C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Example/RKCalendar.entitlements;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = RKCalendar/RKCalendar.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
-				DEVELOPMENT_ASSET_PATHS = "Example/Preview\\ Content";
+				DEVELOPMENT_ASSET_PATHS = "\"RKCalendar/Preview Content\"";
 				DEVELOPMENT_TEAM = N7KF5K7NET;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Example/Info.plist";
+				INFOPLIST_FILE = RKCalendar/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = raffikian.RKCalendar;
+				PRODUCT_BUNDLE_IDENTIFIER = ringo.rkcalendar.com.RKCalendar;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
@@ -447,25 +427,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0112FD4C22DB8D6800BB8F94 /* Build configuration list for PBXProject "RKCalendar" */ = {
+		C795ED9E24F084F200008B8C /* Build configuration list for PBXProject "RKCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0112FD6322DB8D6A00BB8F94 /* Debug */,
-				0112FD6422DB8D6A00BB8F94 /* Release */,
+				C795EDB024F084F300008B8C /* Debug */,
+				C795EDB124F084F300008B8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0112FD6522DB8D6A00BB8F94 /* Build configuration list for PBXNativeTarget "RKCalendar" */ = {
+		C795EDB224F084F300008B8C /* Build configuration list for PBXNativeTarget "RKCalendar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0112FD6622DB8D6A00BB8F94 /* Debug */,
-				0112FD6722DB8D6A00BB8F94 /* Release */,
+				C795EDB324F084F300008B8C /* Debug */,
+				C795EDB424F084F300008B8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 0112FD4922DB8D6800BB8F94 /* Project object */;
+	rootObject = C795ED9B24F084F200008B8C /* Project object */;
 }
