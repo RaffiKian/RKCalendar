@@ -42,24 +42,24 @@ public struct RKViewController: View {
     
     public var monthlyBody: some View {
         Group {
-            self.rkManager.isVertical
-                ? self.rkManager.isContinuous ? AnyView(self.verticalView) : AnyView(self.verticalViewPage)
-                : self.rkManager.isContinuous ? AnyView(self.horizontalView) : AnyView(self.horizontalViewPage)
+            rkManager.isVertical
+                ? rkManager.isContinuous ? AnyView(verticalView) : AnyView(pageScrollView)
+                : rkManager.isContinuous ? AnyView(horizontalView) : AnyView(pageScrollView)
             Spacer()
         }
     }
     
     public var weeklyBody: some View {
         Group {
-            self.rkManager.isContinuous
+            rkManager.isContinuous
                 ? AnyView(weeklyContinuousView)
                 : AnyView(RKPageView(rkManager: rkManager, pages: pages))
         }.onAppear(perform: loadWeeklyData)
     }
     
     public func loadWeeklyData() {
-        for i in 0..<self.numberOfMonths() {
-            for j in 0..<self.numberOfWeeks(monthOffset: i) {
+        for i in 0..<numberOfMonths() {
+            for j in 0..<numberOfWeeks(monthOffset: i) {
                 pages.append(RKWeeklyPage(isPresented: $isPresented, rkManager: rkManager, monthNdx: i, weekNdx: j))
             }
         }
@@ -70,18 +70,18 @@ public struct RKViewController: View {
         ScrollViewReader { scrollProxy in
             ScrollView (.horizontal) {
                 HStack (spacing: 15) {
-                    ForEach(0..<self.numberOfMonths(), id: \.self) { index in
+                    ForEach(0..<numberOfMonths(), id: \.self) { index in
                         VStack (spacing: 15) {
                             Divider()
                             HStack (spacing: 1) {
                                 ForEach(0..<self.numberOfWeeks(monthOffset: index), id: \.self) { _ in
                                     VStack (spacing: 15) {
-                                        RKWeekdayHeader(rkManager: self.rkManager)
-                                        RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
+                                        RKWeekdayHeader(rkManager: rkManager)
+                                        RKMonthHeader(rkManager: rkManager, monthOffset: index)
                                     }
                                 }
                             }
-                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                            RKMonth(isPresented: $isPresented, rkManager: rkManager, monthOffset: index)
                             Spacer()
                         } 
                     }
@@ -101,10 +101,10 @@ public struct RKViewController: View {
                 VStack (spacing: 25) {
                     ForEach(0..<self.numberOfMonths(), id: \.self) { index in
                         VStack(alignment: HorizontalAlignment.center, spacing: 15){
-                            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-                            RKWeekdayHeader(rkManager: self.rkManager)
+                            RKMonthHeader(rkManager: rkManager, monthOffset: index)
+                            RKWeekdayHeader(rkManager: rkManager)
                             // Divider()
-                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                            RKMonth(isPresented: $isPresented, rkManager: rkManager, monthOffset: index)
                         }
                         Divider()
                     }
@@ -124,10 +124,10 @@ public struct RKViewController: View {
                 HStack {
                     ForEach(0..<self.numberOfMonths(), id: \.self) { index in
                         VStack (spacing: 15) {
-                            RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
-                            RKWeekdayHeader(rkManager: self.rkManager)
+                            RKMonthHeader(rkManager: rkManager, monthOffset: index)
+                            RKWeekdayHeader(rkManager: rkManager)
                             Divider()
-                            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+                            RKMonth(isPresented: $isPresented, rkManager: rkManager, monthOffset: index)
                             Spacer()
                         }
                         Divider()
@@ -141,22 +141,13 @@ public struct RKViewController: View {
         }.onAppear(perform: { scrollIndex = todayScrollIndex() })
     }
     
-    // vertical page scroll
-    public var verticalViewPage: some View {
-        RKPageView(rkManager: rkManager,
-                   pages: (0..<numberOfMonths()).map { index in
+    // a vertical or horizontal page scroll
+    public var pageScrollView: some View {
+        RKPageView(rkManager: rkManager, pages: (0..<numberOfMonths()).map { index in
                     RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
                    })
     }
-    
-    // horizontal page scroll
-    public var horizontalViewPage: some View {
-        RKPageView(rkManager: rkManager,
-                   pages: (0..<numberOfMonths()).map { index in
-                    RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
-                   })
-    }
-    
+ 
     public func onDone() {
         // to go back to the previous view
         self.presentationMode.wrappedValue.dismiss()

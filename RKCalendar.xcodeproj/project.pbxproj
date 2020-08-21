@@ -163,8 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				C71A20E323C962D700324A59 /* RKPage.swift */,
-				C71A20E523C962FA00324A59 /* RKPageView.swift */,
 				C743AE0523C9DB1000DE4808 /* RKWeeklyPage.swift */,
+				C71A20E523C962FA00324A59 /* RKPageView.swift */,
 			);
 			path = RKScroll;
 			sourceTree = "<group>";

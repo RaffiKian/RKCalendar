@@ -19,74 +19,90 @@ public struct RKPageView<Content: View & Identifiable>: View {
     public var pages: [Content]
     
     @State private var index: Int = 0
+    @State private var startIndex: Int = 0
     @State private var offset: CGFloat = 0
     @State private var isGestureActive: Bool = false
     
+
     public var body: some View {
-        self.rkManager.isVertical ? AnyView(self.verticalView) : AnyView(self.horizontalView)
+        rkManager.isVertical ? AnyView(verticalView) : AnyView(horizontalView)
     }
-    
+
     public var verticalView: some View {
         GeometryReader { geometry in
-            ScrollView (.vertical) {
-                VStack {
-                    ForEach(self.pages) { page in
-                        page.frame(width: geometry.size.width, height: geometry.size.height)
+            ScrollViewReader { scrollProxy in
+                ScrollView (.vertical) {
+                    VStack {
+                        ForEach(pages) { page in
+                            page.frame(width: geometry.size.width, height: geometry.size.height)
+                        }
+                    }
+                }
+                .content.offset(y: self.isGestureActive ? self.offset : -geometry.size.height * CGFloat(self.index))
+                .frame(width: geometry.size.width, height: geometry.size.height, alignment: .leading)
+                .simultaneousGesture(DragGesture()
+                                        .onChanged({ value in
+                                            self.isGestureActive = true
+                                            self.offset = value.translation.height - geometry.size.height * CGFloat(self.index)
+                                        })
+                                        .onEnded({ value in
+                                            if abs(value.predictedEndTranslation.height) >= geometry.size.height / 2 {
+                                                var nextIndex: Int = (value.predictedEndTranslation.height < 0) ? 1 : -1
+                                                nextIndex += self.index
+                                                self.index = nextIndex.keepIndexInRange(min: 0, max: self.pages.endIndex - 1)
+                                            }
+                                            withAnimation { self.offset = -geometry.size.height * CGFloat(self.index) }
+                                            DispatchQueue.main.async { self.isGestureActive = false }
+                                        })
+                )
+                .onChange(of: startIndex) { id in
+                    withAnimation {
+                        scrollProxy.scrollTo(id)
                     }
                 }
             }
-            .content.offset(y: self.isGestureActive ? self.offset : -geometry.size.height * CGFloat(self.index))
-            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .leading)
-            .simultaneousGesture(DragGesture()
-            .onChanged({ value in
-                self.isGestureActive = true
-                self.offset = value.translation.height - geometry.size.height * CGFloat(self.index)
-            })
-                .onEnded({ value in
-                    if abs(value.predictedEndTranslation.height) >= geometry.size.height / 2 {
-                        var nextIndex: Int = (value.predictedEndTranslation.height < 0) ? 1 : -1
-                        nextIndex += self.index
-                        self.index = nextIndex.keepIndexInRange(min: 0, max: self.pages.endIndex - 1)
-                    }
-                    withAnimation { self.offset = -geometry.size.height * CGFloat(self.index) }
-                    DispatchQueue.main.async { self.isGestureActive = false }
-                })
-            )
-        }.onAppear(perform: { self.index = self.todayIndex() })
+        }.onAppear(perform: { index = todayIndex(); startIndex = todayIndex() })
     }
     
     public var horizontalView: some View {
         GeometryReader { geometry in
-            ScrollView(.horizontal) {
-                HStack {
-                    ForEach(self.pages) { page in
-                        page.frame(width: geometry.size.width, height: geometry.size.height)
+            ScrollViewReader { scrollProxy in
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(self.pages) { page in
+                            page.frame(width: geometry.size.width, height: geometry.size.height)
+                        }
+                    }
+                }
+                .content.offset(x: self.isGestureActive ? self.offset : -geometry.size.width * CGFloat(self.index))
+                .frame(width: geometry.size.width, height: nil, alignment: .leading)
+                .simultaneousGesture(DragGesture()
+                                        .onChanged({ value in
+                                            self.isGestureActive = true
+                                            self.offset = value.translation.width - geometry.size.width * CGFloat(self.index)
+                                        })
+                                        .onEnded({ value in
+                                            if abs(value.predictedEndTranslation.width) >= geometry.size.width / 2 {
+                                                var nextIndex: Int = (value.predictedEndTranslation.width < 0) ? 1 : -1
+                                                nextIndex += self.index
+                                                self.index = nextIndex.keepIndexInRange(min: 0, max: self.pages.endIndex - 1)
+                                            }
+                                            withAnimation { self.offset = -geometry.size.width * CGFloat(self.index) }
+                                            DispatchQueue.main.async { self.isGestureActive = false }
+                                        })
+                )
+                .onChange(of: startIndex) { id in
+                    withAnimation {
+                        scrollProxy.scrollTo(id)
                     }
                 }
             }
-            .content.offset(x: self.isGestureActive ? self.offset : -geometry.size.width * CGFloat(self.index))
-            .frame(width: geometry.size.width, height: nil, alignment: .leading)
-            .simultaneousGesture(DragGesture()
-            .onChanged({ value in
-                self.isGestureActive = true
-                self.offset = value.translation.width - geometry.size.width * CGFloat(self.index)
-            })
-                .onEnded({ value in
-                    if abs(value.predictedEndTranslation.width) >= geometry.size.width / 2 {
-                        var nextIndex: Int = (value.predictedEndTranslation.width < 0) ? 1 : -1
-                        nextIndex += self.index
-                        self.index = nextIndex.keepIndexInRange(min: 0, max: self.pages.endIndex - 1)
-                    }
-                    withAnimation { self.offset = -geometry.size.width * CGFloat(self.index) }
-                    DispatchQueue.main.async { self.isGestureActive = false }
-                })
-            )
-        }.onAppear(perform: { self.index = self.todayIndex() })
+        }.onAppear(perform: { index = todayIndex(); startIndex = todayIndex() })
     }
     
     public func todayIndex() -> Int {
         if self.rkManager.isBetweenMinAndMaxDates(date: Date()) {
-            return rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
+            return 1 + rkManager.calendar.dateComponents([.month], from: rkManager.minimumDate, to: Date()).month!
         } else {
             return 0
         }

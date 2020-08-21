@@ -27,15 +27,16 @@ public struct RKTimeView: View {
     
     public var body: some View {
         VStack (alignment: .leading) {
-            HStack {
-                Button(action: self.onDone ) { Text("Done") }
-                Spacer()
-            }.padding(10)
+//            HStack {
+//                Button(action: self.onDone ) { Text("Done") }
+//                Spacer()
+//            }.padding(10)
             
             // ClockPickerView(date: self.$date)
             #if targetEnvironment(macCatalyst)
             RKHoursMinutesPicker(date: self.$date)
             #elseif os(iOS)
+            Text("Time").padding(10)
             HStack {
                 Spacer()
                 DatePicker("", selection: Binding<Date>(
@@ -47,13 +48,13 @@ public struct RKTimeView: View {
                 ),
                 in: todayRange, displayedComponents: .hourAndMinute)
                 .labelsHidden()
-                .datePickerStyle(WheelDatePickerStyle())   //  WheelDatePickerStyle  GraphicalDatePickerStyle
+                .datePickerStyle(GraphicalDatePickerStyle())   //  WheelDatePickerStyle  GraphicalDatePickerStyle
+                .frame(width: 300, height: 200)
                 Spacer()
             }
             #endif
         }
         .onAppear(perform: loadData)
-        .frame(width: 400, height: 600)
     }
     
     public func loadData() {
