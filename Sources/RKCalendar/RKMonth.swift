@@ -9,9 +9,7 @@
 import SwiftUI
 
 public struct RKMonth: View {
-    
-    @Binding var isPresented: Bool
-    
+
     @ObservedObject var rkManager: RKManager
     
     let monthOffset: Int
@@ -213,7 +211,7 @@ public struct RKMonth: View {
 #if DEBUG
 struct RKMonth_Previews : PreviewProvider {
     static var previews: some View {
-        RKMonth(isPresented: .constant(false),rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), monthOffset: 0, weekOffset: -1)
+        RKMonth(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0), monthOffset: 0, weekOffset: -1)
     }
 }
 #endif

@@ -12,7 +12,6 @@ import SwiftUI
 public struct RKPage: View, Identifiable {
     public let id = UUID()
     
-    @Binding var isPresented: Bool
     @ObservedObject var rkManager: RKManager
     @State var index: Int
     
@@ -21,7 +20,7 @@ public struct RKPage: View, Identifiable {
             RKMonthHeader(rkManager: self.rkManager, monthOffset: index)
             RKWeekdayHeader(rkManager: self.rkManager)
             Divider()
-            RKMonth(isPresented: self.$isPresented, rkManager: self.rkManager, monthOffset: index)
+            RKMonth(rkManager: self.rkManager, monthOffset: index)
             Spacer()
         }.fixedSize(horizontal: false, vertical: false)
     }

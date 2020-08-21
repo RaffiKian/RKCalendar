@@ -12,7 +12,6 @@ public struct RKViewController: View {
     
     @Environment(\.presentationMode) public var presentationMode: Binding<PresentationMode>
     
-    @Binding public var isPresented: Bool
     @ObservedObject public var rkManager: RKManager
     
     @State public var pages = [RKWeeklyPage]()
@@ -20,8 +19,7 @@ public struct RKViewController: View {
     
     @State var scrollIndex: Int = 1
     
-    public init(isPresented: Binding<Bool>, rkManager: RKManager, pages: [RKWeeklyPage] = [], index: Int = 0) {
-        self._isPresented = isPresented
+    public init(rkManager: RKManager, pages: [RKWeeklyPage] = [], index: Int = 0) {
         self.rkManager = rkManager
         self.pages = pages
         self.index = index
@@ -60,7 +58,7 @@ public struct RKViewController: View {
     public func loadWeeklyData() {
         for i in 0..<numberOfMonths() {
             for j in 0..<numberOfWeeks(monthOffset: i) {
-                pages.append(RKWeeklyPage(isPresented: $isPresented, rkManager: rkManager, monthNdx: i, weekNdx: j))
+                pages.append(RKWeeklyPage(rkManager: rkManager, monthNdx: i, weekNdx: j))
             }
         }
     }
@@ -81,7 +79,7 @@ public struct RKViewController: View {
                                     }
                                 }
                             }
-                            RKMonth(isPresented: $isPresented, rkManager: rkManager, monthOffset: index)
+                            RKMonth(rkManager: rkManager, monthOffset: index)
                             Spacer()
                         } 
                     }
@@ -104,7 +102,7 @@ public struct RKViewController: View {
                             RKMonthHeader(rkManager: rkManager, monthOffset: index)
                             RKWeekdayHeader(rkManager: rkManager)
                             // Divider()
-                            RKMonth(isPresented: $isPresented, rkManager: rkManager, monthOffset: index)
+                            RKMonth(rkManager: rkManager, monthOffset: index)
                         }
                         Divider()
                     }
@@ -127,7 +125,7 @@ public struct RKViewController: View {
                             RKMonthHeader(rkManager: rkManager, monthOffset: index)
                             RKWeekdayHeader(rkManager: rkManager)
                             Divider()
-                            RKMonth(isPresented: $isPresented, rkManager: rkManager, monthOffset: index)
+                            RKMonth(rkManager: rkManager, monthOffset: index)
                             Spacer()
                         }
                         Divider()
@@ -141,11 +139,11 @@ public struct RKViewController: View {
         }.onAppear(perform: { scrollIndex = todayScrollIndex() })
     }
     
-    // a vertical or horizontal page scroll
+    // a vertical or horizontal page scroll   .sorted(by: { $0.index > $1.index })
     public var pageScrollView: some View {
         RKPageView(rkManager: rkManager, pages: (0..<numberOfMonths()).map { index in
-                    RKPage(isPresented: $isPresented, rkManager: rkManager, index: index)
-                   })
+                    RKPage(rkManager: rkManager, index: index)
+        })
     }
  
     public func onDone() {
@@ -193,8 +191,8 @@ public struct RKViewController: View {
 struct RKViewController_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
-            RKViewController(isPresented: .constant(false), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32), mode: 0))
+            RKViewController(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
+            RKViewController(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*32), mode: 0))
                 .environment(\.colorScheme, .dark)
                 .environment(\.layoutDirection, .rightToLeft)
         }

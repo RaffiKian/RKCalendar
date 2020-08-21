@@ -19,7 +19,6 @@ public struct RKPageView<Content: View & Identifiable>: View {
     public var pages: [Content]
     
     @State private var index: Int = 0
-    @State private var startIndex: Int = 0
     @State private var offset: CGFloat = 0
     @State private var isGestureActive: Bool = false
     
@@ -37,7 +36,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
                     }
                 }
             }
-            .content.offset(y: self.isGestureActive ? self.offset : -geometry.size.height * CGFloat(self.index))
+            .content.offset(y: self.isGestureActive ? self.offset : geometry.size.height * CGFloat(self.index))
             .frame(width: geometry.size.width, height: geometry.size.height, alignment: .leading)
             .simultaneousGesture(DragGesture()
                                     .onChanged({ value in
