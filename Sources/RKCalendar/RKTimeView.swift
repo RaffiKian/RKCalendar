@@ -31,8 +31,7 @@ public struct RKTimeView: View {
 //                Button(action: onDone ) { Text("Done") }
 //                Spacer()
 //            }.padding(10)
-            
-            // ClockPickerView(date: $date)
+  
             #if targetEnvironment(macCatalyst)
                 RKHoursMinutesPicker(date: $date)
             #elseif os(iOS)
@@ -47,8 +46,11 @@ public struct RKTimeView: View {
                         }
                     ),
                     in: todayRange, displayedComponents: .hourAndMinute)
-                    .frame(minWidth: 300, maxWidth: .infinity, minHeight: 70, maxHeight: .infinity, alignment: .center)
+                    .labelsHidden()
+                    .frame(minWidth: 300, maxWidth: .infinity, minHeight: 80, maxHeight: .infinity, alignment: .leading)
                     .datePickerStyle(GraphicalDatePickerStyle())
+                    .clipped()
+
                     Spacer()
                 }
             #endif

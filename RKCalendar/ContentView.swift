@@ -39,8 +39,7 @@ struct ContentView : View {
                 Button(action: { isPresented1.toggle() }) {
                     Text("Example 1 - Single Date Selection").foregroundColor(.blue)
                 }
-                .sheet(isPresented: $isPresented1, content: {
-                        RKViewController().environmentObject(rkManager1)})
+                .sheet(isPresented: $isPresented1) { RKViewController().environmentObject(rkManager1) }
                 Text(ContentView.getTextFromDate(rkManager1.selectedDate))
                 
                 Button(action: { isPresented2.toggle() }) {
@@ -49,8 +48,7 @@ struct ContentView : View {
                         Text("(end date > start date)").foregroundColor(.blue)
                     }
                 }
-                .sheet(isPresented: $isPresented2, content: {
-                        RKViewController().environmentObject(rkManager2)})
+                .sheet(isPresented: $isPresented2) { RKViewController().environmentObject(rkManager2) }
                 VStack {
                     Text(ContentView.getTextFromDate(rkManager2.startDate))
                     Text(ContentView.getTextFromDate(rkManager2.endDate))
@@ -59,23 +57,20 @@ struct ContentView : View {
                 Button(action: { isPresented3.toggle() }) {
                     Text("Example 3 - Multiple Dates Selection ").foregroundColor(.blue)
                 }
-                .sheet(isPresented: $isPresented3, content: {
-                        RKViewController().environmentObject(rkManager3)})
+                .sheet(isPresented: $isPresented3) { RKViewController().environmentObject(rkManager3) }
                 datesView(dates: rkManager3.selectedDates)
             }
             Group {
                 Button(action: { isPresented4.toggle() }) {
                     Text("Example 4 - Disabled Dates Setting").foregroundColor(.blue)
                 }
-                .sheet(isPresented: $isPresented4, content: {
-                        RKViewController().environmentObject(rkManager4)})
+                .sheet(isPresented: $isPresented4) { RKViewController().environmentObject(rkManager4) }
                 datesView(dates: rkManager4.disabledDates)
                 
                 Button(action: { isPresented5.toggle() }) {
                     Text("Example 5 - Time setting on long press").foregroundColor(.blue)
                 }
-                .sheet(isPresented: $isPresented5, content: {
-                        RKViewController().environmentObject(rkManager5)})
+                .sheet(isPresented: $isPresented5) { RKViewController().environmentObject(rkManager5) }
                 // mode 0
                 Text(ContentView.getTextFromDateTime(rkManager5.selectedDate))
                 // mode 3
@@ -89,15 +84,13 @@ struct ContentView : View {
                 Button(action: { isPresented6.toggle() }) {
                     Text("Example 6 - Weekly view").foregroundColor(.blue)
                 }
-                .sheet(isPresented: $isPresented6, content: {
-                        RKViewController().environmentObject(rkManager6)})
+                .sheet(isPresented: $isPresented6) { RKViewController().environmentObject(rkManager6) }
                 Text(ContentView.getTextFromDate(rkManager6.selectedDate))
                 
                 Button(action: { isPresented7.toggle() }) {
                     Text("Example 7 - Horizontal view with paging").foregroundColor(.blue)
                 }
-                .sheet(isPresented: $isPresented7, content: {
-                        RKViewController().environmentObject(rkManager7)})
+                .sheet(isPresented: $isPresented7) { RKViewController().environmentObject(rkManager7) }
                 Text(ContentView.getTextFromDate(rkManager7.selectedDate))
             }
         }.onAppear(perform: startUp)
@@ -117,7 +110,7 @@ struct ContentView : View {
     func startUp() {
         
         // example of horizontal view
-        //        rkManager1.isVertical = false
+        // rkManager1.isVertical = false
         
         // example of pre-setting selected dates
         let testOnDates = [Date().addingTimeInterval(60*60*24), Date().addingTimeInterval(60*60*24*2)]

@@ -33,7 +33,8 @@ public struct RKMonth: View {
     public var body: some View {
         Group {
             rkManager.isWeeklyView ? AnyView(weeklyView) : AnyView(monthlyView)
-        }.popover(isPresented: $showTime, arrowEdge: .top) {
+        }
+        .popover(isPresented: $showTime, arrowEdge: .top) {
             RKTimeView(date: $timeDate, showTime: $showTime, hasTime: $hasTime).environmentObject(rkManager)
         }
     }

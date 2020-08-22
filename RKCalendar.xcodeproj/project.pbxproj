@@ -179,6 +179,8 @@
 			dependencies = (
 			);
 			name = RKCalendar;
+			packageProductDependencies = (
+			);
 			productName = RKCalendar;
 			productReference = C795EDA324F084F200008B8C /* RKCalendar.app */;
 			productType = "com.apple.product-type.application";
@@ -206,6 +208,8 @@
 				Base,
 			);
 			mainGroup = C795ED9A24F084F200008B8C;
+			packageReferences = (
+			);
 			productRefGroup = C795EDA424F084F200008B8C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
