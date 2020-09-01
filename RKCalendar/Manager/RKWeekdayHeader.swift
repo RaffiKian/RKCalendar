@@ -43,7 +43,7 @@ struct RKWeekdayHeader : View {
 #if DEBUG
 struct RKWeekdayHeader_Previews : PreviewProvider {
     static var previews: some View {
-        RKWeekdayHeader(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0))
+        RKWeekdayHeader(rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate))
     }
 }
 #endif
