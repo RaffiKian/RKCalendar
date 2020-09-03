@@ -40,10 +40,10 @@ public class RKManager : ObservableObject {
         }
     }
     
-    // mode=0 to select a single date.
-    // mode=1 to select a contiguous range of dates, from a start date (mode=1) to an end date (mode=2).
-    // mode=3 for multi dates selections.
-    @Published public var mode: Int = 0
+    // mode=.singleDate for a single date.
+    // mode=.dateRange for a contiguous range of dates, from a start date (mode=1) to an end date (mode=.dateRange2).
+    // mode=.multiDate for multi dates selections.
+    @Published public var mode: RKSelectionMode = .singleDate
     
     // allow disabling of user input for the current mode
     @Published public var disabled: Bool = false
@@ -55,7 +55,7 @@ public class RKManager : ObservableObject {
     
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
     
-    public init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: Int) {
+    public init(calendar: Calendar, minimumDate: Date, maximumDate: Date, selectedDates: [Date] = [Date](), mode: RKSelectionMode) {
         self.calendar = calendar
         self.minimumDate = minimumDate
         self.maximumDate = maximumDate
@@ -68,7 +68,7 @@ public class RKManager : ObservableObject {
         self.minimumDate = Date()
         self.maximumDate = Date()
         self.selectedDates = [Date]()
-        self.mode = 0
+        self.mode = .singleDate
         self.disabledDates = [Date]()
         self.selectedDates = [Date]()
         self.selectedDate = Date()

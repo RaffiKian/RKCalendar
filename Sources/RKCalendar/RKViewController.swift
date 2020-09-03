@@ -138,7 +138,7 @@ public struct RKViewController: View {
         }.onAppear(perform: { scrollIndex = todayScrollIndex() })
     }
     
-    // a vertical or horizontal page scroll   .sorted(by: { $0.index > $1.index })
+    // a vertical or horizontal page scroll 
     public var pageScrollView: some View {
         RKPageView(pages: (0..<numberOfMonths()).map { index in
                     RKPage(index: index)

@@ -6,7 +6,7 @@
    
    On a long press, a time selection view will popup allowing hours and minutes to be selected.  
    
-   Time selection is available for all modes. For mode 1, select the start and end dates as usual with a tap, then with a long press, select the time desired.  
+   Time selection is available for all modes. For mode ".dateRange", select the start and end dates as usual with a tap, then with a long press, select the time desired.  
 
    The default time picker is *DatePicker*, however you can easily use [**ClockPicker**](https://github.com/workingDog/ClockPicker) to display a nice clock with draggable hands. Just modify the **RKTimeView** and include the **ClockPicker** code.  
 
@@ -36,7 +36,7 @@
 
 - simplified **RKDate** construction.
 
-
+- added **RKSelectionMode** as per "momja" suggestion/Pull request in the original RKCalendar.
 
 #
 
@@ -67,7 +67,7 @@
 
 # Installation
 
-Integrate RKCalendar into your project by including the files in the "Manager" group.
+Integrate RKCalendar into your project by including the files in the "Sources" directory.
 
 # Usage 
 
@@ -80,27 +80,27 @@ Customise the **RKManager** for the desired effects as follows:
 
 Setting the calendar, minimum and maximum dates that can be selected.
 
-    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
 
 ## Single date selection
 
-Use mode 0 to select a single date.
+Use mode  *.singleDate* to select a single date.
 
-    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 0)
+    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: .singleDate)
 
 ## Range of dates selection
 
-Use mode 1 to select a contiguous range of dates, from a start date to an end date.
+Use mode *.dateRange* to select a contiguous range of dates, from a start date to an end date.
 
-    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 1)
+    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: .dateRange)
 
-Note, mode 2 is automatically toggled internally and the end date must be greater than the start date.
+Note, mode *.dateRange* is automatically toggled internally and the end date must be greater than the start date.
 
 ## Multi-dates selection
 
-Use mode 3 for selecting a number of dates.
+Use mode *.multiDate* for selecting a number of dates.
 
-    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 3)
+    RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: .multiDate)
 
 ## Disabled-dates setting
 
@@ -108,7 +108,7 @@ Use any mode and set zero or more dates to be disabled (un-selectable).
 
 For example:
 
-    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: 0)
+    var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: maxDate, mode: .singleDate)
 
     rkManager.disabledDates.append(contentsOf: [
         Date().addingTimeInterval(60*60*24*4),

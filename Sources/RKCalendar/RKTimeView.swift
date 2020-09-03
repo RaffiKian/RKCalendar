@@ -61,23 +61,21 @@ public struct RKTimeView: View {
     public func loadData() {
         // the initial value of the date
         switch rkManager.mode {
-        case 0:
+        case .singleDate:
             if rkManager.selectedDate != nil && rkManager.calendar.isDate(rkManager.selectedDate, inSameDayAs: date) {
                 date = rkManager.selectedDate
             }
-        case 1, 2:
+        case .dateRange, .dateRange2:
             if rkManager.startDate != nil && rkManager.calendar.isDate(rkManager.startDate, inSameDayAs: date) {
                 date = rkManager.startDate
             }
             if rkManager.endDate != nil && rkManager.calendar.isDate(rkManager.endDate, inSameDayAs: date) {
                 date = rkManager.endDate
             }
-        case 3:
+        case .multiDate:
             if let ndx = rkManager.selectedDatesFindIndex(date: date) {
                 date = rkManager.selectedDates[ndx]
             }
-        default:
-            break
         }
     }
     
@@ -90,21 +88,19 @@ public struct RKTimeView: View {
     
     public func update() {
         switch rkManager.mode {
-        case 0:
+        case .singleDate:
             rkManager.selectedDate = date
-        case 1, 2:
+        case .dateRange, .dateRange2:
             if rkManager.startDate != nil && rkManager.calendar.isDate(rkManager.startDate, inSameDayAs: date) {
                 rkManager.startDate = date
             }
             if rkManager.endDate != nil && rkManager.calendar.isDate(rkManager.endDate, inSameDayAs: date) {
                 rkManager.endDate = date
             }
-        case 3:
+        case .multiDate:
             if let ndx = rkManager.selectedDates.firstIndex(where: {rkManager.calendar.isDate($0, inSameDayAs: date)}) {
                 rkManager.selectedDates[ndx] = date
             }
-        default:
-            break
         }
         hasTime.toggle()
     }

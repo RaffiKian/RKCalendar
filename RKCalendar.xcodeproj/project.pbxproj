@@ -31,6 +31,7 @@
 		C795EDA924F084F200008B8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C795EDA824F084F200008B8C /* ContentView.swift */; };
 		C795EDAB24F084F300008B8C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C795EDAA24F084F300008B8C /* Assets.xcassets */; };
 		C795EDAE24F084F300008B8C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C795EDAD24F084F300008B8C /* Preview Assets.xcassets */; };
+		C7FE44B4250076A60068ADDD /* RKSelectionMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7FE44B3250076A60068ADDD /* RKSelectionMode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		C795EDAA24F084F300008B8C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C795EDAD24F084F300008B8C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C795EDAF24F084F300008B8C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C7FE44B3250076A60068ADDD /* RKSelectionMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RKSelectionMode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				C700971624F0859D0001FC37 /* RKCell.swift */,
 				C700971724F0859D0001FC37 /* RKColorSettings.swift */,
 				C700971824F0859D0001FC37 /* RKDate.swift */,
+				C7FE44B3250076A60068ADDD /* RKSelectionMode.swift */,
 			);
 			path = RKCalendar;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				C700972424F0859E0001FC37 /* RKPage.swift in Sources */,
 				C700972C24F0859E0001FC37 /* RKColorSettings.swift in Sources */,
 				C700972224F0859E0001FC37 /* RKManager.swift in Sources */,
+				C7FE44B4250076A60068ADDD /* RKSelectionMode.swift in Sources */,
 				C795EDA724F084F200008B8C /* RKCalendarApp.swift in Sources */,
 				C700972524F0859E0001FC37 /* RKWeeklyPage.swift in Sources */,
 				C700972824F0859E0001FC37 /* RKTimeView.swift in Sources */,

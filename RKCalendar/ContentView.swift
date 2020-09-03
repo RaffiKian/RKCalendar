@@ -19,19 +19,19 @@ struct ContentView : View {
     @State var isPresented6 = false
     @State var isPresented7 = false
     
-    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
-    var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 1) // automatically goes to mode=2 after start selection, and vice versa.
+    var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .dateRange) // automatically goes to mode=2 after start selection, and vice versa.
     
-    var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 3)
+    var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .multiDate)
     
-    var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
-    var rkManager5 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    var rkManager5 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
-    var rkManager6 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    var rkManager6 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
-    var rkManager7 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)
+    var rkManager7 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
     var body: some View {
         VStack (spacing: 10) {
@@ -71,11 +71,11 @@ struct ContentView : View {
                     Text("Example 5 - Time setting on long press").foregroundColor(.blue)
                 }
                 .sheet(isPresented: $isPresented5) { RKViewController().environmentObject(rkManager5) }
-                // mode 0
+                // mode .singleDate
                 Text(ContentView.getTextFromDateTime(rkManager5.selectedDate))
-                // mode 3
+                // mode .multiDate
                 // datesView(dates: rkManager5.selectedDates, true)
-                // mode 1
+                // mode .dateRange
                 // VStack {
                 //     Text(RKManager.getTextFromDateTime(rkManager5.startDate))
                 //      Text(RKManager.getTextFromDateTime(rkManager5.endDate))

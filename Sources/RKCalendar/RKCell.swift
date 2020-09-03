@@ -47,19 +47,19 @@ public struct RKCell: View {
 struct RKCell_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)), cellWidth: CGFloat(32), hasTime: .constant(false))
+            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)), cellWidth: CGFloat(32), hasTime: .constant(false))
                 .previewDisplayName("Control")
 
-            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)), cellWidth: CGFloat(32), hasTime: .constant(false))
+            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)), cellWidth: CGFloat(32), hasTime: .constant(false))
                 .previewDisplayName("Disabled Date")
 
-            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)), cellWidth: CGFloat(32), hasTime: .constant(false))
+            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)), cellWidth: CGFloat(32), hasTime: .constant(false))
                 .previewDisplayName("Today")
 
-            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)), cellWidth: CGFloat(32), hasTime: .constant(false))
+            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)), cellWidth: CGFloat(32), hasTime: .constant(false))
                 .previewDisplayName("Selected Date")
 
-            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: 0)), cellWidth: CGFloat(32), hasTime: .constant(false))
+            RKCell(rkDate: RKDate(date: Date(), rkManager: RKManager(calendar: Calendar.current, minimumDate: Date(), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)), cellWidth: CGFloat(32), hasTime: .constant(false))
                 .previewDisplayName("Between Two Dates")
         }
         .previewLayout(.fixed(width: 300, height: 70))

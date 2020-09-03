@@ -16,7 +16,6 @@ public struct RKMonth: View {
     
     @State var weekOffset: Int?
     
-    let daysPerWeek: Int = 7
     var monthsArray: [[Date]] {
         monthArray()
     }
@@ -114,23 +113,23 @@ public struct RKMonth: View {
         if rkManager.disabled {return}
         if rkManager.isEnabled(date: date) {
             switch rkManager.mode {
-            case 0:
+            case .singleDate:
                 if rkManager.selectedDate != nil &&
                     rkManager.calendar.isDate(rkManager.selectedDate, inSameDayAs: date) {
                     rkManager.selectedDate = nil
                 } else {
                     rkManager.selectedDate = date
                 }
-            case 1:
+            case .dateRange:
                 if rkManager.startDate != nil &&
                     rkManager.calendar.isDate(rkManager.startDate, inSameDayAs: date) {
                     rkManager.startDate = nil
                 } else {
                     rkManager.startDate = date
                     rkManager.endDate = nil
-                    rkManager.mode = 2
+                    rkManager.mode = .dateRange2
                 }
-            case 2:
+            case .dateRange2:
                 if rkManager.endDate != nil &&
                     rkManager.calendar.isDate(rkManager.endDate, inSameDayAs: date) {
                     rkManager.endDate = nil
@@ -141,8 +140,8 @@ public struct RKMonth: View {
                         rkManager.startDate = nil
                     }
                 }
-                rkManager.mode = 1
-            case 3:
+                rkManager.mode = .dateRange
+            case .multiDate:
                 if rkManager.selectedDatesContains(date: date) {
                     if let ndx = rkManager.selectedDatesFindIndex(date: date) {
                         rkManager.selectedDates.remove(at: ndx)
@@ -150,8 +149,6 @@ public struct RKMonth: View {
                 } else {
                     rkManager.selectedDates.append(date)
                 }
-            default:
-                rkManager.selectedDate = date
             }
         }
     }
@@ -186,7 +183,7 @@ public struct RKMonth: View {
         let firstOfMonth = firstOfMonthForOffset()
         let weekday = rkManager.calendar.component(.weekday, from: firstOfMonth)
         var startOffset = weekday - rkManager.calendar.firstWeekday
-        startOffset += startOffset >= 0 ? 0 : daysPerWeek
+        startOffset += startOffset >= 0 ? 0 : 7
         var dateComponents = DateComponents()
         dateComponents.day = index - startOffset
         
@@ -197,7 +194,7 @@ public struct RKMonth: View {
         let firstOfMonth = firstOfMonthForOffset()
         let rangeOfWeeks = rkManager.calendar.range(of: .weekOfMonth, in: .month, for: firstOfMonth)
         
-        return (rangeOfWeeks?.count)! * daysPerWeek
+        return (rangeOfWeeks?.count)! * 7
     }
     
     public func firstOfMonthForOffset() -> Date {
