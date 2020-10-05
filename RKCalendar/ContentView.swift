@@ -19,19 +19,19 @@ struct ContentView : View {
     @State var isPresented6 = false
     @State var isPresented7 = false
     
-    var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
+    @ObservedObject var rkManager1 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
-    var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .dateRange) // automatically goes to mode=2 after start selection, and vice versa.
+    @ObservedObject var rkManager2 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .dateRange) // automatically goes to mode=2 after start selection, and vice versa.
     
-    var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .multiDate)
+    @ObservedObject var rkManager3 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .multiDate)
     
-    var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
+    @ObservedObject var rkManager4 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
-    var rkManager5 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
+    @ObservedObject var rkManager5 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
-    var rkManager6 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
+    @ObservedObject var rkManager6 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
-    var rkManager7 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
+    @ObservedObject var rkManager7 = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*365), mode: .singleDate)
     
     var body: some View {
         VStack (spacing: 10) {
@@ -40,7 +40,7 @@ struct ContentView : View {
                     Text("Example 1 - Single Date Selection").foregroundColor(.blue)
                 }
                 .sheet(isPresented: $isPresented1) { RKViewController().environmentObject(rkManager1) }
-                Text(ContentView.getTextFromDate(rkManager1.selectedDate))
+                Text(getTextFromDate(rkManager1.selectedDate))
                 
                 Button(action: { isPresented2.toggle() }) {
                     VStack {
@@ -50,8 +50,8 @@ struct ContentView : View {
                 }
                 .sheet(isPresented: $isPresented2) { RKViewController().environmentObject(rkManager2) }
                 VStack {
-                    Text(ContentView.getTextFromDate(rkManager2.startDate))
-                    Text(ContentView.getTextFromDate(rkManager2.endDate))
+                    Text(getTextFromDate(rkManager2.startDate))
+                    Text(getTextFromDate(rkManager2.endDate))
                 }
                 
                 Button(action: { isPresented3.toggle() }) {
@@ -71,27 +71,19 @@ struct ContentView : View {
                     Text("Example 5 - Time setting on long press").foregroundColor(.blue)
                 }
                 .sheet(isPresented: $isPresented5) { RKViewController().environmentObject(rkManager5) }
-                // mode .singleDate
-                Text(ContentView.getTextFromDateTime(rkManager5.selectedDate))
-                // mode .multiDate
-                // datesView(dates: rkManager5.selectedDates, true)
-                // mode .dateRange
-                // VStack {
-                //     Text(RKManager.getTextFromDateTime(rkManager5.startDate))
-                //      Text(RKManager.getTextFromDateTime(rkManager5.endDate))
-                // }
+                Text(getTextFromDateTime(rkManager5.selectedDate))
                 
                 Button(action: { isPresented6.toggle() }) {
                     Text("Example 6 - Weekly view").foregroundColor(.blue)
                 }
                 .sheet(isPresented: $isPresented6) { RKViewController().environmentObject(rkManager6) }
-                Text(ContentView.getTextFromDate(rkManager6.selectedDate))
+                Text(getTextFromDate(rkManager6.selectedDate))
                 
                 Button(action: { isPresented7.toggle() }) {
                     Text("Example 7 - Horizontal view with paging").foregroundColor(.blue)
                 }
                 .sheet(isPresented: $isPresented7) { RKViewController().environmentObject(rkManager7) }
-                Text(ContentView.getTextFromDate(rkManager7.selectedDate))
+                Text(getTextFromDate(rkManager7.selectedDate))
             }
         }.onAppear(perform: startUp)
         .navigationViewStyle(StackNavigationViewStyle())
@@ -101,7 +93,7 @@ struct ContentView : View {
         ScrollView (.horizontal) {
             HStack {
                 ForEach(dates, id: \.self) { date in
-                    withTime ? Text(ContentView.getTextFromDateTime(date)) : Text(ContentView.getTextFromDate(date))
+                    withTime ? Text(getTextFromDateTime(date)) : Text(getTextFromDate(date))
                 }
             }
         }.padding(.horizontal, 5)
@@ -148,7 +140,7 @@ struct ContentView : View {
         rkManager7.colors.monthHeaderColor = Color.green
     }
     
-    static func getDateTimeAsString(_ date: Date?) -> String {
+    func getDateTimeAsString(_ date: Date?) -> String {
         if date == nil { return "" }
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd-HH-mm"
@@ -157,22 +149,22 @@ struct ContentView : View {
         return format.string(from: date!)
     }
     
-    static func getTextFromDate(_ date: Date?) -> String {
+    func getTextFromDate(_ date: Date?) -> String {
         if date == nil { return "" }
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
         formatter.locale = Locale.current
         formatter.dateFormat = "EEEE, MMMM d, yyyy"
-        return date == nil ? "" : formatter.string(from: date!)
+        return formatter.string(from: date!)
     }
     
-    static func getTextFromDateTime(_ date: Date?) -> String {
+    func getTextFromDateTime(_ date: Date?) -> String {
         if date == nil { return "" }
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
         formatter.locale = Locale.current
         formatter.dateFormat = "EEEE, MMMM d HH:mm, yyyy"
-        return date == nil ? "" : formatter.string(from: date!)
+        return formatter.string(from: date!)
     }
     
 }

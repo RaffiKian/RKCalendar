@@ -26,7 +26,6 @@ public struct RKViewController: View {
     
     public var body: some View {
         Group {
-            // needed for Mac
             Button(action: onDone) {
                 HStack {
                     Text("Done")
@@ -141,10 +140,10 @@ public struct RKViewController: View {
     // a vertical or horizontal page scroll 
     public var pageScrollView: some View {
         RKPageView(pages: (0..<numberOfMonths()).map { index in
-                    RKPage(index: index)
+            RKPage(index: index)
         })
     }
- 
+    
     public func onDone() {
         // to go back to the previous view
         presentationMode.wrappedValue.dismiss()
@@ -183,7 +182,7 @@ public struct RKViewController: View {
             return 0
         }
     }
-
+    
 }
 
 #if DEBUG

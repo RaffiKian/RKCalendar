@@ -37,7 +37,7 @@ public struct RKMonth: View {
             RKTimeView(date: $timeDate, showTime: $showTime, hasTime: $hasTime).environmentObject(rkManager)
         }
     }
-    
+
     public var monthlyView: some View {
         VStack(alignment: .leading, spacing: 10) {
             ForEach(monthsArray, id: \.self) { row in
@@ -48,6 +48,7 @@ public struct RKMonth: View {
                             if isThisMonth(date: column) {
                                 RKCell(rkDate: RKDate(date: column, rkManager: rkManager),
                                        cellWidth: cellWidth, hasTime: $hasTime)
+                                    .contentShape(Rectangle())
                                     .onTapGesture { dateTapped(date: column) }
                                     .onLongPressGesture { showTime = isLongEnabled(date: column) }
                             } else {
@@ -73,6 +74,7 @@ public struct RKMonth: View {
                     if isThisMonth(date: column) {
                         RKCell(rkDate: RKDate(date: column, rkManager: rkManager),
                                cellWidth: cellWidth, hasTime: $hasTime)
+                            .contentShape(Rectangle())
                             .onTapGesture { dateTapped(date: column) }
                             .onLongPressGesture { showTime = isLongEnabled(date: column) }
                     } else {
@@ -90,6 +92,7 @@ public struct RKMonth: View {
                 ForEach(row, id: \.self) { column in      // each day
                     RKCell(rkDate: RKDate(date: column, rkManager: rkManager),
                            cellWidth: cellWidth, hasTime: $hasTime)
+                        .contentShape(Rectangle())
                         .onTapGesture { dateTapped(date: column) }
                         .onLongPressGesture { showTime = isLongEnabled(date: column) }
                 }
