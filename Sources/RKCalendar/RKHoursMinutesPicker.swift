@@ -16,6 +16,12 @@ struct RKHoursMinutesPicker: View {
     @State var hours: Int = 0
     @State var minutes: Int = 0
     
+    #if os(iOS)
+        private let pickerStyle = WheelPickerStyle()
+    #else
+        private let pickerStyle = PopUpButtonPickerStyle()
+    #endif
+    
     var body: some View {
         HStack {
             Spacer()
@@ -28,7 +34,7 @@ struct RKHoursMinutesPicker: View {
                 ForEach(0..<24, id: \.self) { i in
                     Text("\(i) hours").tag(i)
                 }
-            }.pickerStyle(WheelPickerStyle()).frame(width: 90).clipped()
+            }.pickerStyle(pickerStyle).frame(width: 90).clipped()
             Picker("", selection: Binding<Int>(
                 get: { minutes},
                 set: {
@@ -38,7 +44,7 @@ struct RKHoursMinutesPicker: View {
                 ForEach(0..<60, id: \.self) { i in
                     Text("\(i) min").tag(i)
                 }
-            }.pickerStyle(WheelPickerStyle()).frame(width: 90).clipped()
+            }.pickerStyle(pickerStyle).frame(width: 90).clipped()
             Spacer()
         }.onAppear(perform: loadData)
     }

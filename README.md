@@ -1,47 +1,6 @@
-### In addition to the original features
-
-- added **RKTimeView** a time (hh:mm) selection option on a long press, see example 5 in **ContentView.swift**
-
-   Time selection is activated by setting **displayTime=true** in RKManager (default **false**).
-   
-   On a long press, a time selection view will popup allowing hours and minutes to be selected.  
-   
-   Time selection is available for all modes. For mode ".dateRange", select the start and end dates as usual with a tap, then with a long press, select the time desired.  
-
-   The default time picker is *DatePicker*, however you can easily use [**ClockPicker**](https://github.com/workingDog/ClockPicker) to display a nice clock with draggable hands. Just modify the **RKTimeView** and include the **ClockPicker** code.  
-
-- added a  **horizontal view** of the calendar. 
-
-   This is activated by setting **isVertical=false** in RKManager (default **true**). See example 7 in ContentView.
-
-- added  **isContinuous** to display a continuous calendar of months or a one month view at a time. See example 6,7 in ContentView.
-
-   This is activated by setting **isContinuous=false** in RKManager (default **true**). 
-
-- added a  **weekly view** of the calendar. See example 6 in ContentView.
-
-   This is activated by setting **isWeeklyView=true** in RKManager (default **false**), see example 6. Note you must also set **isVertical=false**. Currently only works well with **isContinuous=false**, that is, horizontal paging only.
-
-- added **RKMonthHeader** and separated the month headers from **RKMonth** to allow for better mix and match of week and month headers.
-
-- added a **disabled** setting, to prevent any user input for the current mode.
-
-   This is activated with **disabled=true** in RKManager (default **false**).
-
-- added  **locale** in RKManager (default **Local.curent**) to display the months and weeks in the chosen language. See example 5 in ContentView.
-
-- added the calendar scrolling to the current date when first displayed. Note, this is only available for horizontal and vertical continuous months displays.
-
-- moved some date property functions from **RKMonth** to **RKManager**
-
-- simplified **RKDate** construction.
-
-- added **RKSelectionMode** as per "momja" suggestion/Pull request in the original RKCalendar.
-
-#
-
 # RKCalendar
-**RKCalendar** is a SwiftUI Calendar / Date Picker for iOS.
+
+**RKCalendar** is a SwiftUI Calendar / Date Picker for iOS and MacOS.
 
 
 ### Features include:
@@ -50,7 +9,10 @@
 - single date selection, 
 - range of dates selection, 
 - multi-dates selection, 
-- disabled dates setting.
+- disabled dates setting,
+- time selection,
+- horizontal view,
+- weekly view.
 
 
 ### Light Mode
@@ -58,23 +20,44 @@
 ### Dark Mode
 <img src="https://github.com/RaffiKian/RKCalendar/blob/master/RKCalendar/Images/demo-app-dark-mode-1.png" alt="demo app first screenshot" width="260"/> <img src="https://github.com/RaffiKian/RKCalendar/blob/master/RKCalendar/Images/demo-app-dark-mode-2.png" alt="demo app first screenshot" width="260"/> 
 
-**⚠️ WARNING ⚠️** This is an early version of this library that requires Swift 5.1 and Xcode 11 
 
 # Requirements
-- iOS 13.0+
+
+- iOS 12+, MacOS 10+
 - Xcode 11+
-- Swift 5.1+
+- Swift 5.2+
 
 # Installation
 
-Integrate RKCalendar into your project by including the files in the "Sources" directory.
+`RKCalendar` is installed via the official [Swift Package Manager](https://swift.org/package-manager/).  
+
+Select `Xcode`>`File`> `Swift Packages`>`Add Package Dependency...`  
+and add `https://github.com/RaffiKian/RKCalendar`.
 
 # Usage 
 
-See **ContenView.swift** for some examples. Typically create a **RKManager** and pass it to a **RKViewController**.
+Typically create a **RKManager** and pass it to a **RKViewController**, for example:
 
-Customise the **RKManager** for the desired effects as follows:
+```swift
+import SwiftUI
+import RKCalendar
 
+struct ContentView : View {
+    
+    @State var isPresented = false
+    @ObservedObject var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*90), mode: .singleDate)
+    
+    var body: some View {
+                Button(action: { isPresented.toggle() }) {
+                    Text("Example - Single Date Selection").foregroundColor(.blue)
+                }
+                .sheet(isPresented: $isPresented) { 
+                    RKViewController().environmentObject(rkManager) 
+                }     
+        }
+    }
+}
+```
 
 ## Calendar minimum and maximum date setting
 
@@ -116,5 +99,39 @@ For example:
         Date().addingTimeInterval(60*60*24*7)
     ])
 
+## Time selection
+
+**RKTimeView** allows for a time (hh:mm) selection option on a long press.
+
+Time selection is activated by setting **displayTime=true** in RKManager (default **false**).
+On a long press, a time selection view will popup allowing hours and minutes to be selected.  
+Time selection is available for all modes. For mode ".dateRange", select the start and end dates as usual with a tap, then with a long press, select the time desired.  
+
+## Horizontal view
+
+An  **horizontal view** of the calendar is activated by setting **isVertical=false** in RKManager (default **true**)
+
+
+## Weekly view
+
+An  **weekly view** of the calendar is activated by setting **isWeeklyView=true** in RKManager (default **false**). Note you must also set **isVertical=false**. Currently only works with **isContinuous=false**, that is, horizontal paging only.
+
+
+##  Language
+
+The language of the calendar is activated by setting **locale** in RKManager (default **Local.curent**) to display the months and weeks in the chosen language. 
+
+
+##  Other features
+
+The RKCalendar can be in two scrolling modes, a continuous mode,  **isContinuous** to display a continuous calendar of months, or a one month at a time (paging) scrolling view. This is activated by setting **isContinuous=false** in RKManager (default **true**). 
+
+RKCalendar can prevent any user input for the current mode by setting **disabled=true** in RKManager (default **false**).
+
+Various elements of RKCalendar, such as the monthly headings, can be colored. This is acheived by customising the relevent **RKManager.colors**.
+
+
+
 # License
+
 RKCalendar is available under the MIT license. See the LICENSE file for more info.
