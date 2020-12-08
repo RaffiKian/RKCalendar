@@ -26,7 +26,7 @@ public struct RKCalendarView: View {
     
     public var body: some View {
         Group {
-            #if os(macOS)
+            #if os(macOS) || targetEnvironment(macCatalyst)
                 Button(action: onDone) {
                     HStack {
                         Text("Done")
