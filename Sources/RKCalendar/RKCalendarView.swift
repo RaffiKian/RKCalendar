@@ -26,7 +26,7 @@ public struct RKCalendarView: View {
     
     public var body: some View {
         Group {
-            #if !os(iOS)
+            #if os(macOS)
                 Button(action: onDone) {
                     HStack {
                         Text("Done")
