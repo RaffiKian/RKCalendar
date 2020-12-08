@@ -1,5 +1,5 @@
 //
-//  RKViewController.swift
+//  RKCalendarView.swift
 //  RKCalendar
 //
 //  Created by Raffi Kian on 7/14/19.
@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-public struct RKViewController: View {
+public struct RKCalendarView: View {
     
     @Environment(\.presentationMode) public var presentationMode: Binding<PresentationMode>
     
@@ -26,12 +26,14 @@ public struct RKViewController: View {
     
     public var body: some View {
         Group {
-            Button(action: onDone) {
-                HStack {
-                    Text("Done")
-                    Spacer()
-                }.padding(15)
-            }
+            #if !os(iOS)
+                Button(action: onDone) {
+                    HStack {
+                        Text("Done")
+                        Spacer()
+                    }.padding(15)
+                }
+            #endif
             rkManager.isWeeklyView ? AnyView(weeklyBody) : AnyView(monthlyBody)
         }
     }
@@ -189,8 +191,8 @@ public struct RKViewController: View {
 struct RKViewController_Previews : PreviewProvider {
     static var previews: some View {
         Group {
-            RKViewController()
-            RKViewController()
+            RKCalendarView()
+            RKCalendarView()
                 .environment(\.colorScheme, .dark)
                 .environment(\.layoutDirection, .rightToLeft)
         }

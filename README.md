@@ -35,7 +35,7 @@ and add `https://github.com/RaffiKian/RKCalendar`
 
 # Usage 
 
-Typically create a **RKManager** and pass it to a **RKViewController**, for example:
+Typically create a **RKManager** and pass it to a **RKCalendarView**, for example:
 
 ```swift
 import SwiftUI
@@ -51,7 +51,7 @@ struct ContentView : View {
                     Text("Example - Single Date Selection").foregroundColor(.blue)
                 }
                 .sheet(isPresented: $showCalendar) { 
-                    RKViewController().environmentObject(rkManager) 
+                        RKCalendarView().environmentObject(rkManager) 
                 }     
         }
     }
