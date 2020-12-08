@@ -23,16 +23,15 @@
 
 # Requirements
 
-- iOS 12+, MacOS 10+
-- Xcode 11+
-- Swift 5.2+
+- iOS 14+, MacOS 11+
+- Swift 5.3+
 
 # Installation
 
 `RKCalendar` is installed via the official [Swift Package Manager](https://swift.org/package-manager/).  
 
 Select `Xcode`>`File`> `Swift Packages`>`Add Package Dependency...`  
-and add `https://github.com/RaffiKian/RKCalendar`.
+and add `https://github.com/RaffiKian/RKCalendar`
 
 # Usage 
 
@@ -44,14 +43,14 @@ import RKCalendar
 
 struct ContentView : View {
     
-    @State var isPresented = false
+    @State var showCalendar = false
     @ObservedObject var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*90), mode: .singleDate)
     
     var body: some View {
-                Button(action: { isPresented.toggle() }) {
+                Button(action: { showCalendar.toggle() }) {
                     Text("Example - Single Date Selection").foregroundColor(.blue)
                 }
-                .sheet(isPresented: $isPresented) { 
+                .sheet(isPresented: $showCalendar) { 
                     RKViewController().environmentObject(rkManager) 
                 }     
         }
@@ -109,7 +108,7 @@ Time selection is available for all modes. For mode ".dateRange", select the sta
 
 ## Horizontal view
 
-An  **horizontal view** of the calendar is activated by setting **isVertical=false** in RKManager (default **true**)
+An  **horizontal view** of the calendar is activated by setting **isVertical=false** in RKManager (default **true**).
 
 
 ## Weekly view
@@ -122,7 +121,7 @@ An  **weekly view** of the calendar is activated by setting **isWeeklyView=true*
 The language of the calendar is activated by setting **locale** in RKManager (default **Local.curent**) to display the months and weeks in the chosen language. 
 
 
-##  Other features
+##  Other options
 
 The RKCalendar can be in two scrolling modes, a continuous mode,  **isContinuous** to display a continuous calendar of months, or a one month at a time (paging) scrolling view. This is activated by setting **isContinuous=false** in RKManager (default **true**). 
 
