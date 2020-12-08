@@ -123,11 +123,11 @@ The language of the calendar is activated by setting **locale** in RKManager (de
 
 ##  Other options
 
-The RKCalendar can be in two scrolling modes, a continuous mode,  **isContinuous** to display a continuous calendar of months, or a one month at a time (paging) scrolling view. This is activated by setting **isContinuous=false** in RKManager (default **true**). 
+The RKCalendar can be in two scrolling modes, a continuous mode to display a scrolling calendar of months, or a one month at a time (paging) scrolling view. This is activated by setting **isContinuous** in RKManager (default **true**). 
 
-RKCalendar can prevent any user input for the current mode by setting **disabled=true** in RKManager (default **false**).
+RKCalendar can prevent a user input for the current mode by setting **disabled=true** in RKManager (default **false**).
 
-Various elements of RKCalendar, such as the monthly headings, can be colored. This is achieved by customising the relevent **RKManager.colors**.
+Various elements of **RKCalendar**, such as the monthly headings, can be colored. This is achieved by customising the relevent **RKManager.colors**.
 
 
 
