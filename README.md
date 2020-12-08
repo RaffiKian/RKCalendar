@@ -28,7 +28,7 @@
 
 # Installation
 
-`RKCalendar` is installed via the official [Swift Package Manager](https://swift.org/package-manager/).  
+`RKCalendar` is install via the official [Swift Package Manager](https://swift.org/package-manager/).  
 
 Select `Xcode`>`File`> `Swift Packages`>`Add Package Dependency...`  
 and add `https://github.com/RaffiKian/RKCalendar`
@@ -127,7 +127,7 @@ The RKCalendar can be in two scrolling modes, a continuous mode,  **isContinuous
 
 RKCalendar can prevent any user input for the current mode by setting **disabled=true** in RKManager (default **false**).
 
-Various elements of RKCalendar, such as the monthly headings, can be colored. This is acheived by customising the relevent **RKManager.colors**.
+Various elements of RKCalendar, such as the monthly headings, can be colored. This is achieved by customising the relevent **RKManager.colors**.
 
 
 
