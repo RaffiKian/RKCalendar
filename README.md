@@ -28,10 +28,13 @@
 
 # Installation
 
-`RKCalendar` is install via the official [Swift Package Manager](https://swift.org/package-manager/).  
+(if/when the pull request is accepted)
+
+Install `RKCalendar` via the official [Swift Package Manager](https://swift.org/package-manager/).  
 
 Select `Xcode`>`File`> `Swift Packages`>`Add Package Dependency...`  
-and add `https://github.com/RaffiKian/RKCalendar`
+and add `https://github.com/RaffiKian/RKCalendar` 
+
 
 # Usage 
 

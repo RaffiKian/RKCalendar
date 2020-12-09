@@ -188,7 +188,7 @@ public struct RKCalendarView: View {
 }
 
 #if DEBUG
-struct RKViewController_Previews : PreviewProvider {
+struct RKCalendarView_Previews : PreviewProvider {
     static var previews: some View {
         Group {
             RKCalendarView()

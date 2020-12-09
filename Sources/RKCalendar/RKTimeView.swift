@@ -42,7 +42,7 @@ public struct RKTimeView: View {
                 .frame(minWidth: 300, maxWidth: .infinity, minHeight: 80, maxHeight: .infinity, alignment: .leading)
                 .datePickerStyle(GraphicalDatePickerStyle())
                 .clipped()
-                
+
                 Spacer()
             }
         }
