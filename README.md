@@ -44,7 +44,7 @@ import RKCalendar
 struct ContentView : View {
     
     @State var showCalendar = false
-    @ObservedObject var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*90), mode: .singleDate)
+    @StateObject var rkManager = RKManager(calendar: Calendar.current, minimumDate: Date().addingTimeInterval(-60*60*24*60), maximumDate: Date().addingTimeInterval(60*60*24*90), mode: .singleDate)
     
     var body: some View {
                 Button(action: { showCalendar.toggle() }) {

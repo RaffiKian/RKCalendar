@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct RKCalendarView: View {
     
-    @Environment(\.presentationMode) public var presentationMode: Binding<PresentationMode>
+    @Environment(\.dismiss) public var dismiss
     
     @EnvironmentObject public var rkManager: RKManager
     
@@ -34,7 +34,13 @@ public struct RKCalendarView: View {
                     }.padding(15)
                 }
             #endif
-            rkManager.isWeeklyView ? AnyView(weeklyBody) : AnyView(monthlyBody)
+        //    rkManager.isWeeklyView ? AnyView(weeklyBody) : AnyView(monthlyBody)
+            
+            if rkManager.isWeeklyView {
+                weeklyBody
+            } else {
+                monthlyBody
+            }
         }
     }
     
@@ -118,8 +124,8 @@ public struct RKCalendarView: View {
     // horizontal continuous scroll
     public var horizontalView: some View {
         ScrollViewReader { scrollProxy in
-            ScrollView (.horizontal) {
-                HStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .center, spacing: 0) {
                     ForEach(0..<numberOfMonths(), id: \.self) { index in
                         VStack (spacing: 15) {
                             RKMonthHeader(monthOffset: index)
@@ -148,7 +154,7 @@ public struct RKCalendarView: View {
     
     public func onDone() {
         // to go back to the previous view
-        presentationMode.wrappedValue.dismiss()
+        dismiss()
     }
     
     public func numberOfWeeks(monthOffset: Int) -> Int {
