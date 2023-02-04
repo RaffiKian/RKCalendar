@@ -58,8 +58,8 @@ public struct RKPageView<Content: View & Identifiable>: View {
     
     public var horizontalView: some View {
         GeometryReader { geometry in
-            ScrollView(.horizontal) {
-                HStack {
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(alignment: .center, spacing: 0) {
                     ForEach(pages) { page in
                         page.frame(width: geometry.size.width, height: geometry.size.height)
                     }
