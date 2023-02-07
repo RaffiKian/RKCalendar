@@ -26,16 +26,14 @@ public struct RKCalendarView: View {
     
     public var body: some View {
         Group {
-            #if os(macOS) || targetEnvironment(macCatalyst)
-                Button(action: onDone) {
-                    HStack {
-                        Text("Done")
-                        Spacer()
-                    }.padding(15)
-                }
-            #endif
-        //    rkManager.isWeeklyView ? AnyView(weeklyBody) : AnyView(monthlyBody)
-            
+//            #if os(macOS) || targetEnvironment(macCatalyst)
+//            Button(action: { dismiss() }) {
+//                    HStack {
+//                        Text("Done")
+//                        Spacer()
+//                    }.padding(15)
+//                }
+//            #endif
             if rkManager.isWeeklyView {
                 weeklyBody
             } else {
@@ -46,19 +44,31 @@ public struct RKCalendarView: View {
     
     public var monthlyBody: some View {
         Group {
-            rkManager.isVertical
-                ? rkManager.isContinuous ? AnyView(verticalView) : AnyView(pageScrollView)
-                : rkManager.isContinuous ? AnyView(horizontalView) : AnyView(pageScrollView)
+            if rkManager.isVertical {
+                if rkManager.isContinuous {
+                    verticalView
+                } else {
+                    pageScrollView
+                }
+            } else {
+                if rkManager.isContinuous {
+                    horizontalView
+                } else {
+                    pageScrollView
+                }
+            }
             Spacer()
         }
     }
     
     public var weeklyBody: some View {
         Group {
-            rkManager.isContinuous
-                ? AnyView(weeklyContinuousView)
-                : AnyView(RKPageView(pages: pages))
-        }.onAppear(perform: loadWeeklyData)
+            if rkManager.isContinuous {
+                weeklyContinuousView
+            } else {
+                RKPageView(pages: pages)
+            }
+        }.onAppear{ loadWeeklyData() }
     }
     
     public func loadWeeklyData() {
@@ -95,7 +105,7 @@ public struct RKCalendarView: View {
                     scrollProxy.scrollTo(id)
                 }
             }
-        }.onAppear(perform: { scrollIndex = (todayScrollIndex() - 1) })
+        }.onAppear{ scrollIndex = (todayScrollIndex() - 1) }
     }
     
     // vertical continuous scroll
@@ -118,7 +128,7 @@ public struct RKCalendarView: View {
                     scrollProxy.scrollTo(id)
                 }
             }
-        }.onAppear(perform: { scrollIndex = todayScrollIndex() })
+        }.onAppear{ scrollIndex = todayScrollIndex() }
     }
     
     // horizontal continuous scroll
@@ -142,7 +152,7 @@ public struct RKCalendarView: View {
                     scrollProxy.scrollTo(id)
                 }
             }
-        }.onAppear(perform: { scrollIndex = todayScrollIndex() })
+        }.onAppear{ scrollIndex = todayScrollIndex() }
     }
     
     // a vertical or horizontal page scroll 
@@ -151,12 +161,7 @@ public struct RKCalendarView: View {
             RKPage(index: index)
         })
     }
-    
-    public func onDone() {
-        // to go back to the previous view
-        dismiss()
-    }
-    
+
     public func numberOfWeeks(monthOffset: Int) -> Int {
         let firstOfMonth = firstOfMonthForOffset(monthOffset: monthOffset)
         let rangeOfWeeks = rkManager.calendar.range(of: .weekOfMonth, in: .month, for: firstOfMonth)

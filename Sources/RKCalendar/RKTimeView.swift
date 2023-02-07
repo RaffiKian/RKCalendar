@@ -11,12 +11,11 @@ import SwiftUI
 
 public struct RKTimeView: View {
     
-    @Environment(\.presentationMode) public var presentationMode: Binding<PresentationMode>
+    @Environment(\.dismiss) public var dismiss
     
     @EnvironmentObject public var rkManager: RKManager
     
     @Binding var date: Date
-    @Binding var showTime: Bool
     @Binding var hasTime: Bool
     
     var todayRange: ClosedRange<Date> {
@@ -27,7 +26,6 @@ public struct RKTimeView: View {
     
     public var body: some View {
         VStack (alignment: .leading) {
-            Text("Time").padding(10)
             HStack {
                 Spacer()
                 DatePicker("Time", selection: Binding<Date>(
@@ -38,15 +36,13 @@ public struct RKTimeView: View {
                     }
                 ),
                 in: todayRange, displayedComponents: .hourAndMinute)
-                .labelsHidden()
                 .frame(minWidth: 300, maxWidth: .infinity, minHeight: 80, maxHeight: .infinity, alignment: .leading)
-                .datePickerStyle(GraphicalDatePickerStyle())
+                .datePickerStyle(.graphical)
                 .clipped()
-
                 Spacer()
             }
         }
-        .onAppear(perform: loadData)
+        .onAppear{ loadData() }
     }
     
     public func loadData() {
@@ -72,9 +68,8 @@ public struct RKTimeView: View {
     
     public func onDone() {
         update()
-        showTime = false
         // to go back to the previous view passing through doExit
-        presentationMode.wrappedValue.dismiss()
+        dismiss()
     }
     
     public func update() {
@@ -98,9 +93,8 @@ public struct RKTimeView: View {
     
 }
 
-
 struct RKTimeView_Previews: PreviewProvider {
     static var previews: some View {
-        RKTimeView(date: .constant(Date()), showTime: .constant(false), hasTime: .constant(false))
+        RKTimeView(date: .constant(Date()), hasTime: .constant(false))
     }
 }

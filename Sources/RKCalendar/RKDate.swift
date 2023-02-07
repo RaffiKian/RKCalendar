@@ -29,7 +29,7 @@ public struct RKDate {
     }
     
     public func getText() -> String {
-        let day = formatDate(date: date, calendar: self.rkManager.calendar)
+        let day = formatDate(date: date, calendar: rkManager.calendar)
         return day
     }
      

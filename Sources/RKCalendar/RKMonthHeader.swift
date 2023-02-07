@@ -20,7 +20,7 @@ public struct RKMonthHeader : View {
     }
 
     public var body: some View {
-        Text(getMonthHeader()).foregroundColor(self.rkManager.colors.monthHeaderColor)
+        Text(getMonthHeader()).foregroundColor(rkManager.colors.monthHeaderColor)
     }
     
     public func getMonthHeader() -> String {

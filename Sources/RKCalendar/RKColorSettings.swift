@@ -9,26 +9,25 @@ import Foundation
 import Combine
 import SwiftUI
 
-public class RKColorSettings : ObservableObject {
+public struct RKColorSettings {
 
     // foreground colors
-    @Published public var textColor: Color = Color.primary
-    @Published public var todayColor: Color = Color.white
-    @Published public var selectedColor: Color = Color.white
-    @Published public var disabledColor: Color = Color.gray
-    @Published public var betweenStartAndEndColor: Color = Color.white
+     public var textColor: Color = Color.primary
+     public var todayColor: Color = Color.white
+     public var selectedColor: Color = Color.white
+     public var disabledColor: Color = Color.gray
+     public var betweenStartAndEndColor: Color = Color.white
     // background colors
-    @Published public var textBackColor: Color = Color.clear
-    @Published public var todayBackColor: Color = Color.gray
-    @Published public var selectedBackColor: Color = Color.red
-    @Published public var disabledBackColor: Color = Color.clear
-    @Published public var betweenStartAndEndBackColor: Color = Color.blue
+     public var textBackColor: Color = Color.clear
+     public var todayBackColor: Color = Color.gray
+     public var selectedBackColor: Color = Color.red
+     public var disabledBackColor: Color = Color.clear
+     public var betweenStartAndEndBackColor: Color = Color.blue
     // headers foreground colors
-    @Published public var weekdayHeaderColor: Color = Color.primary
-    @Published public var monthHeaderColor: Color = Color.primary
+     public var weekdayHeaderColor: Color = Color.primary
+     public var monthHeaderColor: Color = Color.primary
     // headers background colors
-    @Published public var weekdayHeaderBackColor: Color = Color.clear
-    @Published public var monthBackColor: Color = Color.clear
+     public var weekdayHeaderBackColor: Color = Color.clear
+     public var monthBackColor: Color = Color.clear
 
-    public init() {}
 }

@@ -24,7 +24,11 @@ public struct RKPageView<Content: View & Identifiable>: View {
     
     
     public var body: some View {
-        rkManager.isVertical ? AnyView(verticalView) : AnyView(horizontalView)
+        if rkManager.isVertical {
+            verticalView
+        } else {
+            horizontalView
+        }
     }
     
     public var verticalView: some View {
@@ -53,7 +57,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
                                         DispatchQueue.main.async { self.isGestureActive = false }
                                     })
             )
-        }.onAppear(perform: { index = todayIndex() })
+        }.onAppear{ index = todayIndex() }
     }
     
     public var horizontalView: some View {
@@ -82,7 +86,7 @@ public struct RKPageView<Content: View & Identifiable>: View {
                                         DispatchQueue.main.async { self.isGestureActive = false }
                                     })
             )
-        }.onAppear(perform: { index = todayIndex() })
+        }.onAppear{ index = todayIndex() }
     }
     
     public func todayIndex() -> Int {

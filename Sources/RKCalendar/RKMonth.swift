@@ -31,10 +31,18 @@ public struct RKMonth: View {
     
     public var body: some View {
         Group {
-            rkManager.isWeeklyView ? AnyView(weeklyView) : AnyView(monthlyView)
+            if rkManager.isWeeklyView {
+                if weekOffset == nil {
+                    weeklyViewContinuous
+                } else {
+                    weeklyViewPage
+                }
+            } else {
+                monthlyView
+            }
         }
         .popover(isPresented: $showTime, arrowEdge: .top) {
-            RKTimeView(date: $timeDate, showTime: $showTime, hasTime: $hasTime).environmentObject(rkManager)
+            RKTimeView(date: $timeDate, hasTime: $hasTime).environmentObject(rkManager)
         }
     }
 
@@ -61,11 +69,7 @@ public struct RKMonth: View {
             }.frame(minWidth: 0, maxWidth: .infinity)
         }.background(rkManager.colors.monthBackColor)
     }
-    
-    public var weeklyView: some View {
-        weekOffset == nil ? AnyView(weeklyViewContinuous) : AnyView(weeklyViewPage)
-    }
-    
+
     public var weeklyViewPage: some View {
         HStack(spacing: 10) {
             ForEach(monthsArray[weekOffset!], id: \.self) { column in

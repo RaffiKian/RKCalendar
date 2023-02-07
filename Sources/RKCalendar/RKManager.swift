@@ -51,7 +51,7 @@ public class RKManager : ObservableObject {
     // allow time (hh:mm) to be set and displayed on a long press
     @Published public var displayTime: Bool = false
     
-    public var colors = RKColorSettings()
+    @Published public var colors = RKColorSettings()
     
     let calendarUnitYMD = Set<Calendar.Component>([.year, .month, .day])
     
